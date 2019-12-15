@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/search/search",
+    "pages/found/found",
+    "pages/orderNoUse/orderNoUse",
+    "pages/details/details",
+    "pages/orderOverdue/orderOverdue",
+    "pages/orderUsed/orderUsed",
+    "pages/coupon/coupon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

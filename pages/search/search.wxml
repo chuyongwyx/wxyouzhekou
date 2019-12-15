@@ -1,0 +1,42 @@
+<!--pages/search/search.wxml-->
+<view class="search-main">
+  <view class="search-head" style="padding-top:{{statusBarHeight}}rpx;">
+    <view class="search-tit">
+         <view class="search-back" bindtap="handleToBack">
+            <image src="../../images/icon_fanhui.png"></image>
+          </view>
+          <view class="search-h1">有折打</view>
+    </view>
+    <view class="header">
+      <view class="search">
+        <icon type="search" size="18" color="" class="search-ico"></icon>
+        <view class="searchPlace" wx:if="{{searchPlace}}" bindtap="handleToInput">今天想去哪吃喝玩乐</view>
+        <view wx:if="{{searchInput}}" class="inputValue"><input type="text" auto-focus value="{{inputVal}}" bindinput="handleInputText"/>
+           <icon type="clear" size="18" bind:tap="onToggle" class="search-clear" wx:if="{{clear}}" />    
+        </view> 
+      </view>
+      <view  class="cancel" bindtap="handleToSearchPlace">取消</view>
+    </view>
+  </view>
+    <view class="" style="margin-top:{{searchTop}}rpx;">
+          <view class="container ">
+            <!-- 大家都在搜的 -->
+                <view class="search-hot">
+                      <view class="hot-h">大家都在搜</view>
+                      <view class="hot-conent">
+                            <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>
+                      </view>
+                </view>
+            <!-- 我搜过的 -->
+              <view class="search-his">
+                      <view class="his-h">
+                          <view>搜过历史</view>
+                          <view><image src="../../images/moni11.jpg"></image> </view>    
+                      </view>
+                      <view class="his-conent">
+                            <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>
+                      </view>
+                </view>
+          </view>
+    </view>
+</view>

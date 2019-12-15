@@ -1,0 +1,61 @@
+<!--pages/orderUsed/orderUsed.wxml-->
+<view class="order">
+       <view class="order-head" style="padding-top:{{statusBarHeight}}rpx;">
+            <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
+            <view class="order-h1">订单详情</view>
+      </view>
+      <!-- 订单待使用 -->
+      <view class="order-use" style="margin-top:{{statusBarHeight+80}}rpx;">
+            <view class="order-logo">
+                  <image src="../../images/dingdan_zhuangtai3.png"></image>
+            </view> 
+            <view class="order-type">
+                  <view>已过期</view>
+                  <view>优惠券已过期</view>
+                  <view>请前往 个人中心-优惠券 进行查看</view>
+            </view> 
+      </view>
+      <view class="order-details">
+            <view class="order-shop">
+                <view class="order-shop-img">
+                    <image src="../../images/moni9.jpg"></image>
+                </view>
+                <view class="order-name">心狠嘴辣</view>
+            </view> 
+            <!-- 商品图片这块 -->
+            <view class="oder-shop-decs">
+                  <view><image src="../../images/moni4.jpg"></image></view>
+                  <view>[北京路·串串] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！</view>
+            </view>
+            <view class="order-num">  
+                  <view>订单编号</view>
+                  <view>
+                        <view>A12345678910111213</view>
+                        <view>复制</view>
+                  </view>
+            </view> 
+            <view class="order-time">
+                  <view>付款时间</view>
+                  <view>2019-11-13 16:02:51</view>
+            </view>
+            <view class="order-count">
+                  <view>总额</view>
+                  <view>￥48.00</view>
+            </view>
+            <view class="order-vip">
+                  <view>钻石会员6.25折</view>
+                  <view>-¥ 3.00</view>
+            </view> 
+            <view class="order-score">
+                  <view>积分抵扣</view>
+                  <view><view> 消耗100积分</view><view>-¥1.00</view> </view>
+            </view>
+            <view class="order-pay">
+                  <view>实付金额</view>
+                  <view>￥44.00</view>
+            </view> 
+      </view>
+
+</view>
+
+

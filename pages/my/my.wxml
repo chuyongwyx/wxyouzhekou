@@ -1,0 +1,107 @@
+<!--pages/my/my.wxml-->
+<view class="my">
+    <view class="head">
+          <view class="bannerImg"><image src="../../images/moni12.jpg"></image></view>
+          <view class="" style="padding-top:{{statusBarHeight}}rpx;">
+              <view class="user-login" wx:if="{{true}}">
+                  <view><image src="../../images/moni13.jpg"></image></view>
+                  <view>未登录</view>
+              </view>
+
+              <view class="user-logined" wx:if="{{false}}">
+                  <view><image src="../../images/moni13.jpg"></image> </view>
+                  <view>
+                        <view class="name">马建宇</view>
+                        <view><text>手机号：</text><text>13012811929</text></view>
+                  </view> 
+              </view>
+              <!-- 收入这块 -->
+              <view class="money">
+                  <view class="money-info">
+                        <view class="count-money">
+                             <view>累计收入</view>
+                             <view><text>￥</text><text>0</text></view>
+                        </view>
+                        <view class="cash-out">
+                              <view>可提现</view>
+                              <view><text>￥</text><text>0</text></view>
+                        </view> 
+                        <view class="">
+                              <view class="promp-money">立即提现</view>
+                        </view> 
+                  </view>
+
+                  <!-- 待到账 -->
+                  <view class="money-account">
+                        <view class="money-time">
+                              <view>待到账</view>
+                              <view><text>￥</text><text>0</text></view>
+                        </view>
+                      <view class="money-other">
+                            <view class="money-definite">明细</view>
+                            <view class="sort">收入排行</view>
+                      </view>
+                  </view>
+              </view>
+
+              <!-- 我的优惠券 -->
+              <view class="coupon">
+                  <view class="coupon-h">我的优惠劵</view>
+                  <view class="coupon-cont" >
+                    <view style="display:flex;align-items:center;" bindtap="handleToCoupon">
+                           <view class="coupon-all">
+                                  <view> <image src="../../images/moni14.jpg"></image> </view>
+                                  <view>全部</view> 
+                            </view>
+                            <view class="border"></view>
+                    </view>
+                     <view style="display:flex;align-items:center;">
+                            <view class="coupon-use">
+                              <view> <image src="../../images/moni15.jpg"></image></view>
+                              <view>待使用</view>
+                            </view> 
+                            <view class="border"></view>
+                     </view>
+                     <view style="display:flex;align-items:center;">
+                          <view class="coupon-used">
+                              <view> <image src="../../images/moni15.jpg"></image> </view>
+                              <view>已使用</view>
+                            </view> 
+                            <view class="border"></view>
+                     </view>
+                      <view class="overdue">
+                                <view><image src="../../images/moni15.jpg"></image> </view>
+                                <view>已过期</view>
+                      </view> 
+
+                  </view>
+              </view>
+              <!-- 我的订单 -->
+              <view class="myOrder">
+                    <view>我的订单</view>
+                    <view><image src="../../images/moni16.jpg"></image></view>
+              </view>
+              <!-- 帮助 -->
+              <view class="helpCenter">
+                    <view>帮助中心</view>
+                    <view> <image src="../../images/moni16.jpg"></image> </view>
+              </view>
+          </view>
+    </view>
+
+<!-- 页脚 -->
+  <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+            <view bindtap="handleToHome">
+                  <image src="{{home}}"></image>
+                  <view>有折打</view>
+            </view> 
+            <view bindtap="handleToFound">
+                  <image src="{{found}}"></image>
+                  <view>发现</view>
+            </view>
+            <view>
+                  <image src="{{my}}"></image>
+                  <view class="active">我的</view>
+            </view>
+  </view>
+</view>

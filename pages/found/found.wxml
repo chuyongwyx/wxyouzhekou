@@ -1,0 +1,100 @@
+<!--pages/found/found.wxml-->
+<view class="found"> 
+  <view class="found-head" style="padding-top:{{statusBarHeight}}px" >
+      <block wx:if="{{scrollBefore}}">
+             <view class="found-h">发现</view>
+          <view class="found-search">
+                <view class="found-pos">
+                      <view class="found-pos-img"> <image src="../../images/icon_dingwei.png"></image> </view>
+                      <view>广州</view>
+                </view>
+                <view class="search" bindtap="handleToSearch">
+                      <view class="search-img"><image src="../../images/moni10.jpg"></image> </view>
+                      <view>今天想去哪里吃喝玩乐</view>        
+                </view> 
+          </view>  
+      </block>
+      <block wx:if="{{scrollIng}}">
+            <view class="found-search-scroll">
+                <view class="found-pos">
+                      <view class="found-pos-img"> <image src="../../images/icon_dingwei.png"></image> </view>
+                      <view>广州</view>
+                </view>
+                <view class="search-scroll" bindtap="handleToSearch">
+                      <view class="search-img"><image src="../../images/moni10.jpg"></image> </view>
+                      <view>今天想去哪里吃喝玩乐</view>        
+                </view> 
+          </view> 
+      </block>
+        
+           <view class="screen">
+                      <view class="{{allFood?'active':'deactive'}}">
+                            <text>全部美食</text>
+                            <text>v</text>
+                      </view>
+                      <view class="{{near?'active':'deactive'}}">
+                              <text>附近</text>
+                              <text>v</text>
+                      </view>
+                      <view class="{{mind?'active':'deactive'}}">
+                              <text>智能排序</text>
+                              <text>v</text>
+                      </view> 
+                </view>
+  </view>
+   
+   <view class="main" >
+        <!-- banner图部分 -->
+        <view class="banner" style="margin-top:{{bannerTop}}rpx">
+            <view class="banner-h">转角有优惠</view>
+            <view>
+                <swiper indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true" class="banner-img">
+                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
+                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
+                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
+                </swiper>
+            </view>
+        </view>
+        <!-- 列表页 -->
+        <view class="content-list">
+            <view class="shopList" wx:for="{{6}}" wx:key="this">
+                  <view class="shopList-banner"><image src="../../images/moni4.jpg"></image></view>
+                  <view class="shopList-desc">[北京路·串串] 48元抵100元代金券，无门槛…</view>
+                  <view class="shopList-info">
+                        <view class="shopList-price">
+                            <view class="shopList-cell-price">￥48</view>
+                              <view class="shopList-fix-price">
+                                  <view><text>￥</text><text> 100</text></view>
+                                  <view class="fengxian"></view>
+                              </view> 
+                        </view>
+
+                        <view class="shopList-cell">
+                            <view>已售</view>
+                            <view>999</view>
+                        </view>
+                      
+                  </view> 
+            </view>
+        
+        </view>
+        
+
+    </view>
+<!-- 页脚 -->
+  <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+            <view bindtap="handleToHome">
+                  <image src="{{home}}"></image>
+                  <view>有折打</view>
+            </view> 
+            <view >
+                  <image src="{{found}}"></image>
+                  <view class="active">发现</view>
+            </view>
+            <view bindtap="handleToMy">
+                  <image src="{{my}}"></image>
+                  <view>我的</view>
+            </view>
+  </view>
+</view>
+

@@ -1,0 +1,261 @@
+/* pages/found/found.wxss */
+.found{
+
+}
+.found-head{
+    padding-bottom: 26rpx;
+    border-bottom:2rpx solid #D8D8D8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: #fff;
+    width: 100%;
+}
+.found-h{ 
+  margin-top: 20rpx;
+  font-size:38rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 1;
+  margin-left: 30rpx;
+}
+.found-search{
+  margin:0 30rpx;
+  margin-top: 20rpx;
+  display: flex;
+  height: 80rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.found-pos{
+  display: flex;
+  align-items: center;
+}
+.found-pos>view:nth-of-type(2){
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-left: 4rpx;
+  margin-top: -6rpx;
+  
+}
+
+.found-pos-img{
+
+}
+.found-pos-img >image{
+  width:28rpx;
+  height:32rpx;
+}
+.search{
+  height:80rpx;
+  background:rgba(242,242,242,1);
+  border-radius:42rpx;
+  width: 570rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(167,167,167,1);
+}
+/* 滚动的后的样式 */
+.found-search-scroll{
+  margin-left:30rpx;
+  margin-right: 200rpx;
+  margin-top: 12rpx;
+  display: flex;
+  height: 68rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-scroll{
+  height:68rpx;
+  width: 426rpx;
+  background:rgba(242,242,242,1);
+  border-radius:42rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(167,167,167,1);
+}
+.search-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-img>image{
+  width:36rpx;
+  height:36rpx;
+}
+/* 筛选 */
+.screen{
+    display:flex;
+    margin:0 30rpx;
+    margin-top: 30rpx;
+}
+.screen>view:nth-of-type(2){
+  margin:0 40rpx;
+}
+.screen>view>text:nth-of-type(1){
+  margin-right: 10rpx;
+}
+.active{
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,116,20,1);
+}
+.deactive{
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(150,150,150,1);
+
+}
+/* banner部分 */
+.banner{
+  margin:0 30rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 2rpx solid #D8D8D8;
+  margin-bottom: 8rpx;
+}
+.banner-h{
+  padding: 20rpx 0;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 1;
+
+}
+.banner-img{
+  width:690rpx;
+  height:260rpx;
+}
+.banner-img image{
+  width:690rpx;
+  height:260rpx;
+}
+/* 商品列表 */
+.content-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin:0 17rpx;
+  padding-bottom: 148rpx;
+}
+.shopList{
+  margin:0 13rpx;
+  margin-top: 32rpx;
+  width: 332rpx;
+}
+.shopList-banner{
+  
+}
+.shopList-banner image{
+  width:332rpx;
+  height:220rpx;
+}
+.shopList-desc{
+  height:84rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:42rpx;
+}
+.shopList-info{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 18rpx;
+}
+.shopList-price{
+  display: flex;
+}
+.shopList-cell-price{
+  font-size:38rpx;
+  font-family:'DIN Alternate';
+  font-weight:bold;
+  color:rgba(255,116,20,1);
+  margin-right: 15rpx;
+}
+.shopList-fix-price>view:nth-of-type(1)>text:nth-of-type(1){
+  font-size:26rpx;
+  font-family:DINAlternate-Bold,DINAlternate;
+  font-weight:bold;
+  line-height: 38rpx;
+  color:rgba(150,150,150,1);
+}
+.shopList-fix-price{
+  position: relative;
+}
+.fengxian{
+  position: absolute;
+  top: 30rpx;
+  left: 3rpx;
+  width: 100%;
+  height: 2rpx;
+  background: #979797;
+}
+.shopList-fix-price>view:nth-of-type(1)>text:nth-of-type(2){
+  font-size:26rpx;
+  font-family:'DIN Alternate';
+  font-weight:bold;
+  color:rgba(150,150,150,1);
+  margin-left:-14rpx;
+  line-height: 38rpx;
+
+}
+.shopList-cell{
+  display: flex;
+  font-size:26rpx;
+  font-family:PingFangSC-Bold,PingFang SC;
+  font-weight:bold;
+  color:rgba(150,150,150,1);
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* footer */
+.footer{
+  width: 100%;
+  height: 128rpx;
+  position: fixed;
+  border-top: 2rpx solid #D6D6D6;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background: #fff;
+  z-index: 5;
+  justify-content: space-around;
+  text-align: center;
+}
+/* 全面屏下的footer */
+.footer-isFullSucreen{
+  bottom:68rpx!important;
+}
+.footer>view{
+  margin-top: 12rpx;
+}
+.footer>view>image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.footer>view>view{
+  font-size:22rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:#BABABA;
+  line-height:32rpx;
+}
+.footer>view .active{
+  color: #ED4A17;
+}

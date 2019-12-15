@@ -1,0 +1,136 @@
+<!--index.wxml-->
+    <view class="head" style="padding-top:{{statusBarHeight}}px">
+        <view wx:if="{{posH}}">
+              <view class="h1">有折打</view>
+              <view class="pos">
+                    <view><image src="../../images/icon_dingwei.png"/></view>
+                    <view>广州</view>
+                    <view>越秀区中三四路345号新大街附近</view> 
+              </view>  
+        </view>
+          <view wx:if="{{scrollH}}">
+                  <view class="h2">有折打</view>
+          </view>
+     </view>
+        <refresh-view id='refreshView' backgroundColor="#000" bind:onRefresh="onPullDownRefresh"/>
+        <view class="wrap container" bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel'>
+        <!-- 轮播图 -->
+          <view class="banner">
+              <swiper class="banner-img" indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true">
+                    <swiper-item bindtap="handleToDetails"><image src="../../images/moni1.jpg"></image></swiper-item>
+                    <swiper-item><image src="../../images/moni1.jpg"></image></swiper-item>
+                    <swiper-item><image src="../../images/moni1.jpg"></image></swiper-item>
+              </swiper> 
+          </view>
+
+          <!-- 内容区域 -->
+          <view class="content-list">
+                <view>
+                      <image src="../../images/shouye_haochide.png"></image>
+                      <view>好吃的</view>
+                </view>
+                <view>
+                      <image src="../../images/shouye_bianmeide.png"></image>
+                      <view>变美的</view>
+                </view>
+                <view>
+                      <image src="../../images/shouye_chuqulang.png"></image>
+                      <view>出去浪</view>
+                </view>
+                <view>
+                        <image src="../../images/shouye_baobeiwan.png"></image>
+                        <view>宝贝玩</view>
+                </view>
+
+          </view>
+          <!-- 消息宣传 -->
+          <view class="message">
+               <view><image src="../../images/icon_gonggao.png"></image></view>
+               <view><text>海珠广场</text><text>东江店</text><text>48元抵100元代金券回家看看</text></view>
+               <view><image src="../../images/icon_jinru.png"></image></view>
+          </view>
+
+          <!-- 优惠精选 -->
+          <view class="cheap-sel">
+                <view class="cheap-sel-h2">优惠精选</view>
+                <view class="cheap-sel-bg"><image src="../../images/moni2.jpg"></image></view>
+                <view class="cheap-sel-dec"><text>[海珠广场 东江店]</text><text>48元抵100元代金劵, 无门槛看看就看见</text></view>
+                <view class="cheap-sel-type">无需预约 马上使用</view>    
+          </view>
+
+          <!-- 附近爆款 -->
+          <view class="near-hot">
+                <view class="near-hot-h">附近爆款优惠</view>
+                <view class="near-lift">精选周边优质生活</view>
+                <view class="near-hot-list" wx:for="{{4}}" wx:key="this">
+                      <view class="near-hot-img">
+                            <image src="../../images/moni3.jpg"></image>
+                      </view>
+                      <view class="near-hot-dec">
+                          <view class="near-hot-tit">{{nearHotTit}}</view>
+                          <view class="near-hot-pos">
+                              <view class="near-hot-poslog">
+                                    <image src="../../images/moni5.jpg"></image>
+                              </view>
+                              <view class="near-hot-add">心狠嘴辣（正佳广场店）</view>
+                          </view> 
+                          <view class="near-hot-price">
+                              <view class="near-hot-prices">
+                                   <view class="shop-price"><text>￥</text><text class="pricefont">48</text></view>
+                                <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view>
+                              </view>
+                               
+                                <view class="shop-celled">已售999</view>
+                          </view>
+                         
+                      </view>
+                </view>
+                <view class="near-list-border"></view>
+          </view>
+          <!-- 你的朋友已经领取了这些 -->
+          <view class="friend">
+              <view class="friend-h">你的朋友已经领取了这些</view>
+              <view class="near-hot-list" wx:for="{{3}}" wx:key="this">
+                      <view class="near-hot-img">
+                            <image src="../../images/moni4.jpg"></image>
+                      </view>
+                      <view class="near-hot-dec">
+                          <view class="near-hot-tit">{{nearHotTit}}</view>
+                          <view class="near-hot-pos">
+                              <view class="near-hot-poslog">
+                                    <image src="../../images/moni5.jpg"></image>
+                              </view>
+                              <view class="near-hot-add">心狠嘴辣（正佳广场店）</view>
+                          </view> 
+                          <view class="near-hot-price">
+                              <view class="near-hot-prices">
+                                   <view class="shop-price"><text>￥</text><text class="pricefont">48</text></view>
+                                <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view>
+                              </view>
+                               
+                                <view class="shop-celled">已售999</view>
+                          </view>
+                         
+                      </view>
+                  </view>
+          </view>
+
+          <!-- 下拉刷新 -->
+          <view class="fresh">下拉刷新</view>
+
+          <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+            <view>
+                  <image src="{{home}}"></image>
+                  <view class="active">有折打</view>
+            </view> 
+            <view bindtap="handleToFound">
+                  <image src="{{found}}"></image>
+                  <view>发现</view>
+            </view>
+            <view bindtap="handleToMy">
+                  <image src="{{my}}"></image>
+                  <view>我的</view>
+            </view>
+          </view>
+</view>
+

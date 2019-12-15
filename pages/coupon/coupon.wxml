@@ -1,0 +1,4 @@
+<!--pages/coupon/coupon.wxml-->
+<view>
+    <view>优惠劵页</view>
+</view>

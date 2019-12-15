@@ -1,0 +1,111 @@
+<!--pages/details/details.wxml-->
+<view class="details">
+      <view class="details-head" style="padding-top:{{statusBarHeight}}rpx;">
+            <view class="details-back" bindtap="handleBack"><image src="../../images/icon_fanhui.png"></image> </view>
+            <view class="details-h1">优惠详情</view>
+      </view>
+      <!-- 商品详情 -->
+      <view class="banner" style="margin-top:{{statusBarHeight+80}}rpx;">
+            <view class="banner-img">
+                <image src="../../images/moni1.jpg"></image>
+            </view>
+            <view class="shop-info">
+                  <view class="shop-price">
+                      <view><text>￥</text><text>48.00</text></view>
+                      <view><text>￥</text><text>100</text><view class="destroy"></view></view>
+                  </view>
+                  <view class="shop-cell"><text>已售</text><text>999</text><text>/</text><text>剩余</text><text>999</text> </view>
+            </view>
+            <view class="shop-desc">
+                [ 北京路·串串 ] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！
+            </view>
+      </view>
+
+    <!-- 参与者群聊 -->
+        <view class="group">
+            <view class="group-num"><text>已参与者</text><text>123人</text></view>
+            <view class="group-int">
+                  <view class="group-image">
+                        <image src="../../images/moni6.jpg"></image>
+                  </view>
+                  <view class="invi">邀请好友一起领</view>
+            </view> 
+        </view>
+      <!-- 广州交流群 -->
+        <view class="comm">
+            <view class="comm-img">
+                  <image src="../../images/moni7.jpg"></image>
+            </view>
+            <view class="comm-group">
+                  <view>广州有折打交流群</view>
+                  <view>进群了解广州吃喝玩乐</view>
+            </view>
+            <view class="join-group">
+                  加入群聊
+            </view>
+        </view>
+        <!-- 注意事项 -->
+        <view class="alert">
+            <view class="alert-h">注意事项</view>
+            <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
+            <view class="alert-info">
+                  <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>
+                  <view>*抢购时间：2019年11月13日-12月12日；</view>
+                  <view>*使用期限：2019年11月13日-12月12日；周末、节假日正常使用；</view>
+                  <view>*每餐桌每次限用2张;</view>
+            </view> 
+            <view class="alert-active">
+                  <view>*套餐活动仅限堂食，不可外卖/打包，不兑现，不找零，不提供报销凭证，不与店内其他优惠同享；</view>
+                  <view>*特惠活动仅限活动期间使用，超过活动抢购时间未使用可申请退款，需原路退回（微信零钱、信用卡、银行卡）将扣除10%运营手续费。</view>
+            </view> 
+        </view>
+        
+        <!-- 商家信息 -->
+        <view class="business">
+            <view class="business-h">商家信息</view>
+            <view class="business-name">心狠嘴辣·串串料理（北京路店）</view>
+            <view class="business-time"><text>营业时间：</text><text>11:00-14:30；17:00-22:30</text></view>
+            <view class="business-tel">
+                <view><text>商家电话：</text><text></text></view>
+                <view><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
+             </view>
+             <view class="business-adress">
+                  <view>广州市越秀区惠福东路447号</view>
+                  <view><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
+             </view>
+             <view class="business-card">
+                   <view>营业资质许可</view>
+                   <view><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
+             </view>
+        </view>
+        <!-- 优惠详情 -->
+          <view class="favourite">
+                <view class="favourite-desc">优惠详情</view>
+                <view class="favourite-img">
+                      <image src="../../images/moni8.jpg"></image>
+                </view> 
+          </view>
+          <view class="toBottom">
+                已经拉到底了
+          </view> 
+
+      <!-- footer -->
+        <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+            <view class="home" bindtap="handleToHome">
+                  <image src="../../images/dibulan_shouye1.png"></image>
+                  <view class="active">首页</view>
+            </view> 
+            <view class="order" bindtap="handleToOrder">
+                  <image src="../../images/dibulan_dingdan.png"></image>
+                  <view>订单</view>
+            </view>
+            <view class="share">
+                  <view>分享海报</view>
+                  <view><text>赚</text><text>￥</text><text>8.00</text></view>
+            </view>
+            <view class="immediately"> 
+                   <view>立即抢购</view>
+                   <view><text>省</text><text>￥</text><text>8.00</text></view>
+            </view>
+          </view>
+</view>

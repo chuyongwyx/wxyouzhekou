@@ -8,7 +8,10 @@ Page({
   data: {
     "statusBarHeight": app.globalData.statusBarHeight*2+10,
     //判断是否为全面屏
-    "isFullSucreen": app.globalData.isFullSucreen ? true : false 
+    "isFullSucreen": app.globalData.isFullSucreen ? true : false,
+    "joinGroup":false,
+    "share":false
+    
   },
 
   /**
@@ -79,10 +82,40 @@ Page({
     })
   },
   //前往订单页
-  handleToOrder(){
+  handleToConfirmOrder(){
     wx.navigateTo({
-      url: '../orderNoUse/orderNoUse',
+      url: '../confirmOrder/confirmOrder',
     })
+  },
+  //隐藏加入群聊
+  handleToClose(){
+      this.setData({
+        "joinGroup":false
+      })
+  },
+  //显示加入群聊
+  handleToShow(){
+     this.setData({
+       "joinGroup":true
+     })
+  },
+  //分享界面
+  handleToShareHaibao(){
+      this.setData({
+          "share":true
+      })
+    },
+  //发送给朋友
+  handleToFriend(){
+      this.setData({
+        "share":false
+      })
+  },
+  //保存给海报图
+  handleToSave(){
+      this.setData({
+        "share":false
+      })
   }
 
 })

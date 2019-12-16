@@ -1,0 +1,84 @@
+<!--pages/confirmOrder/confirmOrder.wxml-->
+<view class="confirmOrder">
+  <view class="confirmOrder-head" style="padding-top:{{statusBarHeight}}rpx;">
+    <view class="confirmOrder-back" bindtap="handleToBack">
+      <image src="../../images/icon_fanhui.png"></image>
+    </view>
+    <view class="confirmOrder-h1">确认订单</view>
+  </view>
+
+  <view class="confirmOrder-content" style="padding-top:{{statusBarHeight+80}}rpx">
+    <view class="shop-name">
+      <view>
+        <image src="../../images/moni3.jpg"></image>
+      </view>
+      <view>心狠嘴辣</view>
+    </view>
+    <view class="shop-info">
+      <view>
+        <image src="../../images/moni3.jpg"></image>
+      </view>
+      <view>
+        [北京路·串串] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！
+      </view>
+    </view>
+    <view class="buy-num">
+      <view>购买数量</view>
+      <view class="compute">
+        <view class="compute-jian" bindtap="handleNumJian">
+          <image src="../../images/jian.png"></image>
+        </view>
+        <view class="compute-num">{{num}}</view>
+        <view class="compute-jia" bindtap="handleNumJia">
+          <image src="../../images/jia.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="count">
+      <view>小计</view>
+      <view class="count-price">
+        <view>￥</view>
+        <view>{{shopPrice}}</view>
+      </view>
+    </view>
+    <view class="active">
+      <view>活动优惠价</view>
+      <view class="active-price">
+        <view>￥</view>
+        <view>{{activePrice}}</view>
+      </view>
+    </view>
+    <view class="vip">
+      <view>会员折扣</view>
+      <view class="vip-price">
+        <view>-</view>
+        <view>￥</view>
+        <view>{{vipPrice}}</view>
+      </view>
+    </view>
+
+    <view class="sort-count">
+      <view>可用100积分抵￥{{intergratePrice}}</view>
+      <view bindtap="handleToImage">
+        <image src="{{integrate?'../../images/kongzhi_kaiguan1.png':'../../images/kongzhi_kaiguan2.png'}}"></image>
+      </view>
+    </view>
+    <view class="pay">
+          <view>需付金额</view>
+          <view class="pay-price">
+              <view>￥</view>
+              <view>{{count}}</view>
+          </view>
+    </view>
+
+  </view>
+   <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+            <view>合计:</view>
+            <view>
+                <view>￥</view>
+                <view>{{count}}</view>
+            </view>
+            <view class="rightBuy">立即购买</view>
+  </view>
+
+</view>

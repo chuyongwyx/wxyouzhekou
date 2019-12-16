@@ -1,14 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my",
     "pages/search/search",
-    "pages/found/found",
-    "pages/orderNoUse/orderNoUse",
     "pages/details/details",
+    "pages/confirmOrder/confirmOrder",
+    "pages/order/order",
+    "pages/found/found",
+    "pages/coupon-details/coupon-details",
+    "pages/coupon/coupon",
+    "pages/my/my",
+    "pages/orderNoUse/orderNoUse",
     "pages/orderOverdue/orderOverdue",
-    "pages/orderUsed/orderUsed",
-    "pages/coupon/coupon"
+    "pages/orderUsed/orderUsed"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

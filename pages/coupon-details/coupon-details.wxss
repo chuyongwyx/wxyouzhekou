@@ -1,0 +1,235 @@
+/* pages/coupon-details/coupon-details.wxss */
+.coupon-details-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    padding-top: 108rpx;
+    padding-bottom: 10rpx;
+    z-index: 5;
+    border-bottom:2rpx solid #D6D6D6;
+}
+.coupon-details-tit{
+     display: flex;
+     height:68rpx;
+}
+.coupon-details-back{
+    display: flex;
+    margin-left: 40rpx;
+    width: 30rpx;
+    align-items: center;
+}
+.coupon-details-back>image{
+    width:17rpx;
+    height:31rpx;
+}
+.coupon-details-h1{
+  height:48rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  align-items: center;
+  margin-left: 237rpx;
+  line-height: 68rpx;
+}
+.coupon-details-type{
+    display: flex;
+    justify-content: space-between;
+    margin:0 30rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    line-height: 1;
+    margin-top: 45rpx;
+    margin-bottom: 30rpx;
+}
+
+/* 优惠劵详情 */
+.coupon-img{
+   margin:0 30rpx;
+   margin-top:30rpx;
+   width:690rpx;
+   height:186rpx;
+   background:rgba(255,255,255,1);
+   box-shadow:0px 4px 36px -2px rgba(0,0,0,0.15); 
+   display: flex;
+}
+.coupon-price{
+
+}
+.coupon-price>view:nth-of-type(1){
+  display: flex;
+  margin-top: 28rpx;
+  margin-left: 34rpx;
+  margin-right: 40rpx;
+}
+.coupon-price>view:nth-of-type(1)>view:nth-of-type(1){
+  font-size:56rpx;
+  font-family:'DIN Alternate';
+  font-weight:bold;
+  color:rgba(255,116,20,1);
+  line-height: 1;
+}
+.coupon-price>view:nth-of-type(1)>view:nth-of-type(2){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 1;
+  margin-left: 10rpx;
+  padding-top: 15rpx;
+}
+.coupon-price>view:nth-of-type(2){
+  text-align: center;
+  margin-top: 10rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(150,150,150,1);
+}
+.coupon-desc{
+  padding-top: 42rpx;
+  margin-left: 30rpx;
+}
+.coupon-desc>view:nth-of-type(1){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.coupon-desc>view:nth-of-type(2){
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(150,150,150,1);
+}
+/* 优惠码区域 */
+.favourable{
+   width: 690rpx;
+   margin:0 30rpx;
+   margin-top: 40rpx;
+   border-top: 2rpx solid #D8D8D8;
+   border-bottom:2rpx solid #D8D8D8; 
+
+}
+.favourable-ma{
+    display: flex;
+    width: 690rpx;
+    height: 128rpx;
+    text-align: center;
+    line-height: 128rpx;
+}
+.favourable-ma>view:nth-of-type(1){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-left: 112rpx;
+}
+.favourable-ma>view:nth-of-type(2){
+  font-size:40rpx;
+  font-family:'DIN Alternate';
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  margin-left: 30rpx;
+}
+.favourable-er{
+  width:372rpx;
+  height:372rpx;
+  border:2rpx solid rgba(216,216,216,1);
+  margin:0 auto;
+  margin-bottom: 58rpx;
+}
+/* 注意事项 */
+.alert{
+   margin:0 30rpx;
+   border-bottom: 2rpx solid #D8D8D8;
+   padding-bottom:36rpx;
+}
+.alert-h{
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:1;
+}
+
+.alert-type{
+  font-size: 30rpx;
+  color: #777777;
+  line-height: 48rpx;
+}
+.alert-info{
+  color:#333333;
+  font-size: 30rpx;
+}
+.alert-active{
+  color: #777777;
+  font-size: 30rpx;
+}
+/* 商家信息 */
+.business{
+    margin: 0 30rpx;
+    padding-bottom: 38rpx;
+    border-bottom: 2rpx solid #D8D8D8;
+}
+.business-h{
+    margin: 38rpx 0;
+    font-size:34rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height: 1;
+}
+.business-name{
+  font-size:38rpx;
+}
+.business image{
+  width: 36rpx;
+  height: 36rpx;
+}
+.business-time{
+  margin-top: 30rpx;
+  line-height: 1;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(119,119,119,1);
+}
+.business-tel{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(119,119,119,1);
+  line-height: 1;
+}
+.business-adress{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(119,119,119,1);
+  line-height: 1;
+}
+.business-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(119,119,119,1);
+  line-height: 1;
+}

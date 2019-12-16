@@ -315,7 +315,7 @@ margin-left: 20rpx;
   margin-left: 20rpx;
   margin-top: 8rpx;
   position: relative;
-}
+} 
 .fengexian{
   position: absolute;
   width: 100%;

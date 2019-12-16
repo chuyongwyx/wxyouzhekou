@@ -1,0 +1,249 @@
+/* pages/confirmOrder/confirmOrder.wxss */
+.confirmOrder-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: #fff;
+    width: 100%;
+    height:68rpx;
+    padding-top: 108rpx;
+    padding-bottom: 10rpx;
+    z-index: 5;
+    border-bottom:2rpx solid #D6D6D6;
+}
+.confirmOrder-back{
+    display: flex;
+    margin-left: 40rpx;
+    width: 30rpx;
+    align-items: center;
+}
+.confirmOrder-back>image{
+    width:17rpx;
+    height:31rpx;
+}
+.confirmOrder-h1{
+  width:136rpx;
+  height:48rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+ align-items: center;
+  margin-left: 237rpx;
+  line-height: 68rpx;
+}
+.shop-name{
+  height: 88rpx;
+  margin:0 30rpx;
+  border-bottom: 2rpx solid #D8D8D8;
+  display: flex;
+}
+.shop-name>view:nth-of-type(1){
+    margin-top: 20rpx;
+}
+.shop-name>view:nth-of-type(1)>image{
+  width:48rpx;
+  height:48rpx;
+}
+.shop-name>view:nth-of-type(2){
+  line-height: 88rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(119,119,119,1);
+  margin-left: 20rpx;
+}
+.shop-info{
+  display: flex;
+  margin:0 30rpx;
+  padding:50rpx 0;
+  border-bottom: 2rpx solid #D8D8D8;
+
+}
+.shop-info>view:nth-of-type(1){
+  margin-right: 30rpx;
+  width:156rpx;
+  height:156rpx;
+}
+.shop-info>view:nth-of-type(1)>image{
+  width:156rpx;
+  height:156rpx;
+}
+.shop-info>view:nth-of-type(2){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:48rpx;
+}
+
+/* 购买数量 */
+.buy-num{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  border-bottom:2rpx solid #D8D8D8; 
+  height: 106rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.compute{
+  display: flex;
+  
+}
+.buy-num>view:nth-of-type(1){
+  line-height: 106rpx;
+}
+.compute-jian{
+  width:48rpx;
+  height:48rpx;
+  margin-top: 29rpx;
+  margin-right: 20rpx;
+  
+}
+.compute-jian>image{
+  width:48rpx;
+  height:48rpx;
+}
+.compute-jia{
+  width:48rpx;
+  height:48rpx;
+  margin-top: 29rpx;
+  margin-left: 20rpx;
+}
+.compute-jia>image{
+  width:48rpx;
+  height:48rpx;
+}
+.compute-num{
+  line-height: 106rpx;
+}
+.count{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  border-bottom:2rpx solid #D8D8D8; 
+  line-height: 106rpx;
+    font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(170,170,170,1);
+}
+.count-price{
+  display: flex;
+}
+.active{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  border-bottom:2rpx solid #D8D8D8;
+  line-height: 106rpx; 
+     font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(170,170,170,1);
+}
+.active-price{
+  display: flex;
+}
+.vip{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  border-bottom:2rpx solid #D8D8D8;
+  line-height: 106rpx; 
+     font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(170,170,170,1);
+}
+.vip-price{
+  display: flex;
+}
+.sort-count{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  border-bottom:2rpx solid #D8D8D8;
+  line-height: 106rpx; 
+}
+.sort-count>view:nth-of-type(2){
+  margin-top: 22rpx;
+   width: 102rpx;
+  height: 62rpx;
+}
+.sort-count>view:nth-of-type(2) image{
+  width: 102rpx;
+  height: 62rpx;
+}
+.pay{
+   display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+  line-height: 106rpx;
+
+}
+.pay-price{
+  display: flex;
+}
+/* footer */
+.footer{
+  width: 100%;
+  height: 112rpx;
+  position: fixed;
+  border-top: 2rpx solid #D6D6D6;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background: #fff;
+  z-index: 5;
+  padding-top: 16rpx;
+  justify-content: flex-end;
+}
+/* 全面屏下的footer */
+.footer-isFullSucreen{
+  bottom:68rpx!important;
+}
+.footer>view:nth-of-type(1){
+ 
+  line-height: 92rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.footer>view:nth-of-type(2){
+  display: flex;
+}
+.footer>view:nth-of-type(2)>view:nth-of-type(1){
+  font-size:40rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  line-height:92rpx;
+  margin-left: 15rpx;
+}
+.footer>view:nth-of-type(2)>view:nth-of-type(2){
+  font-size:40rpx;
+  font-family:'DIN Alternate';
+  line-height: 92rpx;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.rightBuy{
+  width:254rpx;
+  height:92rpx;
+  background:linear-gradient(180deg,rgba(255,170,31,1) 0%,rgba(237,74,23,1) 100%);
+  border-radius:48rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  text-align: center;
+  line-height: 92rpx;
+  margin-right: 30rpx;
+  margin-left: 40rpx;
+  
+  }

@@ -87,5 +87,17 @@ Page({
     wx.navigateTo({
       url: '../coupon/coupon',
     })
-  }
+  },
+  //跳往待使用
+  handleToUseBefore(){
+    wx.navigateTo({
+      url: '../orderNoUse/orderNoUse',
+    })
+  },
+//跳往全部订单
+handleToMyOrder(){
+    wx.navigateTo({
+      url: '../order/order',
+    })
+}
 })

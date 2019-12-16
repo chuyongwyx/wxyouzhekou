@@ -1,10 +1,10 @@
 <!--pages/my/my.wxml-->
 <view class="my">
     <view class="head">
-          <view class="bannerImg"><image src="../../images/moni12.jpg"></image></view>
+          <view class="bannerImg"><image src="../../images/gerenzhongxin_BG.png"></image></view>
           <view class="" style="padding-top:{{statusBarHeight}}rpx;">
               <view class="user-login" wx:if="{{true}}">
-                  <view><image src="../../images/moni13.jpg"></image></view>
+                  <view><image src="../../images/gerenzhongxin_morentouxiang.png"></image></view>
                   <view>未登录</view>
               </view>
 
@@ -50,41 +50,41 @@
                   <view class="coupon-cont" >
                     <view style="display:flex;align-items:center;" bindtap="handleToCoupon">
                            <view class="coupon-all">
-                                  <view> <image src="../../images/moni14.jpg"></image> </view>
+                                  <view> <image src="../../images/gerenzhongxin_quanbuyouhuiquan.png"></image> </view>
                                   <view>全部</view> 
                             </view>
                             <view class="border"></view>
                     </view>
                      <view style="display:flex;align-items:center;">
-                            <view class="coupon-use">
-                              <view> <image src="../../images/moni15.jpg"></image></view>
+                            <view class="coupon-use" bindtap="handleToUseBefore">
+                              <view> <image src="../../images/gerenzhongxin_daishiyongyouhuiquan.png"></image></view>
                               <view>待使用</view>
                             </view> 
                             <view class="border"></view>
                      </view>
                      <view style="display:flex;align-items:center;">
                           <view class="coupon-used">
-                              <view> <image src="../../images/moni15.jpg"></image> </view>
+                              <view> <image src="../../images/gerenzhongxin_yishiyongyouhuiquan.png"></image> </view>
                               <view>已使用</view>
                             </view> 
                             <view class="border"></view>
                      </view>
                       <view class="overdue">
-                                <view><image src="../../images/moni15.jpg"></image> </view>
+                                <view><image src="../../images/gerenzhongxin_yiguoqiyouhuiquan.png"></image> </view>
                                 <view>已过期</view>
                       </view> 
 
                   </view>
               </view>
               <!-- 我的订单 -->
-              <view class="myOrder">
+              <view class="myOrder" bindtap="handleToMyOrder">
                     <view>我的订单</view>
-                    <view><image src="../../images/moni16.jpg"></image></view>
+                    <view><image src="../../images/icon_jinru.png"></image></view>
               </view>
               <!-- 帮助 -->
               <view class="helpCenter">
                     <view>帮助中心</view>
-                    <view> <image src="../../images/moni16.jpg"></image> </view>
+                    <view> <image src="../../images/icon_jinru.png"></image> </view>
               </view>
           </view>
     </view>

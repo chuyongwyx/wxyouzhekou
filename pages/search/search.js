@@ -82,13 +82,17 @@ Page({
   //隐藏input
   handleToSearchPlace(){
     this.setData({
-      "searchPlace": true,
+      "inputVal": "",
       "searchInput": false
     })
+    if (this.data.inputVal == "") {
+      this.setData({
+        "searchPlace": true,
+      })
+    }
   },
   //得到input框中数据
   handleInputText(e){
-      console.log(e.detail.value);
     this.setData({
       "clear":true,
     })
@@ -96,9 +100,14 @@ Page({
   //清除value
   onToggle(e){
     this.setData({
-      "inputVal": "",
-      "searchPlace": true,
+      "inputVal": "",  
       "searchInput": false
     })
+    if(this.data.inputVal==""){
+      this.setData({
+        "searchPlace": true,
+      })
+    }
+    
   }
 })

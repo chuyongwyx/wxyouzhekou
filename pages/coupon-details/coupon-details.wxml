@@ -1,0 +1,75 @@
+<!--pages/coupon-details/coupon-details.wxml-->
+<view class="coupon-details">
+   <view class="coupon-details-head" style="padding-top:{{statusBarHeight}}rpx;">
+        <view class="coupon-details-tit">
+          <view class="coupon-details-back" bindtap="handleToBack">
+              <image src="../../images/icon_fanhui.png"></image>
+            </view>
+            <view class="coupon-details-h1">券详情</view>
+        </view>
+    </view>
+    <view class="coupon" style="padding-top:{{scrollTop}}rpx">
+          <view class="coupon-img">
+                <view class="coupon-price">
+                      <view>
+                          <view>100</view>
+                          <view>元</view>
+                      </view>
+                      <view>代金劵</view>
+                </view> 
+                <view style="background:#f0f0f0;">
+                        <image src="../../images/youzhekouBG2.png" style="height:186rpx;width:26rpx"></image>
+                </view>
+                <view class="coupon-desc">
+                      <view>心狠手辣</view>
+                      <view>有效期至 2019-03-21</view>
+                </view>
+          </view>
+
+          <!-- 优惠码 -->
+          <view class="favourable">
+                <view class="favourable-ma">
+                      <view>优惠码</view>
+                      <view>2019 1103 7930 5710</view>
+                </view>
+                <view class="favourable-er">
+                      <view class="" style="width:308rpx;height:308rpx;background:rgba(216,216,216,1);margin:32rpx;"></view>
+                </view> 
+          </view>
+    </view>
+    <!-- 注意事项 -->
+     <!-- 注意事项 -->
+        <view class="alert">
+            <view class="alert-h">注意事项</view>
+            <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
+            <view class="alert-info">
+                  <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>
+                  <view>*抢购时间：2019年11月13日-12月12日；</view>
+                  <view>*使用期限：2019年11月13日-12月12日；周末、节假日正常使用；</view>
+                  <view>*每餐桌每次限用2张;</view>
+            </view> 
+            <view class="alert-active">
+                  <view>*套餐活动仅限堂食，不可外卖/打包，不兑现，不找零，不提供报销凭证，不与店内其他优惠同享；</view>
+                  <view>*特惠活动仅限活动期间使用，超过活动抢购时间未使用可申请退款，需原路退回（微信零钱、信用卡、银行卡）将扣除10%运营手续费。</view>
+            </view> 
+        </view>
+        
+        <!-- 商家信息 -->
+        <view class="business">
+            <view class="business-h">商家信息</view>
+            <view class="business-name">心狠嘴辣·串串料理（北京路店）</view>
+            <view class="business-time"><text>营业时间：</text><text>11:00-14:30；17:00-22:30</text></view>
+            <view class="business-tel">
+                <view><text>商家电话：</text><text></text></view>
+                <view><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
+             </view>
+             <view class="business-adress">
+                  <view>广州市越秀区惠福东路447号</view>
+                  <view><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
+             </view>
+             <view class="business-card">
+                   <view>营业资质许可</view>
+                   <view><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
+             </view>
+        </view>
+</view>

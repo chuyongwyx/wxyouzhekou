@@ -25,7 +25,7 @@
                       <view class="hot-h">大家都在搜</view>
                       <view class="hot-conent">
                             <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>
-                      </view>
+                      </view> 
                 </view>
             <!-- 我搜过的 -->
               <view class="search-his">

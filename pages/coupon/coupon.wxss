@@ -1,1 +1,203 @@
 /* pages/coupon/coupon.wxss */
+.coupon{
+
+}
+.coupon-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    padding-top: 108rpx;
+    padding-bottom: 10rpx;
+    z-index: 5;
+    border-bottom:2rpx solid #D6D6D6;
+}
+.coupon-tit{
+     display: flex;
+     height:68rpx;
+}
+.coupon-back{
+    display: flex;
+    margin-left: 40rpx;
+    width: 30rpx;
+    align-items: center;
+}
+.coupon-back>image{
+    width:17rpx;
+    height:31rpx;
+}
+.coupon-h1{
+  height:48rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  align-items: center;
+  margin-left: 237rpx;
+  line-height: 68rpx;
+}
+.coupon-type{
+    display: flex;
+    justify-content: space-between;
+    margin:0 30rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    line-height: 1;
+    margin-top: 45rpx;
+    margin-bottom: 30rpx;
+}
+.deactive{
+  color:rgba(150,150,150,1);
+}
+.active{
+  color:rgba(51,51,51,1);
+}
+/* 没有优惠券页面 */
+.no-coupon{
+   margin-top: 110rpx;
+   width: 100%;
+   text-align: center;
+}
+.no-coupon>view:nth-of-type(1){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 1;
+}
+.no-coupon>view:nth-of-type(2){
+    line-height: 1;
+    margin-top: 20rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(150,150,150,1);
+}
+/* 优惠券列表 */
+.coupon-list{
+  margin:0 30rpx;
+}
+.coupon-content{
+  width:690rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 36rpx -2rpx rgba(0,0,0,0.15);
+  margin-top: 30rpx;
+ }
+
+.coupon-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:30rpx;
+    padding-bottom: 10rpx; 
+
+}
+.coupon-info-shop{
+
+}
+.coupon-price{
+  display: flex;
+  
+}
+.coupon-price>view:nth-of-type(1){
+  font-size:56rpx;
+  font-family:DIN Alternate;
+  font-weight:bold;
+  color:rgba(255,116,20,1);
+  line-height: 1;
+}
+.coupon-price>view:nth-of-type(2){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-left: 20rpx;
+  line-height: 1;
+  padding-top: 15rpx;
+}
+.shop-name{
+  font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(150,150,150,1);
+}
+.right-use{
+  width:162rpx;
+  height:68rpx;
+  background:rgba(255,116,20,0.15);
+  border-radius:12rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,116,20,1);
+  text-align: center;
+  line-height: 68rpx;
+}
+.coupon-details{
+  display: flex;
+  justify-content: space-between;
+  margin:0 30rpx;
+}
+.coupon-details>view:nth-of-type(1){
+  display: flex;
+  align-items: center;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 1;
+  height: 70rpx;
+  margin-bottom: 10rpx;
+}
+.coupon-details>view:nth-of-type(1)>view:nth-of-type(2){
+  margin-left: 10rpx;
+  margin-top: -5rpx;
+}
+.coupon-details>view:nth-of-type(2){
+  display: flex;
+  align-items: center;
+  font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(150,150,150,1);
+height: 70rpx;
+margin-bottom: 10rpx;
+}
+.detailsInfoDeactive{
+  color:rgba(51,51,51,1);
+} 
+.detailsInfoActive{
+ color:rgba(150,150,150,1);
+}
+ /* alert注意事项 */
+ .alert{
+   margin:0 30rpx;
+   padding-bottom:36rpx;
+}
+.alert-h{
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:1;
+}
+
+.alert-type{
+  border-top:2rpx solid #D8D8D8;
+  padding-top: 28rpx; 
+  font-size: 30rpx;
+  color: #777777;
+  line-height: 48rpx;
+}
+.alert-info{
+  color:#333333;
+  font-size: 30rpx;
+}
+.alert-active{
+  color: #777777;
+  font-size: 30rpx;
+}

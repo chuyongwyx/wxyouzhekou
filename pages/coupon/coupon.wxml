@@ -1,4 +1,86 @@
 <!--pages/coupon/coupon.wxml-->
-<view>
-    <view>优惠劵页</view>
+<view class="coupon">
+    <view class="coupon-head" style="padding-top:{{statusBarHeight}}rpx;">
+        <view class="coupon-tit">
+          <view class="coupon-back" bindtap="handleToBack">
+              <image src="../../images/icon_fanhui.png"></image>
+            </view>
+            <view class="coupon-h1">我的优惠券</view>
+        </view>
+        <view class="coupon-type">
+                  <view class="{{allCoupon?'active':'deactive'}}">
+                        <text>全部</text>
+                        <text>(12)</text>
+                  </view>
+                  <view class="{{couponUseBefore?'active':'deactive'}}">
+                        <text>待使用</text>
+                        <text>(12)</text>
+                  </view> 
+                  <view class="{{couponUsed?'active':'deactive'}}">
+                          <text>已使用</text>
+                          <text>(12)</text>
+                  </view> 
+                  <view class="{{couponTimed?'active':'deactive'}}">
+                        <text>已过期</text>
+                        <text>(12)</text> 
+                  </view>
+            </view> 
+    </view>
+
+    <!-- 优惠券区域 -->
+    <view class="coupon-list" style="padding-top:{{scrollTop}}rpx;">
+          <view  wx:if="{{false}}" class="no-coupon">
+               <view>暂无数据</view>
+               <view>你还没有获得优惠券哦</view>
+          </view>
+
+            <view class="coupon-content" wx:for="{{couponList}}" wx:key="{{this}}" wx:if="{{true}}">
+                <view class="coupon-info">
+                      <view class="coupon-info-shop">
+                            <view class="coupon-price">
+                                  <view>{{item.couponPrice}}</view>
+                                  <view>元代金券</view>
+                            </view>
+                            <view class="shop-name">心狠手辣</view>
+                      </view>
+                      <view>
+                          <view class="right-use" bindtap="handleToUse">立即使用</view>
+                      </view>
+                </view>
+                <!-- 分割线 -->
+                <view>
+                      <view  style="width:690rpx;height:38rpx;background:#eeeeee;"><image src="../../images/youhuiquan_BG.png" style="width:690rpx;height:38rpx;"></image></view>
+                </view>
+              <!-- 详情页 -->
+                <view class="coupon-details">
+                      <view bindtap="handleToShowOrHide" data-id="{{index}}">
+                            <view class="{{detailsList[index]=='true'?'detailsInfoActive':'detailsInfoDeactive'}}">详细信息</view>
+                            <view><image src="{{detailsList[index]=='true'?'../../images/icon_shouqi.png':'../../images/icon_zhankai.png'}}" style="width:20rpx;height:11rpx;"></image></view>
+                      </view> 
+
+                      <view>
+                            <view>有效期至</view>
+                            <view>2019-03-21</view>
+                      </view> 
+                </view>
+                <!-- 隐藏部分 -->
+                <view wx:if="{{detailsList[index]=='true'?true:false}}">
+                       <!-- 注意事项 -->
+                        <view class="alert">
+                            <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
+                            <view class="alert-info">
+                                  <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>
+                                  <view>*抢购时间：2019年11月13日-12月12日；</view>
+                                  <view>*使用期限：2019年11月13日-12月12日；周末、节假日正常使用；</view>
+                                  <view>*每餐桌每次限用2张;</view>
+                            </view> 
+                            <view class="alert-active">
+                                  <view>*套餐活动仅限堂食，不可外卖/打包，不兑现，不找零，不提供报销凭证，不与店内其他优惠同享；</view>
+                                  <view>*特惠活动仅限活动期间使用，超过活动抢购时间未使用可申请退款，需原路退回（微信零钱、信用卡、银行卡）将扣除10%运营手续费。</view>
+                            </view> 
+                        </view>
+                
+                </view>
+            </view>
+    </view>
 </view>

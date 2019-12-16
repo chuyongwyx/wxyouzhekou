@@ -4,7 +4,7 @@
             <view class="details-back" bindtap="handleBack"><image src="../../images/icon_fanhui.png"></image> </view>
             <view class="details-h1">优惠详情</view>
       </view>
-      <!-- 商品详情 -->
+          <!-- 商品详情 -->
       <view class="banner" style="margin-top:{{statusBarHeight+80}}rpx;">
             <view class="banner-img">
                 <image src="../../images/moni1.jpg"></image>
@@ -40,7 +40,7 @@
                   <view>广州有折打交流群</view>
                   <view>进群了解广州吃喝玩乐</view>
             </view>
-            <view class="join-group">
+            <view class="join-group" bindtap="handleToShow">
                   加入群聊
             </view>
         </view>
@@ -95,11 +95,11 @@
                   <image src="../../images/dibulan_shouye1.png"></image>
                   <view class="active">首页</view>
             </view> 
-            <view class="order" bindtap="handleToOrder">
+            <view class="order" bindtap="handleToConfirmOrder">
                   <image src="../../images/dibulan_dingdan.png"></image>
                   <view>订单</view>
             </view>
-            <view class="share">
+            <view class="share" bindtap="handleToShareHaibao">
                   <view>分享海报</view>
                   <view><text>赚</text><text>￥</text><text>8.00</text></view>
             </view>
@@ -107,5 +107,61 @@
                    <view>立即抢购</view>
                    <view><text>省</text><text>￥</text><text>8.00</text></view>
             </view>
-          </view>
+        </view>
+      
+        <!-- 加入群聊引导 -->
+         <view class="join-groups" wx:if="{{joinGroup}}">
+                <view class="join-main">
+                    <view class="join-content">
+                         <view> <image src="../../images/fenxiangtanchuang_BG.png"></image> </view>
+                         <view>
+                                <view><text>点击</text><text style="color:#333333;">‘去回复’</text> <text>,发送</text> <text style="color:#333333;">‘进群’</text></view> 
+                                <view>进入广州吃喝玩乐交流&优惠群</view>
+                         </view>
+                         <view> 去回复</view>
+                    </view>
+                    <view  class="quxiao" bindtap="handleToClose">
+                      <image src="../../images/xiao.png" style="width:96rpx;height:96rpx;"></image>
+                      </view>
+                </view>
+         </view>
+        <!-- 分享海报 -->
+        <view class="share-haibao" wx:if="{{share}}">
+            <view>
+                    <view class="share-haibao-img">
+                          <view class=""></view>
+                          <view class="share-haibao-info">
+                             <view class="share-haibao-left">
+                                   <view class="info-image">
+                                    <image src="../../images/gerenzhongxin_morentouxiang.png" style="width:108rpx;height:108rpx;"></image>
+                              </view>
+                              <view class="tuijian">
+                                      <view>马建宇</view>
+                                      <view>推荐语</view>
+                                      <view>长按立即购买</view>
+                              </view>
+                             </view>
+                             
+                              <view class="wxer" style="width:120rpx; height:120rpx;border:2rpx solid #D8D8D8;display:flex;align-items:center;justify-content:center;">
+                                    <view  style="width:100rpx;height:100rpx;background:black;">
+                                    </view>
+                              </view>
+                          </view>
+                    </view>
+            </view>
+              
+              <view class="share-haibao-wx">
+                    <view bindtap="handleToFriend">
+                          <view><image src="../../images/wx.png"></image></view>
+                          <view>发送给朋友</view>
+                    </view>
+                    <view bindtap="handleToSave">
+                          <view> <image src="../../images/friend.png"></image> </view>
+                          <view>保存海报图</view>
+                    </view>
+                    
+
+              </view>
+        </view>
+
 </view>

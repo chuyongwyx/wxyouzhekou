@@ -1,0 +1,40 @@
+<!--pages/order/order.wxml-->
+<view class="order">
+    <view class="order-head" style="padding-top:{{statusBarHeight}}rpx;">
+            <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
+            <view class="order-h1">我的订单</view>
+    </view>
+    <view class="order-list" style="padding-top:{{statusBarHeight+80}}rpx">
+       <!-- 暂时没有订单  -->
+          <view  wx:if="{{false}}" class="no-order">
+               <view>暂无数据</view>
+               <view>你还没有获得优惠券哦</view>
+          </view>
+        <!-- 有订单 -->
+          <view class="order-content" wx:for="{{6}}" wx:if="{{true}}">
+               <view class="order-num">
+                    <view>
+                        <view>订单编号：</view>
+                        <view>A1234567890111213</view>
+                    </view> 
+                    <view>已使用</view>
+               </view>
+               <view class="order-img">
+                    <view><image src="../../images/moni3.jpg"></image> </view>
+                    <view>[北京路·串串] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！</view>
+               </view>
+               <view class="order-count">
+                            <view class="count-num">
+                                  <view>数量：</view>
+                                  <view>X1</view>
+                            </view>
+                            <view class="count-pay">
+                                  <view style="margin-top:1rpx;">实付：</view>
+                                  <view style="margin-top:-2rpx;"> <text style="font-weight:normal;">￥</text><text>44.00</text><text>  + </text><text>100</text></view>
+                                  <view>积分</view> 
+                            </view>
+                      
+               </view>
+          </view>
+    </view>
+</view>

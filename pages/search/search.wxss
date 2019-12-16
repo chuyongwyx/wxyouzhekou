@@ -92,7 +92,7 @@
 }
 /* 搜索文本之类 */
 .container{
-  margin:0 30rpx;
+  /* margin:0 30rpx; */
 }
 .hot-h{
   margin-top: 40rpx;
@@ -101,6 +101,7 @@
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height: 1;
+  margin-left: 30rpx;
 }
 .hot-conent{
   display: flex;
@@ -119,6 +120,8 @@
   padding:0 28rpx;
   margin-top: 30rpx;
   margin-bottom: 20rpx;
+  margin-left:30rpx;
+  margin-right:30rpx;
 }
 .hot-conent>view:nth-of-type(1){
   color: #FF7414;
@@ -139,6 +142,7 @@
   line-height: 1;
   display: flex;
   justify-content: space-between;
+  margin-left: 30rpx;
 }
 .his-h image{
   width:40rpx;
@@ -161,4 +165,6 @@
   padding:0 28rpx;
   margin-top: 30rpx;
   margin-bottom: 20rpx;
+  margin-left:30rpx;
+  margin-right:30rpx;
 }

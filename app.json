@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/details/details",
     "pages/index/index",
     "pages/search/search",
-    "pages/details/details",
     "pages/confirmOrder/confirmOrder",
     "pages/order/order",
     "pages/found/found",
@@ -24,7 +24,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      "desc": "请求获取你的位置信息"
     }
   },
   "style": "v2",

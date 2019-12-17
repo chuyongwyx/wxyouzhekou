@@ -188,11 +188,15 @@
 }
 .shop-big-price{
   font-size:26rpx;
-  font-weight:bold;
   line-height:30rpx;
   color:rgba(150,150,150,1);
   margin-top: 16rpx;
   position: relative;
+}
+.pricefont{
+  margin-left: -5rpx;
+  font-family:'DIN Alternate';
+  font-weight:bold;
 }
 .fengexian{
   position: absolute;

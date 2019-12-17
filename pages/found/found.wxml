@@ -63,7 +63,7 @@
                   <view class="shopList-info">
                         <view class="shopList-price">
                             <view class="shopList-cell-price">￥48</view>
-                                <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view>
+                                <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view> 
                         </view>
 
                         <view class="shopList-cell">

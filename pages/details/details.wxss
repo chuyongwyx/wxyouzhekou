@@ -443,14 +443,13 @@ line-height:36rpx;
   z-index:100;
    width:750rpx;
    height:100%;
-   /* background:rgba(0,0,0,0.5); */
+   background:rgba(0,0,0,0.5);
    margin-left:0;
    padding-left:0;
    overflow: hidden;
    display: flex;
    align-items: center;
    flex-wrap: wrap;
-   background: #999999;
 }
 .join-main{
  
@@ -491,10 +490,10 @@ text-align: center;
   line-height: 88rpx;
   margin:0 auto;
   font-size:30rpx;
-font-family:PingFangSC-Medium,PingFang SC;
-font-weight:500;
-color:rgba(255,255,255,1);
-margin-top: 70rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+    margin-top: 70rpx;
 }
 .quxiao{
   width:96rpx;
@@ -518,7 +517,7 @@ margin-top: 70rpx;
   height: 83%;
   width: 100%;
   overflow: hidden;
-  background: #999999;
+  background:rgba(0,0,0,0.5);
   margin:0;
   padding:0;
 }

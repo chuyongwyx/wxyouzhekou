@@ -18,6 +18,9 @@ Page({
   onLoad: function () {
     // 刷新组件
     this.refreshView = this.selectComponent("#refreshView");
+    //获取地理位置
+    app.getUserLocation();
+    
     if(this.data.nearHotTit.length>34){
       this.setData({
         "nearHotTit": this.data.nearHotTit.substring(0, 33) + '...'

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight * 2 + 10,
+    "statusBarHeight": app.globalData.statusBarHeight * 2,
      "integrate":true,
      "num":'1',
      "shopPrice":"100.00",
@@ -15,13 +15,14 @@ Page({
      "intergratePrice":'1.00',
      "count":"",
     //判断是否为全面屏
-    "isFullSucreen": app.globalData.isFullSucreen ? true : false 
+    "isFullSucreen": false 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.checkFullSucreen();
     var count = parseFloat(this.data.activePrice) * parseInt(this.data.num) - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
     count = count + '.00';
     this.setData({
@@ -142,5 +143,21 @@ Page({
   //返回
   handleToBack(){
     wx.navigateBack({})
+  },
+  //判断是否为全面屏
+  checkFullSucreen: function () {
+    const that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        // 根据 屏幕高度 进行判断
+        if (res.screenHeight - res.windowHeight - res.statusBarHeight - 32 > 72) {
+          that.setData({
+            "isFullSucreen": true
+          })
+        }
+      }
+    })
   }
+
 })

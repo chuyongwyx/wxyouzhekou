@@ -7,20 +7,23 @@ Page({
     "nearHotTit":'48元抵100元代金劵,无门槛使用 ,最多使用两张 ,40款串串任意的的撒娇的思考加速度',
     "posH":true,
     "scrollH":false,
+    //顶部栏线
+    "headBorder":false,
     // 导航栏安全距离
     "statusBarHeight":app.globalData.statusBarHeight,
     "home":"../../images/dibulan_shouye1.png",
     "found":"../../images/dibulan_faxian2.png",
     "my":"../../images/dibulan_gerenzhongxin2.png",
     //判断是否为全面屏
-    "isFullSucreen": app.globalData.isFullSucreen?true:false 
+    "isFullSucreen": false
   },
   onLoad: function () {
     // 刷新组件
     this.refreshView = this.selectComponent("#refreshView");
     //获取地理位置
     app.getUserLocation();
-    
+    //判断是否为全面屏
+    this.checkFullSucreen();
     if(this.data.nearHotTit.length>34){
       this.setData({
         "nearHotTit": this.data.nearHotTit.substring(0, 33) + '...'
@@ -57,11 +60,13 @@ Page({
        this.setData({
          "posH": false,
          "scrollH": true,
+         "headBorder":true
        })
     }else{
       this.setData({
         "posH": true,
         "scrollH":false,
+        "headBorder":false
       })
     }
    
@@ -80,5 +85,21 @@ Page({
     wx.reLaunch({
       url: '../found/found',
     })
-  }
+  },
+  //判断是否为全面屏
+  checkFullSucreen: function () {
+    const that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        // 根据 屏幕高度 进行判断
+        if (res.screenHeight - res.windowHeight - res.statusBarHeight - 32 > 72) {
+            that.setData({
+              "isFullSucreen":true
+            })
+        }
+      }
+    })
+
+  },
 })

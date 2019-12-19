@@ -5,7 +5,7 @@
             <view class="details-h1">优惠详情</view>
       </view>
           <!-- 商品详情 -->
-      <view class="banner" style="margin-top:{{statusBarHeight+80}}rpx;">
+      <view class="banner" style="margin-top:{{statusBarHeight+90}}rpx;">
             <view class="banner-img">
                 <image src="../../images/moni1.jpg"></image>
             </view>
@@ -19,6 +19,12 @@
             <view class="shop-desc">
                 [ 北京路·串串 ] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！
             </view>
+
+            <view class="shop-use-type"> 
+                <view>仅限食堂</view>
+                <view>不限购</view>
+                <view>请提前预约</view>
+            </view>
       </view>
 
     <!-- 参与者群聊 -->
@@ -28,7 +34,7 @@
                   <view class="group-image">
                         <image src="../../images/moni6.jpg"></image>
                   </view>
-                  <view class="invi">邀请好友一起领</view>
+                  <view class="invi" bindtap="handleToShareHaibao">邀请好友一起领</view>
             </view> 
         </view>
       <!-- 广州交流群 -->
@@ -97,7 +103,7 @@
             </view> 
             <view class="order" bindtap="handleToConfirmOrder">
                   <image src="../../images/dibulan_dingdan.png"></image>
-                  <view>订单</view>
+                  <view>订单</view> 
             </view>
             <view class="share" bindtap="handleToShareHaibao">
                   <view>分享海报</view>
@@ -151,16 +157,16 @@
             </view>
               
               <view class="share-haibao-wx">
-                    <view bindtap="handleToFriend">
+                    <button bindtap="handleToFriend" open-type="share">
                           <view><image src="../../images/wx.png"></image></view>
                           <view>发送给朋友</view>
-                    </view>
-                    <view bindtap="handleToSave">
+                    </button>
+                    <button bindtap="handleToSave">
                           <view> <image src="../../images/friend.png"></image> </view>
                           <view>保存海报图</view>
-                    </view>
+                    </button>
                     
-
+ 
               </view>
         </view>
 

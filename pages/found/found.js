@@ -10,7 +10,7 @@ Page({
     "found": "../../images/dibulan_faxian1.png",
     "my": "../../images/dibulan_gerenzhongxin2.png",
     "statusBarHeight": app.globalData.statusBarHeight,
-    "bannerTop": app.globalData.statusBarHeight*2+260,
+    "bannerTop": app.globalData.statusBarHeight*2+270,
     // 筛选栏活跃状态
     "allFood":true,
     "near":false,
@@ -19,7 +19,7 @@ Page({
     "scrollBefore":true,
     "scrollIng":false,
     //判断是否为全面屏
-    "isFullSucreen": app.globalData.isFullSucreen ? true : false 
+    "isFullSucreen": false
 
   },
 
@@ -27,7 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //判断是否为全面屏
+    this.checkFullSucreen()
   },
 
   /**
@@ -109,6 +110,22 @@ Page({
     wx.navigateTo({
       url: '../search/search',
     })
+  },
+  //判断是否为全面屏
+  checkFullSucreen: function () {
+    const that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        // 根据 屏幕高度 进行判断
+        if (res.screenHeight - res.windowHeight -res.statusBarHeight - 32 > 72) {
+          that.setData({
+            "isFullSucreen": true
+          })
+        }
+      }
+    })
+
   }
 
 

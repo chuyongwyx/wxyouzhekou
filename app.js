@@ -3,8 +3,6 @@ var QQMapWX = require('common/js/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 App({
   onLaunch: function (e) {
-      //判断设备是否为全面屏
-    this.checkFullSucreen();
     //获取地理定位
     this.getUserLocation();
     qqmapsdk =new QQMapWX({
@@ -13,8 +11,6 @@ App({
   },
   globalData: {
     statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
-    //当前设备为非全面屏
-    isFullSucreen: false,
     //经度
     latitude:"",
     //纬度
@@ -25,29 +21,7 @@ App({
     city:'',
     //详细地址
     address:''
-    
-
   },
-  checkFullSucreen: function () {
-
-    const self = this
-
-    wx.getSystemInfo({
-
-      success: function (res) {
-          console.log(res)
-        // 根据 屏幕高度 进行判断
-        if (res.screenHeight - res.windowHeight - res.statusBarHeight - 32 > 72) {
-
-          self.globalData.isFullSucreen = true;
-          
-        }
-      }
-
-    })
-
-  },
-
   getUserLocation: function () {
     let vm = this
     wx.getSetting({

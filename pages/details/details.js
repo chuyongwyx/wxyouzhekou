@@ -6,19 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight*2+10,
+    "statusBarHeight": app.globalData.statusBarHeight*2,
     //判断是否为全面屏
-    "isFullSucreen": app.globalData.isFullSucreen ? true : false,
+    "isFullSucreen":false,
     "joinGroup":false,
-    "share":false
+    "share":false,
+    "saveImgSrc":"../../images/moni6.jpg"
     
   },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //判断是否为全面屏
+    this.checkFullSucreen();
   },
   handleToBack(){
     wx.navigateBack({})
@@ -35,7 +37,7 @@ Page({
    */
   onShow: function () {
 
-  },
+  }, 
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -68,8 +70,27 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      //console.log(ops.target)
+    }
+    var that = this
+    return {
+      title: '分享给好友',
+      // path: 'pages/details/details?scene=' + that.data.openid,//点击分享消息是打开的页面
+      imageUrl: that.data.saveImgSrc,
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+        var shareTickets = res.shareTickets;
 
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   },
   // 返回
   handleBack(){
@@ -107,6 +128,8 @@ Page({
     },
   //发送给朋友
   handleToFriend(){
+
+
       this.setData({
         "share":false
       })
@@ -116,6 +139,20 @@ Page({
       this.setData({
         "share":false
       })
+  },
+  //判断是否为全面屏
+  checkFullSucreen: function () {
+    const that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        // 根据 屏幕高度 进行判断
+        if (res.screenHeight - res.windowHeight - res.statusBarHeight - 32 > 72) {
+          that.setData({
+            "isFullSucreen": true
+          })
+        }
+      }
+    })
   }
-
 })

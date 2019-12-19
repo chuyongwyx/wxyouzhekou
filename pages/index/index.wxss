@@ -8,6 +8,9 @@
     width: 100%;
     background: #fff;
 }
+.head-border{
+    border-bottom: 2rpx solid #d6d6d6;
+}
 .h1{
   width:114rpx;
   height:52rpx;
@@ -79,6 +82,8 @@
   width:690rpx;
   height:300rpx;
   background:rgba(255,255,255,1);
+  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
+  border-radius:12rpx;
 }
 .banner-img image{
   width: 100%;
@@ -181,6 +186,8 @@
 .cheap-sel-bg{
   width:690rpx;
   height:260rpx;
+  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
+  border-radius:12rpx;
 }
 .cheap-sel-bg image{
   width: 100%;
@@ -382,7 +389,7 @@ margin-left: 20rpx;
 }
 /* 全面屏下的footer */
 .footer-isFullSucreen{
-  bottom:68rpx!important;
+  bottom:68rpx !important;
 }
 .footer>view{
   margin-top: 12rpx;

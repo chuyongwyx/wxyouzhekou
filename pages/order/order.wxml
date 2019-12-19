@@ -1,11 +1,12 @@
 <!--pages/order/order.wxml-->
 <view class="order">
     <view class="order-head" style="padding-top:{{statusBarHeight}}rpx;">
-            <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
-            <view class="order-h1">我的订单</view>
+               <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
+            <view class="order-h1">我的订单(6)</view>
+       
+           
     </view>
-    <view class="order-list" style="padding-top:{{statusBarHeight+80}}rpx">
-       <!-- 暂时没有订单  -->
+    <view class="order-list" style="padding-top:{{statusBarHeight+100}}rpx;padding-bottom:30rpx;"> 
           <view  wx:if="{{false}}" class="no-order">
                <view>暂无数据</view>
                <view>你还没有获得优惠券哦</view>

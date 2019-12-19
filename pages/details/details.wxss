@@ -9,9 +9,9 @@
     display: flex;
     background: #fff;
     width: 100%;
-    height:68rpx;
-    padding-bottom: 10rpx;
+    height:88rpx;
     z-index: 5;
+    line-height: 88rpx;
 }
 .details-back{
     display: flex;
@@ -32,7 +32,7 @@
   color:rgba(51,51,51,1);
   align-items: center;
   margin-left: 237rpx;
-  line-height: 68rpx;
+  line-height: 88rpx;
  
 }
 /* banner图 */
@@ -88,6 +88,26 @@
   margin-top: 2rpx;
   position: relative;
 }
+.shop-use-type{
+   display: flex;
+   margin:0 30rpx;
+   padding-bottom:30rpx; 
+  border-bottom: 2rpx solid #ececec;
+ 
+}
+.shop-use-type>view{
+  font-size:24rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,116,20,1);
+  background:rgba(255,255,255,1);
+  border-radius:8rpx;
+  border:1px solid rgba(255,116,20,1);
+  line-height: 40rpx;
+   margin-right: 20rpx;
+   padding:0 14rpx;
+
+}
 .destroy{
   position: absolute;
   top: 21rpx;
@@ -108,19 +128,19 @@
 .shop-desc{
   margin:0 30rpx;
   margin-top: 20rpx;
-  padding-bottom: 40rpx;
+  padding-bottom: 42rpx;
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height:48rpx;
-  border-bottom: 2rpx solid #D8D8D8;
+  
 }
 /* 参与群聊 */
 .group{
   margin:0 30rpx;
   padding-bottom: 52rpx;
-  border-bottom: 2rpx solid #D8D8D8;
+  border-bottom: 2rpx solid #ececec;
 }
 .group-num{
   margin-top: 30rpx;
@@ -172,7 +192,7 @@
    padding:28rpx 0;
    margin:0 30rpx;
    align-items: center;
-   border-bottom: 2rpx solid #D8D8D8;
+   border-bottom: 2rpx solid #ececec;
 }
 
 .comm-img{
@@ -215,18 +235,18 @@
 /* 注意事项 */
 .alert{
    margin:0 30rpx;
-   border-bottom: 2rpx solid #D8D8D8;
+   border-bottom: 2rpx solid #ececec;
    padding-bottom:36rpx;
 }
 .alert-h{
-  margin-top: 30rpx;
-  margin-bottom: 10rpx;
+  margin-top: 32rpx;
+  margin-bottom: 18rpx;
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height:1;
-}
+} 
 
 .alert-type{
   font-size: 30rpx;
@@ -346,7 +366,7 @@
 }
 /* 全面屏下的footer */
 .footer-isFullSucreen{
-  bottom:68rpx!important;
+  bottom:68rpx !important;
 }
 .home{
   width: 48rpx;
@@ -376,7 +396,7 @@
   margin-left: 78rpx;
 }
 .order>image{
-  width: 48rpx;
+  width: 44rpx;
   height: 48rpx;
 }
 .order>view{
@@ -596,20 +616,27 @@ text-align: center;
     text-align: center;
    
   }
-  .share-haibao-wx >view{
+  .share-haibao-wx >button{
     margin-top: 28rpx;
+    background: #fff;
+    padding: 0;
+    line-height: 1;
+    border-radius: 4px;
+    font-weight: normal;
+    font-size: 30rpx;
+
   }
- .share-haibao-wx >view>view:nth-of-type(1){
+ .share-haibao-wx >button>view:nth-of-type(1){
    width:120rpx;
   height:120rpx;
   margin: 0 auto;
    
  }
- .share-haibao-wx >view>view:nth-of-type(1) image{
+ .share-haibao-wx >button>view:nth-of-type(1) image{
    width:120rpx;
   height:120rpx;
  }
- .share-haibao-wx>view>view:nth-of-type(2){
+ .share-haibao-wx>button>view:nth-of-type(2){
    font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;

@@ -28,7 +28,7 @@
     </view>
 
     <!-- 优惠券区域 -->
-    <view class="coupon-list" style="padding-top:{{scrollTop}}rpx;">
+    <view class="coupon-list" style="padding-top:{{scrollTop}}rpx;padding-bottom:30rpx;">
           <view  wx:if="{{false}}" class="no-coupon">
                <view>暂无数据</view>
                <view>你还没有获得优惠券哦</view>

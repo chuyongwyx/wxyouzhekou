@@ -10,8 +10,7 @@
     <view class="header">
       <view class="search">
         <icon type="search" size="18" color="" class="search-ico"></icon>
-        <view class="searchPlace" wx:if="{{searchPlace}}" bindtap="handleToInput">今天想去哪吃喝玩乐</view>
-        <view wx:if="{{searchInput}}" class="inputValue"><input type="text" auto-focus value="{{inputVal}}" bindinput="handleInputText"/>
+        <view  class="inputValue"><input type="text"  value="{{inputVal}}" bindinput="handleInputText" placeholder="{{placeholder}}" bindfocus="handleTofocus"/>
            <icon type="clear" size="18" bind:tap="onToggle" class="search-clear" wx:if="{{clear}}" />    
         </view> 
       </view>
@@ -31,7 +30,7 @@
               <view class="search-his">
                       <view class="his-h">
                           <view>搜过历史</view>
-                          <view><image src="../../images/moni11.jpg"></image> </view>    
+                          <view><image src="../../images/icon_shanchu.png"></image> </view>    
                       </view>
                       <view class="his-conent">
                             <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>

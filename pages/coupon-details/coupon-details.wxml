@@ -40,7 +40,7 @@
     <!-- 注意事项 -->
      <!-- 注意事项 -->
         <view class="alert">
-            <view class="alert-h">注意事项</view>
+            <view class="alert-h">注意事项</view> 
             <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
             <view class="alert-info">
                   <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>

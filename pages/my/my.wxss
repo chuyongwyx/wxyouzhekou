@@ -15,7 +15,26 @@
   height: 490rpx;
 }
 /* 头像 */
-.user-login ,.user-logined{
+button:not([size='mini']) {
+  margin-left: 54rpx;
+  margin-right:0;
+
+}
+.user-login{
+  margin-left: 54rpx;
+  display: flex;
+  margin-top: 90rpx;
+  align-items: center;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  padding: 0;
+  line-height: 1;
+  border-radius: 0;
+  background: rgba(0,0,0,0);
+}
+.user-logined{
   margin-left: 54rpx;
   display: flex;
   margin-top: 90rpx;
@@ -33,6 +52,7 @@
 .user-login>view:nth-of-type(1)>image ,.user-logined>view:nth-of-type(1)>image{
     width: 122rpx;
     height: 125rpx;
+    border-radius: 50%;
 }
 .user-logined>view:nth-of-type(2)>view:nth-of-type(1){
   font-size:34rpx;
@@ -61,7 +81,7 @@
   height: 176rpx;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2rpx solid #D8D8D8;
+  border-bottom: 2rpx solid #ececec;
   text-align: center;
 }
 .count-money{
@@ -140,7 +160,7 @@
   height: 84rpx;
   margin-right: 40rpx;
   padding-right: 40rpx;
-  border-right: 2rpx solid #D8D8D8;
+  border-right: 2rpx solid #ececec;
   line-height: 84rpx;
 }
 .sort{
@@ -168,12 +188,30 @@
 .coupon-all{
   margin-left: 72rpx;
 }
+.coupon-all>view:nth-of-type(1){
+  width: 68rpx;
+  height: 68rpx;
+  margin: 0 auto;
+  }
 .coupon-all image{
   width: 68rpx;
   height: 68rpx;
 }
+.coupon-all>view:nth-of-type(2) ,.coupon-use>view:nth-of-type(2) ,.coupon-used>view:nth-of-type(2),.overdue>view:nth-of-type(2){
+  font-size: 30rpx;
+  line-height: 1;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-top: 20rpx;
+}
 .coupon-use{
   margin-left: 42rpx;
+}
+.coupon-use>view:nth-of-type(1){
+   width:60rpx;
+   height:72rpx;
+    margin: 0 auto;
 }
 .coupon-use image{
   width:60rpx;
@@ -182,12 +220,22 @@
 .coupon-used{
   margin-left: 40rpx;
 }
+.coupon-used>view:nth-of-type(1){
+  width:60rpx;
+  height:72rpx;
+   margin: 0 auto;
+}
 .coupon-used image{
    width:60rpx;
    height:72rpx;
 }
 .overdue{
     margin-left: 40rpx;
+}
+.overdue>view:nth-of-type(1){
+    width: 60rpx;
+    height: 72rpx;
+     margin: 0 auto;
 }
 .overdue image{
     width: 60rpx;
@@ -196,23 +244,10 @@
 .border{
     width: 2rpx;
     height: 101rpx;
-    background:#D8D8D8;
+    background:#ececec;
     margin-left:50rpx;
 }
-/* footer */
-.footer{
-  width: 100%;
-  height: 128rpx;
-  position: fixed;
-  border-top: 2rpx solid #D6D6D6;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  background: #fff;
-  z-index: 5;
-  justify-content: space-around;
-  text-align: center;
-}
+
 .myOrder{
   margin:0 30rpx;
   height:90rpx;
@@ -262,8 +297,22 @@
   margin-right: 30rpx;
 }
 /* 全面屏下的footer */
+/* footer */
+.footer{
+  width: 100%;
+  height: 128rpx;
+  position: fixed;
+  border-top: 2rpx solid #D6D6D6;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background: #fff;
+  z-index: 5;
+  justify-content: space-around;
+  text-align: center;
+}
 .footer-isFullSucreen{
-  bottom:68rpx!important;
+  bottom:68rpx !important;
 }
 .footer>view{
   margin-top: 12rpx;

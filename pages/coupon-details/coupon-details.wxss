@@ -5,14 +5,12 @@
     left: 0;
     background: #fff;
     width: 100%;
-    padding-top: 108rpx;
-    padding-bottom: 10rpx;
     z-index: 5;
     border-bottom:2rpx solid #D6D6D6;
 }
 .coupon-details-tit{
      display: flex;
-     height:68rpx;
+     height:88rpx;
 }
 .coupon-details-back{
     display: flex;
@@ -25,14 +23,14 @@
     height:31rpx;
 }
 .coupon-details-h1{
-  height:48rpx;
+  height:88rpx;
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   align-items: center;
-  margin-left: 237rpx;
-  line-height: 68rpx;
+  margin-left: 253rpx;
+  line-height: 88rpx;
 }
 .coupon-details-type{
     display: flex;
@@ -149,8 +147,8 @@
    padding-bottom:36rpx;
 }
 .alert-h{
-  margin-top: 30rpx;
-  margin-bottom: 10rpx;
+  margin-top: 40rpx;
+  margin-bottom: 18rpx;
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
@@ -174,8 +172,7 @@
 /* 商家信息 */
 .business{
     margin: 0 30rpx;
-    padding-bottom: 38rpx;
-    border-bottom: 2rpx solid #D8D8D8;
+    padding-bottom: 146rpx;
 }
 .business-h{
     margin: 38rpx 0;

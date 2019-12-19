@@ -8,14 +8,12 @@
     left: 0;
     background: #fff;
     width: 100%;
-    padding-top: 108rpx;
-    padding-bottom: 10rpx;
     z-index: 5;
     border-bottom:2rpx solid #D6D6D6;
 }
 .coupon-tit{
      display: flex;
-     height:68rpx;
+     height:88rpx;
 }
 .coupon-back{
     display: flex;
@@ -28,14 +26,14 @@
     height:31rpx;
 }
 .coupon-h1{
-  height:48rpx;
+  height:88rpx;
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   align-items: center;
-  margin-left: 237rpx;
-  line-height: 68rpx;
+  margin-left: 219rpx;
+  line-height: 88rpx;
 }
 .coupon-type{
     display: flex;
@@ -85,7 +83,6 @@
   box-shadow:0rpx 4rpx 36rpx -2rpx rgba(0,0,0,0.15);
   margin-top: 30rpx;
  }
-
 .coupon-info{
     display: flex;
     justify-content: space-between;

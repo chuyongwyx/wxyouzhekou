@@ -1,5 +1,5 @@
 <!--index.wxml-->
-    <view class="head" style="padding-top:{{statusBarHeight}}px">
+    <view class="head {{headBorder?'head-border':''}}" style="padding-top:{{statusBarHeight}}px">
         <view wx:if="{{posH}}">
               <view class="h1">有折打</view>
               <view class="pos">
@@ -7,7 +7,7 @@
                     <view>广州</view>
                     <view>越秀区中三四路345号新大街附近</view> 
               </view>  
-        </view>
+        </view>  
           <view wx:if="{{scrollH}}">
                   <view class="h2">有折打</view>
           </view>
@@ -47,7 +47,7 @@
           <view class="message">
                <view><image src="../../images/icon_gonggao.png"></image></view>
                <view><text>海珠广场</text><text>东江店</text><text>48元抵100元代金券回家看看</text></view>
-               <view><image src="../../images/icon_jinru.png"></image></view>
+               <view><image src="../../images/icon_jinruhuang.png"></image></view>
           </view>
 
           <!-- 优惠精选 -->

@@ -6,11 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight * 2 + 10,
+    "statusBarHeight": app.globalData.statusBarHeight * 2,
     "searchTop": app.globalData.statusBarHeight * 2+220,
-    "searchPlace":true,
-    "searchInput":false,
     "inputVal":"",
+    "placeholder":"今天想去哪里吃喝玩乐",
     "clear":false
   },
   /**
@@ -72,24 +71,19 @@ Page({
   handleToBack(){
       wx.navigateBack({})
   },
-  // 点击显示input
-  handleToInput(){
+  //得焦时
+  handleTofocus(){
       this.setData({
-        "searchPlace":false,
-        "searchInput": true
+        "placeholder": "",
       })
   },
   //隐藏input
   handleToSearchPlace(){
     this.setData({
       "inputVal": "",
-      "searchInput": false
+      "placeholder": "今天想去哪里吃喝玩乐",
     })
-    if (this.data.inputVal == "") {
-      this.setData({
-        "searchPlace": true,
-      })
-    }
+    
   },
   //得到input框中数据
   handleInputText(e){
@@ -97,17 +91,13 @@ Page({
       "clear":true,
     })
   },
+
   //清除value
   onToggle(e){
     this.setData({
       "inputVal": "",  
-      "searchInput": false
+      "placeholder": "今天想去哪里吃喝玩乐",
     })
-    if(this.data.inputVal==""){
-      this.setData({
-        "searchPlace": true,
-      })
-    }
     
   }
 })

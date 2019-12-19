@@ -4,12 +4,12 @@
 }
 .found-head{
     padding-bottom: 26rpx;
-    border-bottom:2rpx solid #D8D8D8;
+    border-bottom:2rpx solid #d8d8d8;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 5;
-    background: #fff;
+    background: #fff; 
     width: 100%;
 }
 .found-h{ 
@@ -90,6 +90,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 10rpx;
 }
 .search-img>image{
   width:36rpx;
@@ -124,7 +125,7 @@
 .banner{
   margin:0 30rpx;
   padding-bottom: 40rpx;
-  border-bottom: 2rpx solid #D8D8D8;
+  border-bottom: 2rpx solid #ececec;
   margin-bottom: 8rpx;
 }
 .banner-h{
@@ -139,6 +140,9 @@
 .banner-img{
   width:690rpx;
   height:260rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
+  border-radius:12rpx;
 }
 .banner-img image{
   width:690rpx;
@@ -242,7 +246,7 @@
 }
 /* 全面屏下的footer */
 .footer-isFullSucreen{
-  bottom:68rpx!important;
+  bottom:68rpx !important;
 }
 .footer>view{
   margin-top: 12rpx;

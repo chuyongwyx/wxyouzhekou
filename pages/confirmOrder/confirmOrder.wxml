@@ -7,7 +7,7 @@
     <view class="confirmOrder-h1">确认订单</view>
   </view>
 
-  <view class="confirmOrder-content" style="padding-top:{{statusBarHeight+80}}rpx">
+  <view class="confirmOrder-content" style="padding-top:{{statusBarHeight+90}}rpx">
     <view class="shop-name">
       <view>
         <image src="../../images/moni3.jpg"></image>

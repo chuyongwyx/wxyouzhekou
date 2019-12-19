@@ -5,7 +5,7 @@
             <view class="order-h1">订单详情</view>
       </view>
       <!-- 订单待使用 -->
-      <view class="order-use" style="margin-top:{{statusBarHeight+80}}rpx;">
+      <view class="order-use" style="margin-top:{{statusBarHeight+90}}rpx;">
             <view class="order-logo">
                   <image src="../../images/dingdan_zhuangtai3.png"></image>
             </view> 

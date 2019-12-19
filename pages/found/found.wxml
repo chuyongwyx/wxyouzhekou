@@ -12,7 +12,7 @@
                       <view class="search-img"><image src="../../images/moni10.jpg"></image> </view>
                       <view>今天想去哪里吃喝玩乐</view>        
                 </view> 
-          </view>  
+          </view>   
       </block>
       <block wx:if="{{scrollIng}}">
             <view class="found-search-scroll">
@@ -46,7 +46,7 @@
    <view class="main" >
         <!-- banner图部分 -->
         <view class="banner" style="margin-top:{{bannerTop}}rpx">
-            <view class="banner-h">转角有优惠</view>
+            <view class="banner-h">转角有优惠</view> 
             <view>
                 <swiper indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true" class="banner-img">
                     <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>

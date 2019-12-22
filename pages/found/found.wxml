@@ -4,9 +4,9 @@
       <block wx:if="{{scrollBefore}}">
              <view class="found-h">发现</view>
           <view class="found-search">
-                <view class="found-pos">
+                <view class="found-pos" bindtap="handleToPosition">
                       <view class="found-pos-img"> <image src="../../images/icon_dingwei.png"></image> </view>
-                      <view>广州</view>
+                      <view>{{city}}</view>
                 </view>
                 <view class="search" bindtap="handleToSearch">
                       <view class="search-img"><image src="../../images/moni10.jpg"></image> </view>
@@ -18,7 +18,7 @@
             <view class="found-search-scroll">
                 <view class="found-pos">
                       <view class="found-pos-img"> <image src="../../images/icon_dingwei.png"></image> </view>
-                      <view>广州</view>
+                      <view>{{city}}</view>
                 </view>
                 <view class="search-scroll" bindtap="handleToSearch">
                       <view class="search-img"><image src="../../images/moni10.jpg"></image> </view>
@@ -79,7 +79,7 @@
 
     </view>
 <!-- 页脚 -->
-  <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+  <!-- <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
             <view bindtap="handleToHome">
                   <image src="{{home}}"></image>
                   <view>有折打</view>
@@ -92,6 +92,6 @@
                   <image src="{{my}}"></image>
                   <view>我的</view>
             </view>
-  </view>
+  </view> -->
 </view>
 

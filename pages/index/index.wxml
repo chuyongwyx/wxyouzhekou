@@ -2,10 +2,11 @@
     <view class="head {{headBorder?'head-border':''}}" style="padding-top:{{statusBarHeight}}px">
         <view wx:if="{{posH}}">
               <view class="h1">有折打</view>
-              <view class="pos">
+              <view class="pos" bindtap="handleToPosition">
                     <view><image src="../../images/icon_dingwei.png"/></view>
-                    <view>广州</view>
-                    <view>越秀区中三四路345号新大街附近</view> 
+                    <view>{{city}}</view>
+                    <view><text>{{district}}</text><text>{{street_number}}</text></view>
+                    
               </view>  
         </view>  
           <view wx:if="{{scrollH}}">
@@ -118,7 +119,7 @@
           <!-- 下拉刷新 -->
           <view class="fresh">下拉刷新</view>
 
-          <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+          <!-- <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
             <view>
                   <image src="{{home}}"></image>
                   <view class="active">有折打</view>
@@ -131,6 +132,6 @@
                   <image src="{{my}}"></image>
                   <view>我的</view>
             </view>
-          </view>
+          </view> -->
 </view>
 

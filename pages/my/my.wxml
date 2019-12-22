@@ -90,7 +90,7 @@
     </view>
 
 <!-- 页脚 -->
-  <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
+  <!-- <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
             <view bindtap="handleToHome">
                   <image src="{{home}}"></image>
                   <view>有折打</view>
@@ -103,5 +103,5 @@
                   <image src="{{my}}"></image>
                   <view class="active">我的</view>
             </view>
-  </view>
+  </view> -->
 </view>

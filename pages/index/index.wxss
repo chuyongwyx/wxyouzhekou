@@ -39,7 +39,6 @@
   height: 32rpx;
 }
 .pos>view:nth-of-type(2){
-  width:52rpx;
   height:36rpx;
   font-size:26rpx;
   font-family:PingFangSC-Medium,PingFang SC;
@@ -49,7 +48,6 @@
   margin-left:10rpx;
 }
 .pos>view:nth-of-type(3){
-  width:386rpx;
   height:36rpx;
   font-size:26rpx;
   font-family:PingFangSC-Medium,PingFang SC;
@@ -88,6 +86,7 @@
 .banner-img image{
   width: 100%;
   height: 100%;
+  border-radius:12rpx;
 }
 
 /* 内容区域 */
@@ -374,7 +373,7 @@ margin-left: 20rpx;
   
 }
 /* footer */
-.footer{
+/* .footer{
   width: 100%;
   height: 128rpx;
   position: fixed;
@@ -387,7 +386,7 @@ margin-left: 20rpx;
   justify-content: space-around;
   text-align: center;
 }
-/* 全面屏下的footer */
+全面屏下的footer
 .footer-isFullSucreen{
   bottom:68rpx !important;
 }
@@ -407,4 +406,4 @@ margin-left: 20rpx;
 }
 .footer>view .active{
   color: #ED4A17;
-}
+} */

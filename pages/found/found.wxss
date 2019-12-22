@@ -231,7 +231,7 @@
 }
 
 /* footer */
-.footer{
+/* .footer{
   width: 100%;
   height: 128rpx;
   position: fixed;
@@ -243,9 +243,9 @@
   z-index: 5;
   justify-content: space-around;
   text-align: center;
-}
+} */
 /* 全面屏下的footer */
-.footer-isFullSucreen{
+/* .footer-isFullSucreen{
   bottom:68rpx !important;
 }
 .footer>view{
@@ -264,4 +264,4 @@
 }
 .footer>view .active{
   color: #ED4A17;
-}
+} */

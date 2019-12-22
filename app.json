@@ -21,6 +21,31 @@
     "navigationStyle": "custom",
     "enablePullDownRefresh": false
   },
+  "tabBar": {
+    "color": "#bababa",
+    "selectedColor": "#ED4A17",
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "有折打",
+      "iconPath": "./images/dibulan_shouye2.png",
+      "selectedIconPath": "./images/dibulan_shouye1.png"
+      },
+      {
+        "pagePath": "pages/found/found",
+        "text": "发现",
+        "iconPath": "./images/dibulan_faxian2.png",
+        "selectedIconPath": "./images/dibulan_faxian1.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./images/dibulan_gerenzhongxin2.png",
+        "selectedIconPath": "./images/dibulan_gerenzhongxin1.png"
+      }
+    
+    ]
+  },
   "permission": {
     "scope.userLocation": {
       "desc": "请求获取你的位置信息"

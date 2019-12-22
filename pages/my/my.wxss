@@ -330,8 +330,8 @@ button:not([size='mini']) {
 }
 .footer>view .active{
   color: #ED4A17;
-}
+}*/
 .money-account{
    display: flex;
    justify-content: space-between;
-} */
+} 

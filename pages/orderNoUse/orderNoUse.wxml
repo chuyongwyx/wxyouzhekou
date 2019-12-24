@@ -1,6 +1,6 @@
 <!--pages/order/order.wxml-->
 <view class="order">
-       <view class="order-head" style="padding-top:{{statusBarHeight}}rpx;">
+       <view class="order-head" style="padding-top:{{statusBarHeight}}px;">
             <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
             <view class="order-h1">订单详情</view>
       </view>

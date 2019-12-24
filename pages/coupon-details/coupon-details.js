@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight * 2 ,
+    "statusBarHeight": app.globalData.statusBarHeight  ,
     "scrollTop": app.globalData.statusBarHeight * 2 + 100,
   },
 

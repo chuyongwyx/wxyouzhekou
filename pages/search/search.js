@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight * 2,
+    "statusBarHeight": app.globalData.statusBarHeight ,
     "searchTop": app.globalData.statusBarHeight * 2+220,
     "inputVal":"",
     "placeholder":"今天想去哪里吃喝玩乐",

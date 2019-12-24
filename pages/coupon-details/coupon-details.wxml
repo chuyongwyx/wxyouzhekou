@@ -1,6 +1,6 @@
 <!--pages/coupon-details/coupon-details.wxml-->
 <view class="coupon-details">
-   <view class="coupon-details-head" style="padding-top:{{statusBarHeight}}rpx;">
+   <view class="coupon-details-head" style="padding-top:{{statusBarHeight}}px;">
         <view class="coupon-details-tit">
           <view class="coupon-details-back" bindtap="handleToBack">
               <image src="../../images/icon_fanhui.png"></image>

@@ -47,7 +47,7 @@
         <!-- banner图部分 -->
         <view class="banner" style="margin-top:{{bannerTop}}rpx">
             <view class="banner-h">转角有优惠</view> 
-            <view>
+            <view class="banner-swiper">
                 <swiper indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true" class="banner-img">
                     <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
                     <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
@@ -62,7 +62,7 @@
                   <view class="shopList-desc">[北京路·串串] 48元抵100元代金券，无门槛…</view>
                   <view class="shopList-info">
                         <view class="shopList-price">
-                            <view class="shopList-cell-price">￥48</view>
+                            <view class="shopList-cell-price"> <text>￥</text><text>48</text> </view>
                                 <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view> 
                         </view>
 

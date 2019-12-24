@@ -1,13 +1,13 @@
 <!--pages/confirmOrder/confirmOrder.wxml-->
 <view class="confirmOrder">
-  <view class="confirmOrder-head" style="padding-top:{{statusBarHeight}}rpx;">
+  <view class="confirmOrder-head" style="padding-top:{{statusBarHeight}}px;">
     <view class="confirmOrder-back" bindtap="handleToBack">
       <image src="../../images/icon_fanhui.png"></image>
     </view>
     <view class="confirmOrder-h1">确认订单</view>
   </view>
 
-  <view class="confirmOrder-content" style="padding-top:{{statusBarHeight+90}}rpx">
+  <view class="confirmOrder-content" style="padding-top:{{statusBarHeight*2+90}}rpx">
     <view class="shop-name">
       <view>
         <image src="../../images/moni3.jpg"></image>

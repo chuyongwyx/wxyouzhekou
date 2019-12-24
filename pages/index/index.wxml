@@ -18,9 +18,9 @@
         <!-- 轮播图 -->
           <view class="banner">
               <swiper class="banner-img" indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true">
-                    <swiper-item bindtap="handleToDetails"><image src="../../images/moni1.jpg"></image></swiper-item>
-                    <swiper-item><image src="../../images/moni1.jpg"></image></swiper-item>
-                    <swiper-item><image src="../../images/moni1.jpg"></image></swiper-item>
+                    <swiper-item bindtap="handleToDetails" class="banner-swiper"><image src="../../images/moni1.jpg"></image></swiper-item>
+                    <swiper-item class="banner-swiper"><image src="../../images/moni1.jpg"></image></swiper-item>
+                    <swiper-item class="banner-swiper"><image src="../../images/moni1.jpg"></image></swiper-item>
               </swiper> 
           </view>
 
@@ -65,7 +65,7 @@
                 <view class="near-lift">精选周边优质生活</view>
                 <view class="near-hot-list" wx:for="{{4}}" wx:key="this">
                       <view class="near-hot-img">
-                            <image src="../../images/moni3.jpg"></image>
+                            <image src="../../images/moni4.jpg"></image>
                       </view>
                       <view class="near-hot-dec">
                           <view class="near-hot-tit">{{nearHotTit}}</view>

@@ -33,8 +33,7 @@ Page({
   onLoad: function () {
     //获取地理位置
     qqmapsdk = new QQMapWX({
-      // key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
-      key:'DVOBZ-TSTLP-GL5DM-LPUM4-RNRLE-KTFFZ'
+       key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
     })
     // 刷新组件
     this.refreshView = this.selectComponent("#refreshView");

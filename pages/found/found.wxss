@@ -127,6 +127,7 @@
   padding-bottom: 40rpx;
   border-bottom: 2rpx solid #ececec;
   margin-bottom: 8rpx;
+
 }
 .banner-h{
   padding: 20rpx 0;
@@ -137,16 +138,23 @@
   line-height: 1;
 
 }
+.banner-swiper{
+  width:690rpx;
+  height:260rpx;
+  border-radius:12rpx;
+  box-shadow:0px 6rpx 24rpx -2rpx rgba(0,0,0,0.20);
+  overflow: hidden;
+}
 .banner-img{
   width:690rpx;
   height:260rpx;
   background:rgba(255,255,255,1);
-  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
   border-radius:12rpx;
 }
 .banner-img image{
   width:690rpx;
   height:260rpx;
+  border-radius:12rpx;
 }
 /* 商品列表 */
 .content-list{
@@ -161,19 +169,22 @@
   width: 332rpx;
 }
 .shopList-banner{
-  
+  width:332rpx;
+  height:220rpx;
+  border-radius: 12rpx;
 }
 .shopList-banner image{
   width:332rpx;
   height:220rpx;
+  border-radius: 12rpx;
 }
 .shopList-desc{
-  height:84rpx;
+  height:88rpx;
   font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
-  line-height:42rpx;
+  line-height:44rpx;
 }
 .shopList-info{
    display: flex;
@@ -186,9 +197,11 @@
 .shopList-cell-price{
   font-size:38rpx;
   font-family:'DIN Alternate';
-  font-weight:bold;
   color:rgba(255,116,20,1);
   margin-right: 15rpx;
+}
+.shopList-cell-price>text:nth-of-type(2){
+  font-weight:bold;
 }
 .shop-big-price{
   font-size:26rpx;

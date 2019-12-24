@@ -1,6 +1,6 @@
 <!--pages/search/search.wxml-->
 <view class="search-main">
-  <view class="search-head" style="padding-top:{{statusBarHeight}}rpx;">
+  <view class="search-head" style="padding-top:{{statusBarHeight}}px;">
     <view class="search-tit">
          <view class="search-back" bindtap="handleToBack">
             <image src="../../images/icon_fanhui.png"></image>

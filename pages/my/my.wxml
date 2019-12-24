@@ -2,7 +2,7 @@
 <view class="my">
     <view class="head">
           <view class="bannerImg"><image src="../../images/gerenzhongxin_BG.png"></image></view>
-          <view class="" style="padding-top:{{statusBarHeight}}rpx;">
+          <view class="" style="padding-top:{{statusBarHeight}}px;">
               <button open-type="getUserInfo" class="user-login" wx:if="{{userBeforeLogin}}" bindgetuserinfo="handleTouserInfo">
                   <view><image src="../../images/gerenzhongxin_morentouxiang.png"></image></view>
                   <view>未登录</view>

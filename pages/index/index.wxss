@@ -74,18 +74,28 @@
 /* 轮播图 */
 .banner{
   margin:0 30rpx;
+  border-radius:12rpx;
+  width:690rpx;
+  height:300rpx;
+  box-shadow:0rpx 6rpx 24rpx -2rpx rgba(0,0,0,0.23);
+  overflow: hidden;
   /* margin-top: 20rpx; */
+}
+.banner-swiper{
+  width:690rpx;
+   height:300rpx;
+   border-radius:12rpx;
+  overflow: hidden;
 }
 .banner-img{
   width:690rpx;
   height:300rpx;
   background:rgba(255,255,255,1);
-  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
   border-radius:12rpx;
 }
 .banner-img image{
-  width: 100%;
-  height: 100%;
+ width:690rpx;
+  height:300rpx;
   border-radius:12rpx;
 }
 
@@ -94,7 +104,6 @@
    display: flex;
    margin:0 30rpx;
    margin-top: 40rpx;
-  
 }
 
 .content-list>view{
@@ -185,12 +194,12 @@
 .cheap-sel-bg{
   width:690rpx;
   height:260rpx;
-  box-shadow:0px 4rpx 20rpx -2rpx rgba(0,0,0,0.18);
+  box-shadow:0rpx 6rpx 24rpx -2rpx rgba(0,0,0,0.23);
   border-radius:12rpx;
 }
 .cheap-sel-bg image{
-  width: 100%;
-  height: 100%;
+  width:690rpx;
+  height:260rpx;
 }
 .cheap-sel-dec{
   margin-top: 20rpx;
@@ -240,7 +249,7 @@
     line-height:52rpx;
 }
 .near-lift{
-    margin-left: 34rpx;
+    margin:0 34rpx;
     font-size:26rpx;
     font-family:PingFangSC-Medium,PingFang SC;
     font-weight:500;
@@ -251,12 +260,13 @@
 .near-hot-list{
     display: flex;
     margin-left: 34rpx;
-    margin-right: 26rpx;
+    margin-right: 34rpx;
     margin-bottom:30rpx;
    
 }
 .near-hot-img{
     margin-right: 30rpx;
+    border-radius: 12rpx; 
 }
 .near-hot-dec{
   
@@ -266,13 +276,13 @@
   height:202rpx;
 }
 .near-hot-tit{
-  width: 458rpx;
+  width: 450rpx;
   font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
-  line-height:42rpx;
-  height: 84rpx;
+  line-height:44rpx;
+  height: 88rpx;
 }
 .near-hot-pos{
   display: flex;
@@ -284,8 +294,8 @@
   
 }
 .near-hot-poslog image{
-  width: 100%;
-  height: 100%;
+   width: 36rpx;
+  height: 36rpx;
 }
 .near-hot-add{
 font-size:26rpx;

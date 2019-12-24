@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "home": "../../images/dibulan_shouye2.png",
-    "found": "../../images/dibulan_faxian2.png",
-    "my": "../../images/dibulan_gerenzhongxin1.png",
+    // "home": "../../images/dibulan_shouye2.png",
+    // "found": "../../images/dibulan_faxian2.png",
+    // "my": "../../images/dibulan_gerenzhongxin1.png",
     //未登录
     "userBeforeLogin":true,
     //已登录

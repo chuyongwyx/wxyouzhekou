@@ -36,8 +36,7 @@ Page({
     this.checkFullSucreen();
     //获取地理位置
     qqmapsdk = new QQMapWX({
-      // key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
-      key: 'DVOBZ-TSTLP-GL5DM-LPUM4-RNRLE-KTFFZ'
+      key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
     })
     //获取地理定位
     this.getUserLocation();
@@ -273,6 +272,7 @@ Page({
   },
   //是否重新定位
   handleToPosition() {
+    console.log('发现页重新定位')
     var that = this;
     wx.showModal({
       title: '提示',

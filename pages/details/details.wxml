@@ -1,11 +1,11 @@
 <!--pages/details/details.wxml-->
 <view class="details">
-      <view class="details-head" style="padding-top:{{statusBarHeight}}rpx;">
+      <view class="details-head" style="padding-top:{{statusBarHeight}}px;">
             <view class="details-back" bindtap="handleBack"><image src="../../images/icon_fanhui.png"></image> </view>
             <view class="details-h1">优惠详情</view>
       </view>
           <!-- 商品详情 -->
-      <view class="banner" style="margin-top:{{statusBarHeight+90}}rpx;">
+      <view class="banner" style="margin-top:{{statusBarHeight*2+90}}rpx;">
             <view class="banner-img">
                 <image src="../../images/moni1.jpg"></image>
             </view>
@@ -133,9 +133,9 @@
          </view>
         <!-- 分享海报 -->
         <view class="share-haibao" wx:if="{{share}}">
-            <view>
-                    <view class="share-haibao-img">
-                          <view class=""></view>
+             <view>
+                   <view class="share-haibao-img">
+                          <!-- <view class=""></view>
                           <view class="share-haibao-info">
                              <view class="share-haibao-left">
                                    <view class="info-image">
@@ -152,8 +152,10 @@
                                     <view  style="width:100rpx;height:100rpx;background:black;">
                                     </view>
                               </view>
-                          </view>
-                    </view>
+                          </view> -->
+                          <image src="{{imagePath}}" ></image>
+                    </view> 
+                   <painter customStyle='position: absolute; left: -9999rpx;' palette="{{template}}" bind:imgOK="onImgOK" widthPixels="1000"/>
             </view>
               
               <view class="share-haibao-wx">

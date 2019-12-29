@@ -1,5 +1,7 @@
 // pages/found/found.js
 //获取应用实例
+import api from '../../apis/found.js'
+import apis from '../../apis/index.js'
 var QQMapWX = require('../../common/js/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 const app =getApp();
@@ -24,23 +26,37 @@ Page({
     //判断是否为全面屏
     "isFullSucreen": false,
     //定位
-    "city":''
-
+    "city":'',
+    //纬度
+    "latitude":'23.131970',
+    //经度
+    "longitude": '113.322670',
+    //获取的分类的相应数据数据
+     "kindsData":[], 
+    //获取轮播图
+     "binnerSwiper":[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      var that = this;
     //判断是否为全面屏
     this.checkFullSucreen();
     //获取地理位置
     qqmapsdk = new QQMapWX({
       key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
     })
-    //获取地理定位
-    this.getUserLocation();
-
+    // //获取地理定位
+    // this.getUserLocation();
+    // //获取轮播图
+    // apis.handleToGetBanners().then((res)=>{
+    //   console.log(res);
+    //     that.setData({
+    //       "binnerSwiper":res.data
+    //     })
+    // })
   },
 
   /**
@@ -54,6 +70,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取轮播图
+    apis.handleToGetBanners().then((res) => {
+      console.log(res);
+      this.setData({
+        "binnerSwiper": res.data
+      })
+    })
+    //获取地理定位
+    this.getUserLocation();
+    //获取分类信息
+    api.handleGetCategory().then((res)=>{
+        console.log(res);
+    })
 
   },
 
@@ -93,7 +122,6 @@ Page({
   },
   // 页面滚动
   onPageScroll:function(event){
-    console.log(event)
     if (event.scrollTop > 190) {
       this.setData({
         "scrollBefore": false,
@@ -121,6 +149,13 @@ Page({
   handleToSearch(){
     wx.navigateTo({
       url: '../search/search',
+    })
+  },
+  //跳往详情页
+  handleToDetails(res){
+    console.log(res)
+    wx.navigateTo({
+      url: '../details/details?id='+res.currentTarget.id,
     })
   },
   //判断是否为全面屏
@@ -200,16 +235,19 @@ Page({
   },
   // 微信获得经纬度
   getLocation: function (userLocation) {
-    let vm = this
+    let that = this
     wx.getLocation({
       type: "wgs84",
       success: function (res) {
         // console.log('getLocation:success', res)
         var latitude = res.latitude;
         var longitude = res.longitude;
-        vm.latitude = latitude;
-        vm.longitude = longitude;
-        vm.getLocat(latitude, longitude);
+        that.setData({
+          "latitude": latitude,
+          "longitude": longitude
+        })
+        that.getLocat(that.data.latitude, that.data.longitude);
+      
       },
       fail: function (res) {
         // console.log('getLocation:fail', res)
@@ -221,6 +259,7 @@ Page({
           setTimeout(() => {
             wx.navigateBack()
           }, 1500)
+          that.getLocat(that.data.latitude, that.data.longitude);
           return
         }
         if (!userLocation || !userLocation.authSetting['scope.userLocation']) {
@@ -236,11 +275,13 @@ Page({
               }
             }
           })
+          that.getLocat(that.data.latitude, that.data.longitude);
         } else {
           wx.showToast({
             title: '授权失败',
             icon: 'none'
           })
+          that.getLocat(that.data.latitude, that.data.longitude);
           setTimeout(() => {
             wx.navigateBack()
           }, 1500)
@@ -250,7 +291,7 @@ Page({
   },
   //将经纬度转化为地理位置
   getLocat: function (lat, long) {
-    var that = this
+    var that = this;
     qqmapsdk.reverseGeocoder({
       location: {
         latitude: lat,
@@ -269,6 +310,56 @@ Page({
 
       }
     })
+
+    //判断是从哪个地方到found页面中来的
+    //好吃的
+    if (app.globalData.goodsFood) {
+      api.handleGetfindCoupon(lat, long, '14').then((res) => {
+        //console.log(res)
+        that.setData({
+          "kindsData": res.data
+        })
+        app.globalData.goodsFood = false;
+      })
+    }
+    //变美的
+    if (app.globalData.changeBeatful) {
+      api.handleGetfindCoupon(lat, long, '16').then((res) => {
+        console.log(res);
+        that.setData({
+          "kindsData": res.data
+        })
+        app.globalData.changeBeatful = false;
+      })
+    }
+    //出去浪
+    if (app.globalData.goToPaly) {
+      api.handleGetfindCoupon(lat, long, '18').then((res) => {
+        that.setData({
+          "kindsData": res.data
+        })
+        app.globalData.goToPaly = false;
+      })
+    }
+    //宝贝玩
+    if (app.globalData.sonPlay) {
+      api.handleGetfindCoupon(lat, long, '19').then((res) => {
+        that.setData({
+          "kindsData": res.data
+        })
+        app.globalData.sonPlay = false;
+      })
+    }
+    //什么都没传
+    if (app.globalData.goodsFood == false && app.globalData.changeBeatful == false && app.globalData.goToPaly == false && app.globalData.sonPlay == false) {
+      api.handleGetfindCoupon(lat, long, '').then((res) => {
+        console.log(res)
+        that.setData({
+          "kindsData": res.data
+        })
+      })
+    }
+
   },
   //是否重新定位
   handleToPosition() {

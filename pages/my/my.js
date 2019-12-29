@@ -1,4 +1,5 @@
 // pages/my/my.js
+import api  from "../../apis/login.js"
 const app = getApp()
 Page({
 
@@ -27,6 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(new Date().getTime())
     var that=this;
       wx.getStorage(
         {
@@ -116,21 +118,49 @@ Page({
   },
   //获取用户信息
   handleTouserInfo(res){
-      this.setData({
-        "userImage":res.detail.userInfo.avatarUrl,
-        "userName":res.detail.userInfo.nickName,
-        "userBeforeLogin": false,
-        //已登录
-        "userLogined": true,  
+    var that =this;
+      wx.login({
+        success:function(resCode){
+          console.log(resCode);
+          api.handleToLogin(resCode.code).then((resLogin)=>{
+            
+             if(resLogin.code===1){
+                  that.setData({
+                    "userImage": res.detail.userInfo.avatarUrl,
+                    "userName": res.detail.userInfo.nickName,
+                    "userBeforeLogin": false,
+                    //已登录
+                    "userLogined": true,
+                  })
+                  wx.setStorage({
+                    key: "userImage",
+                    data: res.detail.userInfo.avatarUrl
+                  })
+                  wx.setStorage({
+                    key: "userName",
+                    data: res.detail.userInfo.nickName
+                  })
+                  wx.setStorage({
+                    key: 'token',
+                    data: resLogin.data.token,
+                  })
+
+             }else{
+                 wx.showToast({
+                   title: '网络异常，授权失败',
+                   icon: 'none',
+                   duration: 3000
+                 })
+             }
+            
+          })
+        },
+        fail:function(){
+          
+        }
       })
-      wx.setStorage({
-        key: "userImage",
-        data: res.detail.userInfo.avatarUrl
-      })
-      wx.setStorage({
-          key: "userName",
-          data: res.detail.userInfo.nickName
-        })
+
+     
   },
   //跳转首页
   handleToHome(){
@@ -177,6 +207,19 @@ handleToMyOrder(){
       }
     })
 
+  },
+  //获取手机号码
+  getPhoneNumber(res){
+    console.log(res.detail.encryptedData)
+    console.log(res.detail.iv);
+    wx.getStorage({
+      key: 'token',
+      success: function(resToken) {
+        api.handleToTellNum(res.detail.encryptedData, res.detail.iv, resToken.data).then((resNum) => {
+          console.log(resNum)
+        })
+      },
+    })
+   
   }
-
 })

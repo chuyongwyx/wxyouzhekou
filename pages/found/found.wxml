@@ -49,26 +49,24 @@
             <view class="banner-h">转角有优惠</view> 
             <view class="banner-swiper">
                 <swiper indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true" class="banner-img">
-                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
-                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
-                    <swiper-item><image src="../../images/moni1.jpg"></image> </swiper-item>
+                    <swiper-item wx:for="{{binnerSwiper}}" id="{{item.id}}" wx:key="{{this}}"><image src="{{item.img}}"></image> </swiper-item>   
                 </swiper>
             </view>
         </view>
         <!-- 列表页 --> 
         <view class="content-list">
-            <view class="shopList" wx:for="{{6}}" wx:key="this">
-                  <view class="shopList-banner"><image src="../../images/moni4.jpg"></image></view>
-                  <view class="shopList-desc">[北京路·串串] 48元抵100元代金券，无门槛…</view>
+            <view class="shopList" wx:for="{{kindsData}}" wx:key="{{this}}" id="{{item.id}}" bindtap="handleToDetails">
+                  <view class="shopList-banner"><image src="{{item.headpic}}"></image></view>
+                  <view class="shopList-desc">{{item.title}}({{item.storename}})</view>
                   <view class="shopList-info">
                         <view class="shopList-price">
-                            <view class="shopList-cell-price"> <text>￥</text><text>48</text> </view>
-                                <view class="shop-big-price"><text>￥</text><text class="pricefont">100</text><view class="fengexian"></view></view> 
+                            <view class="shopList-cell-price"> <text>￥</text><text>{{item.sellprice}}</text> </view>
+                                <view class="shop-big-price"><text>￥</text><text class="pricefont">{{item.price}}</text><view class="fengexian"></view></view> 
                         </view>
 
                         <view class="shopList-cell">
                             <view>已售</view>
-                            <view>999</view>
+                            <view>{{item.sells}}</view>
                         </view>
                       
                   </view> 

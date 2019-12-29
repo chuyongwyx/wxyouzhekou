@@ -4,7 +4,7 @@
 }
 .found-head{
     padding-bottom: 26rpx;
-    border-bottom:2rpx solid #d8d8d8;
+    border-bottom:2rpx solid #dcdcdc;
     position: fixed;
     top: 0;
     left: 0;
@@ -144,12 +144,14 @@
   border-radius:12rpx;
   box-shadow:0px 6rpx 24rpx -2rpx rgba(0,0,0,0.20);
   overflow: hidden;
+  transform: translateY(0);
 }
 .banner-img{
   width:690rpx;
   height:260rpx;
   background:rgba(255,255,255,1);
   border-radius:12rpx;
+  transform: translateY(0);
 }
 .banner-img image{
   width:690rpx;
@@ -179,17 +181,23 @@
   border-radius: 12rpx;
 }
 .shopList-desc{
-  height:88rpx;
+  width:332rpx;
+  max-height:88rpx;
   font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height:44rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  margin-top: 18rpx;
+
 }
 .shopList-info{
    display: flex;
    justify-content: space-between;
-   margin-top: 18rpx;
+   /* margin-top: 18rpx; */
 }
 .shopList-price{
   display: flex;

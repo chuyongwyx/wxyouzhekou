@@ -7,23 +7,24 @@
           <!-- 商品详情 -->
       <view class="banner" style="margin-top:{{statusBarHeight*2+90}}rpx;">
             <view class="banner-img">
-                <image src="../../images/moni1.jpg"></image>
+                <swiper class="banner-swiper" indicator-dots="true" indicator-active-color="#fff" indicator-color="background:rgba(255,255,255,0.5)" autoplay="true">
+                        <swiper-item class="banner-swiper-item" id="{{item.id}}" wx:for="{{detailInfo.imgs}}" wx:key="{{this}}"> <image src="{{item.url}}"></image></swiper-item>
+                </swiper> 
             </view>
             <view class="shop-info">
                   <view class="shop-price">
-                      <view><text>￥</text><text>48.00</text></view>
-                      <view><text>￥</text><text>100</text><view class="destroy"></view></view>
+                      <view><text>￥</text><text>{{detailInfo.sellprice
+}}</text></view>
+                      <view><text>￥</text><text>{{detailInfo.price}}</text><view class="destroy"></view></view>
                   </view>
-                  <view class="shop-cell"><text>已售</text><text>999</text><text>/</text><text>剩余</text><text>999</text> </view>
+                  <view class="shop-cell"><text>已售</text><text>{{detailInfo.sells}}</text><text>/</text><text>剩余</text><text>{{detailInfo.stock}}</text> </view>
             </view>
             <view class="shop-desc">
-                [ 北京路·串串 ] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！
+                {{detailInfo.title}}
             </view>
 
             <view class="shop-use-type"> 
-                <view>仅限食堂</view>
-                <view>不限购</view>
-                <view>请提前预约</view>
+                <view wx:for="{{detailInfo.services}}" wx:key="{{this}}">{{item}}</view>
             </view>
       </view>
 
@@ -53,7 +54,8 @@
         <!-- 注意事项 -->
         <view class="alert">
             <view class="alert-h">注意事项</view>
-            <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
+            <rich-text nodes="{{detailInfo.note}}"></rich-text>
+            <!-- <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
             <view class="alert-info">
                   <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>
                   <view>*抢购时间：2019年11月13日-12月12日；</view>
@@ -63,25 +65,25 @@
             <view class="alert-active">
                   <view>*套餐活动仅限堂食，不可外卖/打包，不兑现，不找零，不提供报销凭证，不与店内其他优惠同享；</view>
                   <view>*特惠活动仅限活动期间使用，超过活动抢购时间未使用可申请退款，需原路退回（微信零钱、信用卡、银行卡）将扣除10%运营手续费。</view>
-            </view> 
+            </view>  -->
         </view>
         
         <!-- 商家信息 -->
         <view class="business">
             <view class="business-h">商家信息</view>
-            <view class="business-name">心狠嘴辣·串串料理（北京路店）</view>
-            <view class="business-time"><text>营业时间：</text><text>11:00-14:30；17:00-22:30</text></view>
+            <view class="business-name">{{detailInfo.store_name}}</view>
+            <view class="business-time" style="display:flex;line-height:48rpx;"><view style="min-width:150rpx;height:48rpx;">营业时间：</view><view style="">{{detailInfo.opentime}}</view></view>
             <view class="business-tel">
-                <view><text>商家电话：</text><text></text></view>
-                <view><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
+                <view><text>商家电话：</text><text>{{detailInfo.tel}}</text></view>
+                <view bindtap="handleToCall" id="{{detailInfo.tel}}"><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
              </view>
              <view class="business-adress">
-                  <view>广州市越秀区惠福东路447号</view>
-                  <view><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
+                  <view style="width:500rpx;line-height:48rpx;">{{detailInfo.address}}</view>
+                  <view bindtap="handleToOpenMap"><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
              </view>
              <view class="business-card">
                    <view>营业资质许可</view>
-                   <view><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
+                   <view bindtap="handleToImageShow"><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
              </view>
         </view>
         <!-- 优惠详情 -->
@@ -107,11 +109,11 @@
             </view>
             <view class="share" bindtap="handleToShareHaibao">
                   <view>分享海报</view>
-                  <view><text>赚</text><text>￥</text><text>8.00</text></view>
+                  <view><text>赚</text><text>￥</text><text>{{detailInfo.commission}}</text></view>
             </view>
-            <view class="immediately"> 
+            <view class="immediately" bindtap="handleToBuy"> 
                    <view>立即抢购</view>
-                   <view><text>省</text><text>￥</text><text>8.00</text></view>
+                   <view><text>省</text><text>￥</text><text>{{detailInfo.commission}}</text></view>
             </view>
         </view>
       
@@ -124,7 +126,7 @@
                                 <view><text>点击</text><text style="color:#333333;">‘去回复’</text> <text>,发送</text> <text style="color:#333333;">‘进群’</text></view> 
                                 <view>进入广州吃喝玩乐交流&优惠群</view>
                          </view>
-                         <view> 去回复</view>
+                         <view><button open-type="contact">去回复</button></view>
                     </view>
                     <view  class="quxiao" bindtap="handleToClose">
                       <image src="../../images/xiao.png" style="width:96rpx;height:96rpx;"></image>
@@ -133,26 +135,8 @@
          </view>
         <!-- 分享海报 -->
         <view class="share-haibao" wx:if="{{share}}">
-             <view>
+             <view catchtap="handleToHaibaoHide">
                    <view class="share-haibao-img">
-                          <!-- <view class=""></view>
-                          <view class="share-haibao-info">
-                             <view class="share-haibao-left">
-                                   <view class="info-image">
-                                    <image src="../../images/gerenzhongxin_morentouxiang.png" style="width:108rpx;height:108rpx;"></image>
-                              </view>
-                              <view class="tuijian">
-                                      <view>马建宇</view>
-                                      <view>推荐语</view>
-                                      <view>长按立即购买</view>
-                              </view>
-                             </view>
-                             
-                              <view class="wxer" style="width:120rpx; height:120rpx;border:2rpx solid #D8D8D8;display:flex;align-items:center;justify-content:center;">
-                                    <view  style="width:100rpx;height:100rpx;background:black;">
-                                    </view>
-                              </view>
-                          </view> -->
                           <image src="{{imagePath}}" ></image>
                     </view> 
                    <painter customStyle='position: absolute; left: -9999rpx;' palette="{{template}}" bind:imgOK="onImgOK" widthPixels="1000"/>

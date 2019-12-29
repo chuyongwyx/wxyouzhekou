@@ -2,9 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/details/details",
+    "pages/my/my",
     "pages/found/found",
     "pages/order/order",
-    "pages/my/my",
     "pages/coupon-details/coupon-details",
     "pages/search/search",
     "pages/confirmOrder/confirmOrder",

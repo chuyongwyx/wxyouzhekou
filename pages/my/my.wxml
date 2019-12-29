@@ -12,7 +12,11 @@
                   <view><image src="{{userImage}}"></image> </view>
                   <view>
                         <view class="name">{{userName}}</view>
-                        <view><text>手机号：</text><text>13012811929</text></view>
+                        <view class="telNum">
+                              <view>手机号：</view>
+                             <view wx:if="{{true}}"><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="telButton">未绑定</button></view>
+                             <view wx:if="{{false}}">13245654654</view>
+                        </view>
                   </view> 
               </view>
               <!-- 收入这块 -->
@@ -88,7 +92,7 @@
               </view>
           </view>
     </view>
-
+      
 <!-- 页脚 -->
   <!-- <view class="footer {{isFullSucreen?'footer-isFullSucreen':''}}">
             <view bindtap="handleToHome">

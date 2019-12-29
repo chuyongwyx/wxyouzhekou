@@ -85,13 +85,16 @@
   width:690rpx;
    height:300rpx;
    border-radius:12rpx;
-  overflow: hidden;
+  overflow: hidden; 
+  transform: translateY(0);
 }
 .banner-img{
   width:690rpx;
   height:300rpx;
   background:rgba(255,255,255,1);
   border-radius:12rpx;
+   overflow: hidden; 
+  transform: translateY(0);
 }
 .banner-img image{
  width:690rpx;
@@ -200,6 +203,7 @@
 .cheap-sel-bg image{
   width:690rpx;
   height:260rpx;
+  border-radius:12rpx;
 }
 .cheap-sel-dec{
   margin-top: 20rpx;
@@ -265,6 +269,8 @@
    
 }
 .near-hot-img{
+    width:202rpx;
+    height:202rpx;
     margin-right: 30rpx;
     border-radius: 12rpx; 
 }
@@ -274,15 +280,17 @@
 .near-hot-img image{
   width:202rpx;
   height:202rpx;
+  border-radius: 12rpx; 
 }
 .near-hot-tit{
   width: 450rpx;
+  max-height:88rpx;
   font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height:44rpx;
-  height: 88rpx;
+ 
 }
 .near-hot-pos{
   display: flex;

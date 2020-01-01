@@ -1,0 +1,11 @@
+<view class="ul">
+  <view class="li-item" bindtap='{{isBranch?"toggle":"tapItem"}}' data-itemid='{{ model.id }}'>
+    <text>{{model.title}}</text>
+  </view>
+  <view style='padding-left: 50rpx;' wx:if='{{isBranch}}' hidden='{{ !open }}'>
+        <!-- <mytree wx:for='{{model.children}}' model='{{child}}'  wx:key='id' wx:item="{{child}}"  ></mytree> -->
+         <view wx:for="{{model.children}}" wx:key="{{this}}" wx:for-item="items">
+                <mytree model='{{items}}'></mytree>
+          </view> 
+  </view>
+</view>

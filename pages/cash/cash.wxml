@@ -1,0 +1,53 @@
+<!--pages/cash/cash.wxml-->
+<view>
+       <cover-view class="cash-head" style="padding-top:{{statusBarHeight}}px;">
+            <button class="cash-back" bindtap="handleToBack"><cover-image src="../../images/icon_fanhui.png" style="  width:17rpx;height:31rpx; "></cover-image> </button>
+            <button class="cash-h1">提现</button>
+      </cover-view>
+        <cover-view class="border" style="position:fixed;top:{{statusBarHeight*2+90}}rpx;left:0;width:100%;height:2rpx;background: #D6D6D6"></cover-view>
+      <view style="margin-top:{{statusBarHeight*2+92}}rpx;">
+          <!-- 圆形进度图 -->
+          <view class="circle" wx:if="{{input}}">
+                <view class="circle-content">
+                      <view>15.000.000</view>
+                      <view>可提现(元)</view>
+                      <view>
+                          <view>累计收入</view>
+                          <view>30.000.000</view>
+
+                      </view>
+
+
+                </view>
+                <view>
+                    <circle draw='circwewle1' per = '50' r = '239'/> 
+                </view>
+          </view>
+          <!-- 提现金额  -->
+          <view class="cash-money">
+                <view class="cash-tit" style="padding-top:{{input?28:40}}rpx">提现金额</view>
+                <view  class="cash-opeat">
+                      <view class="cash-logo"><image src="../../images/money.png"></image> </view>
+                      <view class="cash-input"><input type="number" placeholder="请输入提现金额" placeholder-style="font-size:30rpx;font-weight:normal;" bindfocus="handleToFocus" bindconfirm="handleToShow"  bindblur="handleToShow"></input> </view>
+                </view>
+                <view class="cash-type">
+                    <view>请输入200的倍数，如</view>
+                    <view>
+                          <view>400元</view>
+                          <view>600元</view>
+                          <view>800元</view>
+                          <view>1000元</view>
+                    </view>
+                    <view>确认提现</view>
+                </view>
+          
+          </view>
+          <!-- 提现规则 -->
+          <view class="cash-rule">
+               <view>提现规则</view>
+               <view><view>1、</view><view>提现最低需满200元</view> </view>
+               <view><view>2、</view><view>提现需按200元倍数提现，如400元、600元、800元、1000元.....</view></view>
+               <view><view>3、</view><view>提现后请耐心等待平台审核</view></view>
+          </view>
+      </view>
+</view> 

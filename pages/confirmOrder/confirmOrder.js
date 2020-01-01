@@ -1,4 +1,5 @@
 // pages/confirmOrder/confirmOrder.js
+import api from "../../apis/confirmOrder.js"
 const app = getApp();
 Page({
 
@@ -7,7 +8,9 @@ Page({
    */
   data: {
     "statusBarHeight": app.globalData.statusBarHeight ,
+      //是否使用积分
      "integrate":true,
+     //数量
      "num":'1',
      "shopPrice":"100.00",
      "activePrice":"48.00",
@@ -15,7 +18,9 @@ Page({
      "intergratePrice":'1.00',
      "count":"",
     //判断是否为全面屏
-    "isFullSucreen": false 
+    "isFullSucreen": false,
+    //商品id
+    "shopId":'' 
   },
 
   /**
@@ -158,6 +163,19 @@ Page({
         }
       }
     })
+  },
+  //立即购买
+  handleRightBuy(){
+    var that = this;
+    wx.getStorage({
+      key: 'token',
+      success: function(resToken) {
+        api.handleToAddOrder(that.data.shopId, that.data.num, that.data.integrate, resToken.data).then((res)=>{
+            wx.showToast({
+              title: '购买成功',
+            })
+        })
+      },
+    })
   }
-
 })

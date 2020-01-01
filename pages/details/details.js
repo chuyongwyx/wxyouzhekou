@@ -1,5 +1,6 @@
 // pages/details/details.js
-import api  from '../../apis/details.js'
+import api  from '../../apis/details.js';
+import apis from "../../apis/login.js"
 const app = getApp();
 Page({
 
@@ -26,97 +27,59 @@ Page({
     this.checkFullSucreen();
     //获取详情信息
     console.log(options)
-    api.handleGetDetial(options.id).then((res)=>{
-        console.log(res)
-      
-        var haibao ={
-        width: '650rpx',
-          height: '938rpx',
-            background: '#fff',
-              borderRadius: '12rpx',
-                views: [
-                  {
-                    type: 'image',
-                    url: res.data.shareImg,
-                    css: {
-                      top: '40rpx',
-                      left: '42rpx',
-                      right: '42rpx',
-                      width: '566rpx',
-                      height: '690rpx',
-
-                    }
-                  },
-                  {
-                    type: 'image',
-                    url: "../../images/gerenzhongxin_morentouxiang.png",
-                    css: {
-                      width: '108rpx',
-                      height: '108rpx',
-                      borderRaius: '54rpx',
-                      top: '760rpx',
-                      left: '42rpx',
-                    }
-                  },
-                  {
-                    type: "text",
-                    text: '马建宇',
-                    css: {
-                      height: '42rpx',
-                      fontSize: '30rpx',
-                      fontFamily: 'PingFangSC-Medium, PingFang SC',
-                      fontWeight: 500,
-                      color: 'rgba(51, 51, 51, 1)',
-                      lineHeight: '42rpx',
-                      top: '770rpx',
-                      left: '170rpx'
-                    }
-                  },
-                  {
-                    type: 'text',
-                    text: '推荐语推荐语',
-                    css: {
-                      fontSize: '30rpx',
-                      color: 'rgba(255, 116, 20, 1)',
-                      lineHeight: '42rpx',
-                      top: '812rpx',
-                      left: '170rpx'
-                    }
-                  },
-                  {
-                    type: "text",
-                    text: '长按立即购买',
-                    css: {
-                      fontSize: '22rpx',
-                      fontFamily: 'PingFangSC-Medium, PingFang SC',
-                      fontWeight: '500',
-                      color: 'rgba(150, 150, 150, 1)',
-                      lineHeight: '32rpx',
-                      top: '864rpx',
-                      left: '170rpx'
-                    }
-                  },
-                  {
-                    type: 'qrcode',
-                    content: '',
-                    css: {
-                      top: '760rpx',
-                      right: '42rpx',
-                      borderWidth: '2rpx',
-                      width: '126rpx',
-                      height: '126rpx',
-                      borderColor: 'rgba(216, 216, 216, 1)',
-                      padding: '14rpx'
-                    },
-                  },
-                ]
-            }
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+          api.handleGetDetial(options.id,res.data).then((res)=>{
+            console.log(res)
                 that.setData({
-                     "detailInfo": res.data,
-                     "template": haibao
+                     "detailInfo": res.data
                 })
-    })
+          })
 
+      },
+      fail:function(){
+        api.handleGetDetial(options.id,'').then((res) => {
+          console.log(res.data);
+          that.setData({
+            "detailInfo": res.data
+          })
+        })
+      }
+    })
+    //登录是否过期
+    //判断登录是否过期
+    wx.checkSession({
+      //未过期
+      success: function () {
+
+      },
+      //过期了
+      fail: function () {
+        wx.getStorage({
+          key: 'userImage',
+          success: function (res) {
+            wx.login({
+              success: function (resCode) {
+                api.handleToLogin(resCode.code).then((resLogin) => {
+                  console.log(resLogin)
+                  if (resLogin.code === 1) {
+                    wx.setStorage({
+                      key: 'token',
+                      data: resLogin.data.token,
+                    })
+                  }
+                })
+              },
+              fail: function () {
+
+              }
+            })
+          },
+        })
+      }
+    })
+    
     //生成海报
 
   },
@@ -206,9 +169,58 @@ Page({
   },
   //前往确认订单页
   handleToBuy(){
-    wx.navigateTo({
-      url: '../confirmOrder/confirmOrder',
-    })
+    console.log('点击一下')
+    console.log(this.data.detailInfo)
+    console.log(this.data.detailInfo.buyAccess);
+    console.log(this.data.detailInfo.unBuyReason)
+    if (this.data.detailInfo.unBuyReason){
+          console.log('出了鬼')
+          //判断用户不能购买原因
+          if (this.data.detailInfo.unBuyReason == '没有登陆！') {
+            wx.showModal({
+              title: '',
+              content: '您还没有登录,跳转到个人中心登录',
+              success: (res) => {
+                if (res.cancel) {
+
+                } else {
+                  wx.switchTab({
+                    url: '../my/my',
+                  })
+                }
+              },
+              fail: () => {
+
+              }
+            })
+          } else {
+            wx.showLoading({
+              title: this.data.detailInfo.unBuyReason,
+            })
+          }
+      }else{
+          //判断用户有没有权限
+          
+        if (this.data.detailInfo.buyAccess){
+            //有权限
+            console.log('有权限')
+            wx.navigateTo({
+              url: '../confirmOrder/confirmOrder',
+            })
+        }else{
+           //无权限
+           console.log('没有权限')
+           wx.showLoading({
+             title: '没有权限',
+           })
+           setTimeout(()=>{
+              wx.hideLoading()
+           },1000)
+        }
+
+      }
+   
+   
   },
   //隐藏加入群聊
   handleToClose(){
@@ -253,11 +265,127 @@ Page({
 
 
   //分享界面点击生成图片
-  handleToShareHaibao(){
+  handleToShareHaibao(res){
     var that = this;
-    that.setData({
-      share: true
-    });
+    wx.login({
+      success: function (resCode) {
+        apis.handleToLogin(resCode.code).then((resLogin) => {
+          if (resLogin.code === 1) {
+          
+            wx.setStorage({
+              key: "userImage",
+              data: res.detail.userInfo.avatarUrl
+            })
+            wx.setStorage({
+              key: "userName",
+              data: res.detail.userInfo.nickName
+            })
+            wx.setStorage({
+              key: 'token',
+              data: resLogin.data.token,
+            })
+            var haibao = {
+              width: '650rpx',
+              height: '938rpx',
+              background: '#fff',
+              borderRadius: '12rpx',
+              views: [
+                {
+                  type: 'image',
+                  url: that.data.detailInfo.shareImg,
+                  css: {
+                    top: '40rpx',
+                    left: '42rpx',
+                    right: '42rpx',
+                    width: '566rpx',
+                    height: '690rpx',
+
+                  }
+                },
+                {
+                  type: 'image',
+                  url: res.detail.userInfo.avatarUrl,
+                  css: {
+                    width: '108rpx',
+                    height: '108rpx',
+                    borderRaius: '54rpx',
+                    top: '760rpx',
+                    left: '42rpx',
+                  }
+                },
+                {
+                  type: "text",
+                  text: res.detail.userInfo.nickName,
+                  css: {
+                    height: '42rpx',
+                    fontSize: '30rpx',
+                    fontFamily: 'PingFangSC-Medium, PingFang SC',
+                    fontWeight: 500,
+                    color: 'rgba(51, 51, 51, 1)',
+                    lineHeight: '42rpx',
+                    top: '770rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: 'text',
+                  text: '推荐语推荐语',
+                  css: {
+                    fontSize: '30rpx',
+                    color: 'rgba(255, 116, 20, 1)',
+                    lineHeight: '42rpx',
+                    top: '812rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: "text",
+                  text: '长按立即购买',
+                  css: {
+                    fontSize: '22rpx',
+                    fontFamily: 'PingFangSC-Medium, PingFang SC',
+                    fontWeight: '500',
+                    color: 'rgba(150, 150, 150, 1)',
+                    lineHeight: '32rpx',
+                    top: '864rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: 'qrcode',
+                  content: '',
+                  css: {
+                    top: '760rpx',
+                    right: '42rpx',
+                    borderWidth: '2rpx',
+                    width: '126rpx',
+                    height: '126rpx',
+                    borderColor: 'rgba(216, 216, 216, 1)',
+                    padding: '14rpx'
+                  },
+                },
+              ]
+            }
+            that.setData({
+              "share": true,
+              "template": haibao
+            });
+
+          } else {
+            wx.showToast({
+              title: '登录异常，授权失败',
+              icon: 'none',
+              duration: 3000
+            })
+          }
+
+        })
+      },
+      fail: function () {
+
+      }
+    })
+
     wx.showToast({
       title: '生成中...',
       icon: 'loading',

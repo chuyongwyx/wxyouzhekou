@@ -237,13 +237,13 @@ Page({
   },
   //上拉触底事件
   onReachBottom:function(){
-    wx.showLoading({
-      title: '加载中',
-    })
-    setTimeout(function(){
-      wx.hideLoading()
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
+    // setTimeout(function(){
+    //   wx.hideLoading()
 
-    },1000)
+    // },1000)
   },
   //判断是否为全面屏
   checkFullSucreen: function () {

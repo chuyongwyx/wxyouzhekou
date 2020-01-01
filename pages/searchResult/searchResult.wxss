@@ -1,101 +1,42 @@
-/* pages/found/found.wxss */
+/* pages/searchResult/searchResult.wxss */
 .found{
 
 }
-.found-head{
-    padding-bottom: 26rpx;
-    border-bottom:2rpx solid #dcdcdc;
+.search-head{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
-    background: #fff; 
+    background: #fff;
     width: 100%;
+    z-index: 5;
+    border-bottom:2rpx solid #D6D6D6;
 }
-.found-h{ 
-  margin-top: 20rpx;
-  font-size:38rpx;
+.search-tit{
+     display: flex;
+     height:88rpx;
+}
+.search-back{
+    display: flex;
+    margin-left: 40rpx;
+    width: 30rpx;
+    align-items: center;
+}
+.search-back>image{
+    width:17rpx;
+    height:31rpx;
+}
+.search-h1{
+  width:136rpx;
+  height:88rpx;
+  font-size:34rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
-  line-height: 1;
-  margin-left: 30rpx;
-}
-.found-search{
-  margin:0 30rpx;
-  margin-top: 20rpx;
-  display: flex;
-  height: 80rpx;
-  justify-content: space-between;
-  align-items: center;
-}
-.found-pos{
-  display: flex;
-  align-items: center;
-}
-.found-pos>view:nth-of-type(2){
-  font-size:26rpx;
-  font-family:PingFangSC-Medium,PingFang SC;
-  font-weight:500;
-  color:rgba(51,51,51,1);
-  margin-left: 4rpx;
-  margin-top: -6rpx;
-  
+ align-items: center;
+  margin-left: 224rpx;
+  line-height: 88rpx;
 }
 
-.found-pos-img{
-
-}
-.found-pos-img >image{
-  width:28rpx;
-  height:32rpx;
-}
-.search{
-  height:80rpx;
-  background:rgba(242,242,242,1);
-  border-radius:42rpx;
-  width: 570rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size:30rpx;
-  font-family:PingFangSC-Medium,PingFang SC;
-  font-weight:500;
-  color:rgba(167,167,167,1);
-}
-/* 滚动的后的样式 */
-.found-search-scroll{
-  margin-left:30rpx;
-  margin-right: 200rpx;
-  margin-top: 12rpx;
-  display: flex;
-  height: 68rpx;
-  justify-content: space-between;
-  align-items: center;
-}
-.search-scroll{
-  height:68rpx;
-  width: 426rpx;
-  background:rgba(242,242,242,1);
-  border-radius:42rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size:30rpx;
-  font-family:PingFangSC-Medium,PingFang SC;
-  font-weight:500;
-  color:rgba(167,167,167,1);
-}
-.search-img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10rpx;
-}
-.search-img>image{
-  width:36rpx;
-  height:36rpx;
-}
 /* 筛选 */
 .screen{
     display:flex;
@@ -120,19 +61,6 @@
   font-weight:500;
   color:rgba(150,150,150,1);
 
-}
-.allFoods,.nears,.minds{
-    align-items: center;
-}
-.allFoods>view:nth-of-type(2), .nears>view:nth-of-type(2),.minds>view:nth-of-type(2){
-  width:20rpx;
-   height:14rpx;
-   margin-left:10rpx;
-   display: flex;
-}
-.allFoods>view:nth-of-type(2) image,.nears>view:nth-of-type(2) image ,.minds>view:nth-of-type(2) image{
-   width:20rpx;
-   height:14rpx;
 }
 /* banner部分 */
 .banner{
@@ -263,4 +191,3 @@
   align-items: center;
   
 }
-

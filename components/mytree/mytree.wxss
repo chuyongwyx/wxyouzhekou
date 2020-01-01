@@ -1,0 +1,12 @@
+.ul .li-item {
+   color: rgba(150,150,150,1);
+  font-size: 30rpx;
+
+}
+.ul .li-item-child{
+  padding-left:60rpx;
+}
+.ul .li-item .text {
+  
+}
+.menu-img{}

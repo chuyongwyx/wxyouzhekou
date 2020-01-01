@@ -1,0 +1,195 @@
+/* pages/cash/cash.wxss */
+
+.cash{
+}
+.cash-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: #fff;
+    width: 100%;
+    height:88rpx;
+    z-index:10000;
+    /* border-bottom:2rpx solid #D6D6D6; */
+}
+.cash-head .cash-back{
+    display: flex;
+    width: 30rpx;
+    padding:0;
+    align-items: center;
+    line-height: 1;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 17rpx;
+    background: #fff;
+    margin-right: 0;
+    margin-left: 40rpx;
+}
+.cash-back>image{
+    width:17rpx;
+    height:31rpx; 
+}
+.cash-head .cash-h1{
+  width:136rpx;
+  height:88rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+ align-items: center;
+  line-height: 88rpx;
+  padding:0;
+  border-radius: 0;
+  background: #fff;
+  text-align: left;
+  margin-left: 270rpx;
+
+}
+/* 扇形进度条 */
+.circle{
+  position: relative;
+  padding-top: 40rpx;
+  width:478rpx;
+  height:478rpx;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.circle-content{
+  position: absolute;
+  width: 378rpx;
+  height: 378rpx;
+  border-radius: 100%;
+  box-shadow:0rpx 25rpx 24rpx -2rpx rgba(0,0,0,0.18);
+
+}
+.circle-content>view:nth-of-type(1){
+  margin-top: 118rpx;
+  font-size: 42rpx;
+  text-align: center;
+  color: #ff7414;
+  font-family:DIN Alternate;
+  line-height: 1; 
+}
+.circle-content>view:nth-of-type(2){
+  text-align: center;
+  font-size:28rpx;
+  margin-top: 26rpx;
+  line-height: 1;
+}
+.circle-content>view:nth-of-type(3){
+  display: flex;
+  width: 100%;
+  margin-top: 36rpx;
+  justify-content: center;
+  font-size:28rpx; 
+  color: #a8a8a8;
+}
+.circle-content>view:nth-of-type(3)>view{
+  text-align: center;
+}
+.circle-content>view:nth-of-type(3)>view:nth-of-type(1){
+  margin-right: 20rpx;
+}
+
+/* 提现金额 */
+.cash-money{
+  margin:0 30rpx;
+  margin-top: 28rpx;
+  
+}
+.cash-tit{
+
+}
+.cash-opeat{
+  margin-top: 46rpx;
+  display: flex;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #ebebeb;
+}
+.cash-logo{
+  width: 40rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  margin-right: 24rpx;
+}
+.cash-logo>image{
+  width: 36rpx;
+  height: 50rpx;
+}
+.cash-input{
+   height: 90rpx;
+   line-height: 90rpx;
+   width: 650rpx;
+}
+.cash-input>input{
+   height: 90rpx;
+   line-height: 90rpx;
+   width: 650rpx;
+   font-size: 62rpx;
+   font-weight: bold;
+   font-family: 'DIN Alternate';
+}
+
+/* 提现例子 */
+.cash-type{
+  /* margin-top: 28rpx; */
+}
+.cash-type>view:nth-of-type(1){
+  font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(167,167,167,1);
+}
+.cash-type>view:nth-of-type(2){
+  display: flex;
+  
+}
+.cash-type>view:nth-of-type(2)>view{
+  margin-top: 18rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,116,20,1);
+  padding:10rpx 20rpx;
+  background: rgba(255,241,232,1);
+  margin-right: 30rpx;
+}
+.cash-type>view:nth-of-type(3){
+  width:366rpx;
+  height:88rpx;
+  background:rgba(255,116,20,1);
+  border-radius:12rpx;
+  text-align: center;
+  line-height: 88rpx;
+  margin: auto;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  margin-top: 40rpx;
+}
+.cash-rule{
+  margin:0 30rpx;
+   margin-top: 60rpx;
+   
+
+}
+.cash-rule>view:nth-of-type(1){
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.cash-rule>view:nth-of-type(2),.cash-rule>view:nth-of-type(3),.cash-rule>view:nth-of-type(4),.cash-rule>view:nth-of-type(5){
+  display: flex;
+  font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(119,119,119,1);
+line-height:48rpx;
+}

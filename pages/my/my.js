@@ -7,9 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // "home": "../../images/dibulan_shouye2.png",
-    // "found": "../../images/dibulan_faxian2.png",
-    // "my": "../../images/dibulan_gerenzhongxin1.png",
     //未登录
     "userBeforeLogin":true,
     //已登录
@@ -28,7 +25,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(new Date().getTime())
     var that=this;
       wx.getStorage(
         {
@@ -64,6 +60,42 @@ Page({
           }
         },
       })
+      //判断登录是否过期
+      wx.checkSession({
+          //未过期
+          success:function(){
+
+          },
+          //过期了
+          fail:function(){
+            wx.getStorage({
+              key: 'userImage',
+              success: function(res) {
+                wx.login({
+                  success: function (resCode) {
+                    api.handleToLogin(resCode.code).then((resLogin) => {
+                      console.log(resLogin)
+                      if (resLogin.code === 1) {
+                        wx.setStorage({
+                          key: 'token',
+                          data: resLogin.data.token,
+                        })
+                        wx.setStorage({
+                          key: 'code',
+                          data: resCode.code,
+                        })
+                      }
+                    })
+                  },
+                  fail: function () {
+
+                  }
+                })
+              },
+            })
+          }
+      })
+
     //判断是否为全面屏
     this.checkFullSucreen();
   },
@@ -123,7 +155,7 @@ Page({
         success:function(resCode){
           console.log(resCode);
           api.handleToLogin(resCode.code).then((resLogin)=>{
-            
+            console.log(resLogin)
              if(resLogin.code===1){
                   that.setData({
                     "userImage": res.detail.userInfo.avatarUrl,
@@ -141,13 +173,17 @@ Page({
                     data: res.detail.userInfo.nickName
                   })
                   wx.setStorage({
+                    key: 'code',
+                    data: resCode.code,
+                  })
+                  wx.setStorage({
                     key: 'token',
                     data: resLogin.data.token,
                   })
 
              }else{
                  wx.showToast({
-                   title: '网络异常，授权失败',
+                   title: '登录异常，授权失败',
                    icon: 'none',
                    duration: 3000
                  })
@@ -210,16 +246,42 @@ handleToMyOrder(){
   },
   //获取手机号码
   getPhoneNumber(res){
-    console.log(res.detail.encryptedData)
-    console.log(res.detail.iv);
-    wx.getStorage({
-      key: 'token',
-      success: function(resToken) {
-        api.handleToTellNum(res.detail.encryptedData, res.detail.iv, resToken.data).then((resNum) => {
-          console.log(resNum)
-        })
-      },
-    })
+      console.log(res);
+      wx.getStorage({
+        key: 'code',
+        success: function(resCode) {
+            api.handleToTellNum(res.detail.encryptedData, res.detail.iv, resCode.data).then((resNum) => {
+                console.log(resNum)
+            })
+        },
+      })
+
+
+    // console.log(res.detail.encryptedData)
+    // console.log(res.detail.iv);
+    // wx.getStorage({
+    //   key: 'token',
+    //   success: function(resToken) {
+    //     api.handleToTellNum(res.detail.encryptedData, res.detail.iv, resToken.data).then((resNum) => {
+    //       console.log(resNum)
+    //     })
+    //   },
+    // })
+    
+    
    
+  },
+  //跳往提现的页面
+  handleToRightCash(){
+      wx.navigateTo({
+        url: '../cash/cash',
+      })
+  },
+  //明细页面
+  handleToIncome(){
+    wx.navigateTo({
+      url: '../incomeDetails/incomeDetail',
+    })
   }
+
 })

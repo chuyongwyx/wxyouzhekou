@@ -4,11 +4,10 @@ export default {
   handleGetfindCoupon(lat,lng,id) {
     var url;
     if(id!=''){
-      url = '/api/Index/getfindCoupon?lat=' + lat + '&lng='+lng+'&category_id='+id;
+      url = '/api/Index/getfindCoupon?lat=' + lat + '&lng=' + lng +'&cateid='+id;
     }else{
       url = '/api/Index/getfindCoupon?lat=' + lat + '&lng='+lng
-    } 
-    console.log(url)
+    }
     return _https.request(url);
   },
   //获取搜索分类

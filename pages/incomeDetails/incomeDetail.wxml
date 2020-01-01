@@ -1,0 +1,53 @@
+<!--pages/incomeDetails/incomeDetail.wxml-->
+<view>
+     <view class="income-head" style="padding-top:{{statusBarHeight}}px;">
+            <view class="income-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image>                 </view>
+            <view class="income-h1">提现</view>
+      </view>
+      <view class="main" style="margin-top:{{statusBarHeight*2+90}}rpx;">
+      <!-- 累计收入 -->
+      <view class="count">
+            <view>累计收入</view>
+            <view>15.000.000</view>
+      </view>
+      <!-- 提现 -->
+      <view class="able-cash">
+            <view>
+                  <view>可提现</view>
+                  <view>15.000.000</view>
+            </view>
+            <view>
+                  <view>待到账</view>
+                  <view>15.000.000</view>
+            </view>
+      </view> 
+      <!-- 收支记录 -->
+      <view class="collect">
+             <view>收支记录</view>
+             <view>
+                  <view class="active">全部</view>
+                  <view class="deactive">收入</view>
+                  <view class="deactive">待到账</view>
+                  <view class="deactive">提现</view>
+             </view>
+      </view>
+      <!-- 记录列表 -->
+      <view class="list">
+          <view class="list-content">
+                  <view>
+                        <view>好友XXX下单</view>
+                        <view>2019-11-13</view>
+                  </view>
+                  <view>20</view>
+          </view> 
+           <view class="list-content">
+                  <view>
+                        <view>好友XXX下单</view>
+                        <view>2019-11-13</view>
+                  </view>
+                  <view>20</view>
+          </view> 
+      
+      </view> 
+      </view>
+</view>

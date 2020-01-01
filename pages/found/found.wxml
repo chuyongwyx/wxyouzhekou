@@ -28,18 +28,47 @@
       </block>
         
            <view class="screen">
-                      <view class="{{allFood?'active':'deactive'}}" style="display:flex;">
+                    <view style="position:relative" >
+                          <view class="allFoods {{allFood?'active':'deactive'}}" style="display:flex;" bindtap="handleToAllFoods">
                             <view>全部美食</view>
-                            <view><image src="{{allFood?'../../images/xialahuang.png':'../../images/xiahui.png'}}" style="width:20rpx;height:14rpx;"></image></view>
-                      </view>
-                      <view class="{{near?'active':'deactive'}}"  style="display:flex;">
+                            <view><image src="{{allFood?'../../images/xialahuang.png':'../../images/xiahui.png'}}"></image></view>
+                          </view>
+                           <view style="position:absoult;top:40rpx;left:0;min-width:150rpx;" wx:if="{{allFood==true}}">
+                                   <view wx:for="{{kindsTreeData}}" wx:key="{{this}}" wx:for-item="itemName">
+                                        <mytree model='{{itemName}}' catch:tapitem='tapItem'></mytree>
+                                    </view> 
+                            </view>
+                    </view>
+                      <view style="position:relative">
+                             <view class=" nears {{near?'active':'deactive'}}"  style="display:flex;width:90rpx;" bindtap="handleToNears">
                               <view>附近</view>
                                <view><image src="{{near?'../../images/xialahuang.png':'../../images/xiahui.png'}}" style="width:20rpx;height:14rpx;"></image></view>
+                              </view>
+                              <view style="position:absoult;top:40rpx;left:0;max-width:180rpx;font-size:30rpx;color:rgba(150,150,150,1)" wx:if="{{near==true}}"> 
+                                    <view>附近500米</view>
+                                    <view>附近1000米</view>
+                                    <view>附近2000米</view>
+                                    <view>附近5000米</view>
+                              </view>
+                      
                       </view>
-                      <view class="{{mind?'active':'deactive'}}"  style="display:flex;">
-                              <view>智能排序</view>
+                     
+
+                    <view style="position:relative">
+                         <view class="minds {{mind?'active':'deactive'}}"  style="display:flex;" bindtap="handleToMinds">
+                              <view>排序</view>
                                <view><image src="{{mind?'../../images/xialahuang.png':'../../images/xiahui.png'}}" style="width:20rpx;height:14rpx;"></image></view>
-                      </view> 
+                          </view> 
+                          <view style="position:absoult;top:40rpx;left:0;min-width:150rpx;font-size:30rpx;color:rgba(150,150,150,1)" wx:if="{{mind==true}}"> 
+                                    <view>智能排序</view>
+                                    <view>人气优先</view>
+                                    <view>距离优先</view>
+                                    <view>低价优先</view>
+                                    <view>高价优先</view>
+                              </view>
+
+                    </view>
+                     
                 </view>
   </view>
    

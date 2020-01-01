@@ -17,7 +17,7 @@ Page({
     "statusBarHeight": app.globalData.statusBarHeight,
     "bannerTop": app.globalData.statusBarHeight*2+270,
     // 筛选栏活跃状态
-    "allFood":true,
+    "allFood":false,
     "near":false,
     "mind":false,
     //滚动状态
@@ -35,11 +35,26 @@ Page({
      "kindsData":[], 
     //获取轮播图
      "binnerSwiper":[],
+    //树形插件
+      "kindsTreeData":[],
+    //搜索关键字
+      "key":"",
+    //排序
+      "sort":"",
+    //附近几公里
+      "nears":"",
+    //搜索分类id
+      "cateid":""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  //树形插件
+  //事件处理函数
+  tapItem: function (e) {
+    console.log('index接收到的itemid: ' + e.detail.itemid);
+  },
   onLoad: function (options) {
       var that = this;
     //判断是否为全面屏
@@ -48,15 +63,14 @@ Page({
     qqmapsdk = new QQMapWX({
       key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
     })
-    // //获取地理定位
-    // this.getUserLocation();
-    // //获取轮播图
-    // apis.handleToGetBanners().then((res)=>{
-    //   console.log(res);
-    //     that.setData({
-    //       "binnerSwiper":res.data
-    //     })
-    // })
+  
+    //获取分类信息
+    api.handleGetCategory().then((res) => {
+      console.log(res.data);
+      that.setData({
+        "kindsTreeData": res.data
+      })
+    })
   },
 
   /**
@@ -71,19 +85,15 @@ Page({
    */
   onShow: function () {
     //获取轮播图
+    var that=this;
     apis.handleToGetBanners().then((res) => {
-      console.log(res);
-      this.setData({
+      console.log(res.data);
+        that.setData({
         "binnerSwiper": res.data
       })
     })
     //获取地理定位
     this.getUserLocation();
-    //获取分类信息
-    api.handleGetCategory().then((res)=>{
-        console.log(res);
-    })
-
   },
 
   /**
@@ -376,5 +386,48 @@ Page({
         }
       }
     })
-  }
+  },
+
+  //全部美食点击
+  handleToAllFoods(){
+    if (this.data.allFood==false){
+      this.setData({
+        "allFood":true,
+        "near":false,
+        "mind":false
+      })
+    }else{
+      this.setData({
+        "allFood": false
+      })
+    }
+  },
+  //附近点击
+ handleToNears(){
+   if (this.data.near == false) {
+     this.setData({
+       "allFood": false,
+       "near": true,
+       "mind": false
+     })
+   }else{
+     this.setData({
+       "near": false
+     })
+   }
+ },
+ //智能排序点击
+ handleToMinds(){
+   if (this.data.mind == false) {
+     this.setData({
+       "allFood": false,
+       "near": false,
+       "mind": true
+     })
+   } else {
+     this.setData({
+       "mind": false
+     })
+   }
+ }
 })

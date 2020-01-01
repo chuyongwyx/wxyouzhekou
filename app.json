@@ -1,17 +1,22 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/details/details",
+    "pages/incomeDetails/incomeDetail",
+    "pages/cash/cash",
     "pages/my/my",
+    "pages/confirmOrder/confirmOrder",
     "pages/found/found",
+    "pages/details/details",
     "pages/order/order",
     "pages/coupon-details/coupon-details",
     "pages/search/search",
-    "pages/confirmOrder/confirmOrder",
     "pages/coupon/coupon",
     "pages/orderNoUse/orderNoUse",
     "pages/orderOverdue/orderOverdue",
-    "pages/orderUsed/orderUsed"
+    "pages/orderUsed/orderUsed",
+    "pages/searchResult/searchResult",
+    "components/circle/circle"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,10 +31,10 @@
     "selectedColor": "#ED4A17",
     "list": [
       {
-      "pagePath": "pages/index/index",
-      "text": "有折打",
-      "iconPath": "./images/dibulan_shouye2.png",
-      "selectedIconPath": "./images/dibulan_shouye1.png"
+        "pagePath": "pages/index/index",
+        "text": "有折打",
+        "iconPath": "./images/dibulan_shouye2.png",
+        "selectedIconPath": "./images/dibulan_shouye1.png"
       },
       {
         "pagePath": "pages/found/found",
@@ -43,7 +48,6 @@
         "iconPath": "./images/dibulan_gerenzhongxin2.png",
         "selectedIconPath": "./images/dibulan_gerenzhongxin1.png"
       }
-    
     ]
   },
   "permission": {

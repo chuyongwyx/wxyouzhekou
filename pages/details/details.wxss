@@ -354,12 +354,9 @@
 }
 .favourite-img{
   width:688rpx;
-  height:440rpx;
+  
 }
-.favourite-img image{
-  width:688rpx;
-  height:440rpx;
-}
+
 .toBottom{
   height: 163rpx;
   text-align: center;
@@ -424,13 +421,15 @@
   line-height: 1;
   margin-top: 2rpx;
 }
-.share{
+ .footer .share{
   width:216rpx;
   height:96rpx;
   background:rgba(255,234,220,1);
   border-radius:12rpx 0px 0rpx 12rpx;
+  margin:initial;
   margin-left: 62rpx;
   text-align: center;
+  padding: 0;
 }
 .share>view:nth-of-type(1){
   font-size:30rpx;

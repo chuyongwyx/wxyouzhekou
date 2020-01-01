@@ -35,7 +35,7 @@
                   <view class="group-image">
                         <image src="../../images/moni6.jpg"></image>
                   </view>
-                  <view class="invi" bindtap="handleToShareHaibao">邀请好友一起领</view>
+                  <button open-type="getUserInfo" class="invi" bindgetuserinfo="handleToShareHaibao">邀请好友一起领</button>
             </view> 
         </view>
       <!-- 广州交流群 -->
@@ -90,7 +90,8 @@
           <view class="favourite">
                 <view class="favourite-desc">优惠详情</view>
                 <view class="favourite-img">
-                      <image src="../../images/moni8.jpg"></image>
+                      <!-- <image src="../../images/moni8.jpg"></image> -->
+                       <rich-text nodes="{{detailInfo.info}}"></rich-text>
                 </view> 
           </view>
           <view class="toBottom">
@@ -107,13 +108,13 @@
                   <image src="../../images/dibulan_dingdan.png"></image>
                   <view>订单</view> 
             </view>
-            <view class="share" bindtap="handleToShareHaibao">
+            <button class="share" open-type="getUserInfo" bindgetuserinfo="handleToShareHaibao">
                   <view>分享海报</view>
-                  <view><text>赚</text><text>￥</text><text>{{detailInfo.commission}}</text></view>
-            </view>
+                  <view><text>赚</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view>
+            </button>
             <view class="immediately" bindtap="handleToBuy"> 
                    <view>立即抢购</view>
-                   <view><text>省</text><text>￥</text><text>{{detailInfo.commission}}</text></view>
+                   <view><text>省</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view>
             </view>
         </view>
       

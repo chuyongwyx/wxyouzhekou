@@ -78,7 +78,7 @@
                 <view>￥</view>
                 <view>{{count}}</view>
             </view>
-            <view class="rightBuy">立即购买</view>
+            <view class="rightBuy" bindtap="handleRightBuy">立即购买</view>
   </view>
 
 </view>

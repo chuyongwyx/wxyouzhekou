@@ -282,6 +282,12 @@ handleToMyOrder(){
     wx.navigateTo({
       url: '../incomeDetails/incomeDetail',
     })
+  },
+  //排行榜
+  handleToSort(){
+    wx.navigateTo({
+      url: '../ranking/ranking',
+    })
   }
 
 })

@@ -1,39 +1,19 @@
-// pages/order/order.js
-import api from '../../apis/orderList.js';
-const app = getApp();
+// pages/ranking/ranking.js
+const app =getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight,
-    "dataList":true,
-    "orderList":[]
+    "statusBarHeight": app.globalData.statusBarHeight
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var that =this;
-      wx.getStorage({
-        key: 'token',
-        success: function(res) {
-          api.handleOrderList(res.data).then((resData)=>{
-              if(resData.data.length==0){
-                  that.setData({
-                    "dataList":true
-                  })
-              }else{
-                  that.setData({
-                    "orderList": resData.data,
-                    "datalist":false,
-                  })
-              }
-          })
-        },
-      })
+
   },
 
   /**
@@ -84,9 +64,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  //返回
   handleToBack(){
     wx.navigateBack({})
-  },
-
+  }
 })

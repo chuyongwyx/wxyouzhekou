@@ -42,7 +42,7 @@
                                 <view class="right_info">
                                       <view bindtap="handleToIncome">明细</view>
                                       <view></view>
-                                      <view>收入排行</view>
+                                      <view bindtap="handleToSort">收入排行</view>
                                 </view>
                           </view>
                     </view>
@@ -59,7 +59,7 @@
                             <view class="border"></view>
                     </view>
                      <view style="display:flex;align-items:center;">
-                            <view class="coupon-use" bindtap="handleToUseBefore">
+                            <view class="coupon-use">
                               <view> <image src="../../images/coupon-use.png"></image></view>
                               <view>待使用</view>
                             </view> 

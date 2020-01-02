@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/order/order",
+    "pages/ranking/ranking",
     "pages/incomeDetails/incomeDetail",
     "pages/cash/cash",
     "pages/my/my",
     "pages/confirmOrder/confirmOrder",
     "pages/found/found",
     "pages/details/details",
-    "pages/order/order",
     "pages/coupon-details/coupon-details",
     "pages/search/search",
     "pages/coupon/coupon",
@@ -16,7 +17,7 @@
     "pages/orderUsed/orderUsed",
     "pages/searchResult/searchResult",
     "components/circle/circle"
-   
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

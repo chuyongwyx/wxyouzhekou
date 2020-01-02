@@ -2,40 +2,43 @@
 <view class="order">
     <view class="order-head" style="padding-top:{{statusBarHeight}}px;">
                <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
-            <view class="order-h1">我的订单(100)</view>
+            <view class="order-h1">我的订单({{orderList.length}})</view>
        
            
     </view>
     <view class="order-list" style="padding-top:{{statusBarHeight+100}}rpx;padding-bottom:30rpx;"> 
-          <view  wx:if="{{false}}" class="no-order">
+          <view  wx:if="{{dataList}}" class="no-order">
                <view>暂无数据</view>
                <view>你还没有获得优惠券哦</view>
           </view>
         <!-- 有订单 -->
-          <view class="order-content" wx:for="{{6}}" wx:if="{{true}}">
+        <view wx:if="{{dataList==true?false:true}}">
+                <view class="order-content" wx:for="{{orderList}}" wx:key="{{this}}" id="{{item.id}}">
                <view class="order-num">
                     <view>
                         <view>订单编号：</view>
-                        <view>A1234567890111213</view>
+                        <view>{{item.order_id}}</view>
                     </view> 
-                    <view>已使用</view>
+                    <view>{{item.coupon_status}}</view>
                </view>
                <view class="order-img">
-                    <view><image src="../../images/moni3.jpg"></image> </view>
-                    <view>[北京路·串串] 48元抵100元代金券，无门槛使用，最多使用2张，40+款串串任意吃！</view>
+                    <view><image src="{{item.coupon_img}}"></image> </view>
+                    <view>{{item.coupon_title}}</view>
                </view>
                <view class="order-count">
                             <view class="count-num">
                                   <view>数量：</view>
-                                  <view>X1</view>
+                                  <view>X{{item.num}}</view>
                             </view>
                             <view class="count-pay">
                                   <view style="margin-top:1rpx;">实付：</view>
-                                  <view style="margin-top:-2rpx;"> <text style="font-weight:normal;">￥</text><text>44.00</text><text>  + </text><text>100</text></view>
+                                  <view style="margin-top:-2rpx;"> <text style="font-weight:normal;">￥</text><text>{{item.pay_price}}</text><text>  + </text><text>{{item.pay_score}}</text></view>
                                   <view>积分</view> 
                             </view>
                       
                </view>
           </view>
+        </view>
+        
     </view>
 </view>

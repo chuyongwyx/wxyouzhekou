@@ -1,0 +1,102 @@
+<!--pages/ranking/ranking.wxml-->
+<view>
+       <view class="ranking-head" style="padding-top:{{statusBarHeight}}px;">
+            <view class="ranking-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image>                 </view>
+            <view class="ranking-h1">排行榜</view>
+      </view>
+      <view class="" style="margin-top:{{statusBarHeight*2+90}}rpx;">
+            <view class="sort">
+                  <view class="sort-second">
+                        
+                        <view><image src="../../images/second.png"></image></view> 
+                        <view>2</view>     
+                        <view><image src="../../images/gerenzhongxin_morentouxiang.png"></image></view>
+                        <view>Asthly by..</view>
+                        <view>
+                              <view> <image src="../../images/sort_money.png"></image> </view>
+                              <view><text>13.2</text><text>   万元</text></view>
+                        </view>
+                  </view>
+
+                  <view class="sort-first">
+                         <view> <image src="../../images/first.png"></image> </view>
+                        <view><image src="../../images/gerenzhongxin_morentouxiang.png"></image></view>
+                        <view>排毒减肥活动</view>
+                        <view>
+                              <view> <image src="../../images/sort_money.png"></image> </view>
+                              <view><text>123.2</text><text>   万元</text></view>
+                        </view>
+                  </view>
+                  <view class="sort-third">
+                        
+                        <view>3</view>
+                        <view><image src="../../images/third.png"></image></view>            
+                        <view><image src="../../images/gerenzhongxin_morentouxiang.png"></image></view>
+                        <view>小小演员</view>
+                        <view>
+                              <view> <image src="../../images/sort_money.png"></image> </view>
+                              <view><text>3.2</text><text>   万元</text></view>
+                        </view>
+                  
+                  </view>
+
+            </view>
+
+            <!-- 从第四位开始 -->
+            <view>
+                  <view class="sort-after" >
+                      <view class="sort-after-left">
+                          <view>4</view>
+                          <view><image src="../../images/gerenzhongxin_morentouxiang.png" /></view>
+                          <view>用户昵称</view>
+                      </view>
+                      <view class="sort-after-right">
+                            <view>累计收入</view>
+                            <view>12.333元</view>
+                      </view>
+                      
+                  
+                  </view> 
+                  <view class="sort-after" >
+                      <view class="sort-after-left">
+                          <view>5</view>
+                          <view><image src="../../images/gerenzhongxin_morentouxiang.png" /></view>
+                          <view>用户昵称</view>
+                      </view>
+                      <view class="sort-after-right">
+                            <view>累计收入</view>
+                            <view>12.333元</view>
+                      </view>
+                      
+                  
+                  </view> 
+                  <view class="sort-after" >
+                      <view class="sort-after-left">
+                          <view>6</view>
+                          <view><image src="../../images/gerenzhongxin_morentouxiang.png" /></view>
+                          <view>用户昵称</view>
+                      </view>
+                      <view class="sort-after-right">
+                            <view>累计收入</view>
+                            <view>12.333元</view>
+                      </view>
+                      
+                  
+                  </view> 
+                  <view class="sort-after" >
+                      <view class="sort-after-left">
+                          <view>4</view>
+                          <view><image src="../../images/gerenzhongxin_morentouxiang.png" /></view>
+                          <view>用户昵称</view>
+                      </view>
+                      <view class="sort-after-right">
+                            <view>累计收入</view>
+                            <view>12.333元</view>
+                      </view>
+                      
+                  
+                  </view> 
+            
+            </view> 
+      </view>
+</view>

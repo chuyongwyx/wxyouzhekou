@@ -1,0 +1,300 @@
+/* pages/ranking/ranking.wxss */
+.ranking-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: #fff;
+    width: 100%;
+    height:88rpx;
+    z-index: 5;
+    border-bottom:2rpx solid #D6D6D6;
+}
+.ranking-back{
+    display: flex;
+    margin-left: 40rpx;
+    width: 30rpx;
+    align-items: center;
+}
+.ranking-back>image{
+    width:17rpx;
+    height:31rpx;
+}
+.ranking-h1{
+  height:88rpx;
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+ align-items: center;
+ line-height: 88rpx;
+  margin-left: 256rpx;
+}
+
+/* 排行榜前三位 */
+.sort{
+  display: flex;
+  padding-top:60rpx;
+  justify-content: space-between; 
+  margin:0 36rpx;
+  border-bottom:2rpx solid #D6D6D6; 
+  padding-bottom: 38rpx;
+}
+.sort-second{
+  padding-top:12rpx;
+ 
+}
+.sort-second>view:nth-of-type(1){
+  width: 16rpx;
+  height: 12rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  
+}
+.sort-second>view:nth-of-type(1) image{
+  width: 16rpx;
+  height: 12rpx;
+}
+.sort-second>view:nth-of-type(2){
+  margin-top: 2rpx;
+  line-height: 42rpx;
+  font-size: 36rpx;
+ text-align: center;
+  margin-bottom: 24rpx;
+}
+.sort-second>view:nth-of-type(3){
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+  box-shadow:0px 16px 24px -4px rgba(0,0,0,0.15);
+}
+.sort-second>view:nth-of-type(3) image{
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+}
+.sort-second>view:nth-of-type(4){
+  height:42rpx;
+font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+line-height:42rpx;
+margin-top: 14rpx;
+text-align: center;
+} 
+.sort-second>view:nth-of-type(5){
+  display: flex;
+  margin-top: 4rpx;
+  align-items: center;
+}
+.sort-second>view:nth-of-type(5)>view:nth-of-type(1){
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.sort-second>view:nth-of-type(5)>view:nth-of-type(1) image{
+   width: 24rpx;
+  height: 24rpx;
+}
+.sort-second>view:nth-of-type(5)>view:nth-of-type(2){
+  font-size:36rpx;
+  font-family:'DIN Alternate';
+  color:rgba(167,167,167,1);
+  line-height:42rpx;
+}
+
+.sort-first{
+  position: relative;
+  padding-top:44rpx; 
+}
+.sort-first>view:nth-of-type(1){
+  position: absolute;
+  left: 50%;
+  margin-left:-35rpx;
+  top:0;
+  width: 70rpx;
+  height: 56rpx;
+}
+.sort-first>view:nth-of-type(1) image{
+  width: 70rpx;
+  height: 56rpx;
+}
+.sort-first>view:nth-of-type(2){
+  width: 196rpx;
+  height: 196rpx;
+  border-radius: 100%;
+  box-shadow:0px 16px 24px -4px rgba(0,0,0,0.15);
+}
+.sort-first>view:nth-of-type(2) image{
+  width: 196rpx;
+  height: 196rpx;
+  border-radius: 100%;
+  
+}
+.sort-first>view:nth-of-type(3){
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:42rpx;
+  margin-top: 14rpx;
+  text-align: center;
+}
+.sort-first>view:nth-of-type(4){
+  display: flex;
+   justify-content: space-around;
+  align-items: center;
+}
+.sort-first>view:nth-of-type(4)>view:nth-of-type(1){
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+}
+.sort-first>view:nth-of-type(4)>view:nth-of-type(1) image{
+  width: 24rpx;
+  height: 24rpx;
+}
+.sort-first>view:nth-of-type(4)>view:nth-of-type(2){
+  color:rgba(255,116,20,1);
+  line-height:42rpx;
+  margin-top: 5rpx;
+}
+.sort-first>view:nth-of-type(4)>view:nth-of-type(2)>text:nth-of-type(1){
+  font-size:36rpx;
+  font-family:'DIN Alternate';
+}
+.sort-first>view:nth-of-type(4)>view:nth-of-type(2)>text:nth-of-type(2){
+  font-size:30rpx;
+}
+.sort-third{
+  margin-top: 26rpx;
+  margin-right: 36rpx;
+}
+.sort-third>view:nth-of-type(1){
+  font-size:36rpx;
+  font-family:'DIN Alternate';
+  color:rgba(51,51,51,1);
+  line-height:42rpx;
+  text-align: center;
+}
+.sort-third>view:nth-of-type(2){
+  width: 16rpx;
+  height: 12rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 10rpx;
+}
+.sort-third>view:nth-of-type(2) image{
+  width: 16rpx;
+  height: 12rpx;
+  
+}
+.sort-third>view:nth-of-type(3){
+  width: 148rpx;
+  height: 148rpx;
+   border-radius: 100%;
+   margin-top: 10rpx;
+  box-shadow:0rpx 16rpx 24rpx -4rpx rgba(0,0,0,0.15);
+}
+.sort-third>view:nth-of-type(3) image{
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+  
+}
+.sort-third>view:nth-of-type(4){
+  font-size:30rpx;
+font-family:PingFangSC-Medium,PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+line-height:42rpx;
+margin-top: 14rpx;
+text-align: center;
+}
+.sort-third>view:nth-of-type(5){
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5rpx;
+}
+.sort-third>view:nth-of-type(5)>view:nth-of-type(1){
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  
+}
+.sort-third>view:nth-of-type(5)>view:nth-of-type(1) image{
+  width: 24rpx;
+  height: 24rpx;
+}
+.sort-third>view:nth-of-type(5)>view:nth-of-type(2){
+  color:rgba(167,167,167,1);
+  line-height:42rpx;
+  display: flex;
+  
+}
+.sort-third>view:nth-of-type(5)>view:nth-of-type(2)>text:nth-of-type(1){
+  font-size: 36rpx;
+  font-family:'DIN Alternate';
+}
+.sort-third>view:nth-of-type(5)>view:nth-of-type(2)>text:nth-of-type(1){
+
+}
+
+.sort-after{
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.sort-after-left{
+  display: flex;
+  align-items: center;
+  margin-left: 38rpx;
+}
+.sort-after-left>view:nth-of-type(1){
+  font-size:34rpx;
+  font-family:'DIN Alternate';
+  color:rgba(51,51,51,1);
+  margin-right: 18rpx;
+}
+.sort-after-left>view:nth-of-type(2){
+  width:84rpx;
+  height:84rpx;
+  display: flex;
+  margin-right: 20rpx;
+}
+.sort-after-left>view:nth-of-type(2) image{
+  width: 84rpx;
+  height: 84rpx;
+}
+.sort-after-left>view:nth-of-type(3){
+  font-size:30rpx;
+font-family:PingFangSC-Bold,PingFang SC;
+color:rgba(51,51,51,1);
+line-height:42rpx;
+}
+.sort-after-right{
+  display: flex;
+  margin-right: 30rpx;
+}
+.sort-after-right>view:nth-of-type(1){
+  font-size:30rpx;
+font-family:PingFangSC-Bold,PingFang SC;
+color:rgba(167,167,167,1);
+margin-right: 10rpx;
+}
+.sort-after-right>view:nth-of-type(2){
+font-size:30rpx;
+font-family:PingFangSC-Bold,PingFang SC;
+color:rgba(167,167,167,1);
+
+}

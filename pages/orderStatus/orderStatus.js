@@ -1,4 +1,5 @@
 // pages/order/order.js
+import api  from "../../apis/orderList.js"
 const app = getApp();
 Page({
 
@@ -6,13 +7,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "statusBarHeight": app.globalData.statusBarHeight
+    "statusBarHeight": app.globalData.statusBarHeight,
+    "dataInfo":[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
+    var that = this;
+    api.handleConfirmOrder(options.id).then((resData) => {
+      // console.log(resData)
+      console.log(resData);
+      that.setData({
+        "dataInfo": resData.data
+      })
+    })
+    // wx.getStorage({
+    //   key: 'token',
+    //   success: function (res) {
+    //     api.handleConfirmOrder(options.id, res.data).then((resData) => {
+    //       // console.log(resData)
+    //       that.setData({
+    //           "dataInfo":resData.data
+    //       })
+    //     })
+
+    //   },
+    // })
 
   },
 
@@ -64,7 +87,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  handleToBack() {
+  handleToBack(){
     wx.navigateBack({})
   }
 

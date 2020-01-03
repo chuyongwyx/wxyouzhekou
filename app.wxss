@@ -1,3 +1,2 @@
 /**app.wxss**/
-@import 'common/css/weui.wxss';
 @import 'common/font/font.wxss';

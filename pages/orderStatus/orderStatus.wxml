@@ -1,0 +1,82 @@
+<!--pages/order/order.wxml-->
+<view class="order">
+       <view class="order-head" style="padding-top:{{statusBarHeight}}px;">
+            <view class="order-back" bindtap="handleToBack"><image src="../../images/icon_fanhui.png"></image> </view>
+            <view class="order-h1">订单详情</view>
+      </view>
+      <!-- 订单待使用 -->
+      <view class="order-use" style="margin-top:{{statusBarHeight*2+90}}rpx;" wx:if="{{dataInfo.coupon_status=='待使用'?true:false}}">
+            <view class="order-logo">
+                  <image src="../../images/dingdan_zhuangtai1.png"></image>
+            </view> 
+            <view class="order-type">
+                  <view>待使用</view>
+                  <view>优惠券已发放</view>
+                  <view>请前往 个人中心-优惠券 进行查看</view>
+            </view> 
+      </view>
+       <view class="order-use" style="margin-top:{{statusBarHeight*2+90}}rpx;" wx:if="{{dataInfo.coupon_status=='已过期'?true:false}}">
+            <view class="order-logo">
+                  <image src="../../images/dingdan_zhuangtai3.png"></image>
+            </view> 
+            <view class="order-type">
+                  <view>已过期</view>
+                  <view>优惠券已过期</view>
+                  <view>请前往 个人中心-优惠券 进行查看</view>
+            </view> 
+      </view>
+      <view class="order-use" style="margin-top:{{statusBarHeight*2+90}}rpx;" wx:if="{{dataInfo.coupon_status=='已使用'?true:false}}">
+            <view class="order-logo">
+                  <image src="../../images/dingdan_zhuangtai2.png"></image>
+            </view> 
+            <view class="order-type">
+                  <view>已使用</view>
+                  <view>优惠券已使用</view>
+                  <view>请前往 个人中心-优惠券 进行查看</view>
+            </view> 
+      </view>
+
+
+      <view class="order-details">
+            <view class="order-shop">
+                <view class="order-shop-img">
+                    <image src="{{dataInfo.store_icon}}"></image>
+                </view>
+                <view class="order-name">{{dataInfo.store_name}}</view>
+            </view> 
+            <!-- 商品图片这块 -->
+            <view class="oder-shop-decs">
+                  <view><image src="{{dataInfo.coupon_img}}"></image></view>
+                  <view>{{dataInfo.coupon_title}}</view>
+            </view>
+            <view class="order-num">  
+                  <view>订单编号</view>
+                  <view>
+                        <view>{{dataInfo.order_id}}</view>
+                        <view>复制</view>
+                  </view>
+            </view> 
+            <view class="order-time">
+                  <view>付款时间</view>
+                  <view>{{dataInfo.pay_time?dataInfo.pay_time:'未支付'}}</view>
+            </view>
+            <view class="order-count">
+                  <view>总额</view>
+                  <view>￥{{dataInfo.price}}</view>
+            </view>
+            <view class="order-vip">
+                  <view>钻石会员6.25折</view>
+                  <view>-¥ 3.00</view>
+            </view> 
+            <view class="order-score">
+                  <view>积分抵扣</view>
+                  <view><view> 消耗{{dataInfo.pay_score}}积分</view><view>-¥1.00</view> </view>
+            </view>
+            <view class="order-pay">
+                  <view>实付金额</view>
+                  <view>{{dataInfo.pay_price?dataInfo.pay_price:'未支付'}}</view>
+            </view> 
+      </view>
+
+</view>
+

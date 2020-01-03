@@ -68,31 +68,31 @@ Page({
           },
           //过期了
           fail:function(){
-            wx.getStorage({
-              key: 'userImage',
-              success: function(res) {
-                wx.login({
-                  success: function (resCode) {
-                    api.handleToLogin(resCode.code).then((resLogin) => {
-                      console.log(resLogin)
-                      if (resLogin.code === 1) {
-                        wx.setStorage({
-                          key: 'token',
-                          data: resLogin.data.token,
-                        })
-                        wx.setStorage({
-                          key: 'code',
-                          data: resCode.code,
-                        })
-                      }
-                    })
-                  },
-                  fail: function () {
+            // wx.getStorage({
+            //   key: 'userImage',
+            //   success: function(res) {
+            //     wx.login({
+            //       success: function (resCode) {
+            //         api.handleToLogin(resCode.code).then((resLogin) => {
+            //           console.log(resLogin)
+            //           if (resLogin.code === 1) {
+            //             wx.setStorage({
+            //               key: 'token',
+            //               data: resLogin.data.token,
+            //             })
+            //             wx.setStorage({
+            //               key: 'code',
+            //               data: resCode.code,
+            //             })
+            //           }
+            //         })
+            //       },
+            //       fail: function () {
 
-                  }
-                })
-              },
-            })
+            //       }
+            //     })
+            //   },
+            // })
           }
       })
 
@@ -151,50 +151,69 @@ Page({
   //获取用户信息
   handleTouserInfo(res){
     var that =this;
-      wx.login({
-        success:function(resCode){
-          console.log(resCode);
-          api.handleToLogin(resCode.code).then((resLogin)=>{
-            console.log(resLogin)
-             if(resLogin.code===1){
-                  that.setData({
-                    "userImage": res.detail.userInfo.avatarUrl,
-                    "userName": res.detail.userInfo.nickName,
-                    "userBeforeLogin": false,
-                    //已登录
-                    "userLogined": true,
-                  })
-                  wx.setStorage({
-                    key: "userImage",
-                    data: res.detail.userInfo.avatarUrl
-                  })
-                  wx.setStorage({
-                    key: "userName",
-                    data: res.detail.userInfo.nickName
-                  })
-                  wx.setStorage({
-                    key: 'code',
-                    data: resCode.code,
-                  })
-                  wx.setStorage({
-                    key: 'token',
-                    data: resLogin.data.token,
-                  })
+    that.setData({
+      "userImage": res.detail.userInfo.avatarUrl,
+      "userName": res.detail.userInfo.nickName,
+      "userBeforeLogin": false,
+      //已登录
+      "userLogined": true,
+    })
+    wx.setStorage({
+      key: "userImage",
+      data: res.detail.userInfo.avatarUrl
+    })
+    wx.setStorage({
+      key: "userName",
+      data: res.detail.userInfo.nickName
+    })
+    wx.setStorage({
+      key: 'token',
+      data: '%2BF6W%2BU91qzIEYiytcH0Nmw==',
+    })
+      // wx.login({
+      //   success:function(resCode){
+      //     console.log(resCode);
+      //     api.handleToLogin(resCode.code).then((resLogin)=>{
+      //       console.log(resLogin)
+      //        if(resLogin.code===1){
+      //             that.setData({
+      //               "userImage": res.detail.userInfo.avatarUrl,
+      //               "userName": res.detail.userInfo.nickName,
+      //               "userBeforeLogin": false,
+      //               //已登录
+      //               "userLogined": true,
+      //             })
+      //             wx.setStorage({
+      //               key: "userImage",
+      //               data: res.detail.userInfo.avatarUrl
+      //             })
+      //             wx.setStorage({
+      //               key: "userName",
+      //               data: res.detail.userInfo.nickName
+      //             })
+      //             wx.setStorage({
+      //               key: 'code',
+      //               data: resCode.code,
+      //             })
+      //             wx.setStorage({
+      //               key: 'token',
+      //               data: resLogin.data.token,
+      //             })
 
-             }else{
-                 wx.showToast({
-                   title: '登录异常，授权失败',
-                   icon: 'none',
-                   duration: 3000
-                 })
-             }
+      //        }else{
+      //            wx.showToast({
+      //              title: '登录异常，授权失败',
+      //              icon: 'none',
+      //              duration: 3000
+      //            })
+      //        }
             
-          })
-        },
-        fail:function(){
+      //     })
+      //   },
+      //   fail:function(){
           
-        }
-      })
+      //   }
+      // })
 
      
   },
@@ -210,18 +229,26 @@ Page({
       url: '../found/found',
     })
   },
-  // 跳往优惠券
-  handleToCoupon() {
-    wx.navigateTo({
-      url: '../coupon/coupon',
-    })
+  // 跳往全部优惠券
+  handleToCoupon(res){
+    if(res.currentTarget.id){
+      wx.navigateTo({
+        url: '../coupon/coupon?id='+res.currentTarget.id,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../coupon/coupon',
+      })
+    }
+   
   },
+  
   //跳往待使用
-  handleToUseBefore(){
-    wx.navigateTo({
-      url: '../orderNoUse/orderNoUse',
-    })
-  },
+  // handleToUseBefore(){
+  //   wx.navigateTo({
+  //     url: '../orderNoUse/orderNoUse',
+  //   })
+  // },
 //跳往全部订单
 handleToMyOrder(){
     wx.navigateTo({

@@ -1,5 +1,5 @@
 <!--pages/searchResult/searchResult.wxml-->
-<view class="found"> 
+<view class=""> 
   <view class="search-head" style="padding-top:{{statusBarHeight}}px;">
     <view class="search-tit">
          <view class="search-back" bindtap="handleToBack">
@@ -7,17 +7,18 @@
           </view>
           <view class="search-h1">有折打</view>
     </view>
-    <view class="header">
+    <view class="header" bindtap="handleToSearch">
       <view class="search">
         <icon type="search" size="18" color="" class="search-ico"></icon>
         <view  class="inputValue">今天想去哪里吃喝玩乐</view> 
       </view>
+      <view class="search-r">搜索</view>
     </view>
   </view>
-   
-   <view class="main" >
-        <!-- 列表页 --> 
-        <view class="content-list" style="margin-top:{{bannerTop}}rpx">
+  <!-- 内容区域 -->
+   <view class="" style="padding-top:{{statusBarHeight*2+180}}rpx">
+             <!-- 列表页 --> 
+        <view class="content-list">
             <view class="shopList" wx:for="{{kindsData}}" wx:key="{{this}}" id="{{item.id}}" bindtap="handleToDetails">
                   <view class="shopList-banner"><image src="{{item.headpic}}"></image></view>
                   <view class="shopList-desc">{{item.title}}({{item.storename}})</view>
@@ -37,8 +38,8 @@
         
         </view>
         
-
-    </view>
+   </view>
+   
 
 </view>
 

@@ -10,7 +10,7 @@
     <view class="header">
       <view class="search">
         <icon type="search" size="18" color="" class="search-ico"></icon>
-        <view  class="inputValue"><input type="text"  value="{{inputVal}}" bindinput="handleInputText" placeholder="{{placeholder}}" bindfocus="handleTofocus"/>
+        <view  class="inputValue"><input type="text"  value="{{inputVal}}" bindinput="handleInputText" placeholder="{{placeholder}}" bindfocus="handleTofocus" bindconfirm="handelToSearch"/>
            <icon type="clear" size="18" bind:tap="onToggle" class="search-clear" wx:if="{{clear}}" />    
         </view> 
       </view>
@@ -23,17 +23,17 @@
                 <view class="search-hot">
                       <view class="hot-h">大家都在搜</view>
                       <view class="hot-conent">
-                            <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>
+                            <view wx:for="{{hotSearch}}" wx:key="{{this}}">{{item.key}}</view>
                       </view> 
                 </view>
             <!-- 我搜过的 -->
               <view class="search-his">
                       <view class="his-h">
                           <view>搜过历史</view>
-                          <view><image src="../../images/icon_shanchu.png"></image> </view>    
+                          <view bindtap="handleToDelete"><image src="../../images/icon_shanchu.png"></image> </view>    
                       </view>
                       <view class="his-conent">
-                            <view wx:for="{{6}}" wx:key="{{this}}">心狠嘴辣</view>
+                            <view wx:for="{{searchHist}}" wx:key="{{this}}">{{item}}</view>
                       </view>
                 </view>
           </view>

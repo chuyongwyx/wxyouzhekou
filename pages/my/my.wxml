@@ -51,28 +51,28 @@
               <view class="coupon">
                   <view class="coupon-h">我的优惠劵</view>
                   <view class="coupon-cont" >
-                    <view style="display:flex;align-items:center;" bindtap="handleToCoupon">
+                    <view style="display:flex;align-items:center;" bindtap="handleToCoupon" id="0">
                            <view class="coupon-all">
                                   <view> <image src="../../images/my_all.png"></image> </view>
                                  <view>全部</view> 
                             </view>
                             <view class="border"></view>
                     </view>
-                     <view style="display:flex;align-items:center;">
+                     <view style="display:flex;align-items:center;"  bindtap="handleToCoupon" id="1">
                             <view class="coupon-use">
                               <view> <image src="../../images/coupon-use.png"></image></view>
                               <view>待使用</view>
                             </view> 
                             <view class="border"></view>
                      </view>
-                     <view style="display:flex;align-items:center;">
+                     <view style="display:flex;align-items:center;"  bindtap="handleToCoupon" id="2">
                           <view class="coupon-used">
                               <view> <image src="../../images/coupon-used.png"></image> </view>
                               <view>已使用</view>
                             </view> 
                             <view class="border"></view>
                      </view>
-                      <view class="overdue">
+                      <view class="overdue"  bindtap="handleToCoupon" id="3">
                                 <view><image src="../../images/overdue.png"></image> </view>
                                 <view>已过期</view>
                       </view> 

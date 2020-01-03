@@ -1,4 +1,5 @@
 // pages/coupon-details/coupon-details.js
+import api from '../../apis/coupon.js'
 const app = getApp();
 Page({
 
@@ -8,12 +9,34 @@ Page({
   data: {
     "statusBarHeight": app.globalData.statusBarHeight  ,
     "scrollTop": app.globalData.statusBarHeight * 2 + 100,
+    "detailInfo":{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that =this;
+    api.handleCouponToUse(options.id, '').then((resData)=>{
+      console.log(resData);
+      var data =resData.data;
+      console.log(data);
+      data.writetime = data.writetime.substring(0,11);
+        that.setData({
+          "detailInfo":data
+        })
+    })
+    // wx.getStorage({
+    //   key: 'token',
+    //   success: function(res) {
+    //     api.handleCouponToUse(options.id, res.data).then((resData) => {
+    //       that.setData({
+    //         "detailInfo": resData.data
+    //       })
+    //     })
+    //   },
+    // })
+
 
   },
 
@@ -69,5 +92,47 @@ Page({
   //返回
   handleToBack(){
     wx.navigateBack({})
+  },
+  //拨打电话
+  handleToCall(e) {
+    console.log(e);
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.id,
+    })
+  },
+  //打开地图
+  handleToOpenMap() {
+    var that = this;
+    wx.showLoading({
+      title: '地图打开中',
+    })
+    console.log(that.data.detailInfo.lat);
+    console.log(that.data.detailInfo.lng);
+    wx.openLocation({
+      latitude: parseFloat(that.data.detailInfo.lat),
+      longitude: parseFloat(that.data.detailInfo.lng),
+      success: function (res) {
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
+  },
+  //图片预览
+  handleToImageShow() {
+    var that = this;
+    var url = [];
+    var licenses = that.data.detailInfo.licenses;
+    for (var i = 0, len = licenses.length; i < len; i++) {
+      url.push(licenses[i].url)
+    }
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.previewImage({
+      urls: url,
+      success: function (res) {
+        wx.hideLoading()
+      }
+    })
   }
 })

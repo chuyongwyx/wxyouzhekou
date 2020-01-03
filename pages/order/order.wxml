@@ -7,13 +7,13 @@
            
     </view>
     <view class="order-list" style="padding-top:{{statusBarHeight+100}}rpx;padding-bottom:30rpx;"> 
-          <view  wx:if="{{dataList}}" class="no-order">
+          <view  wx:if="{{orderList.length==0}}" class="no-order">
                <view>暂无数据</view>
                <view>你还没有获得优惠券哦</view>
           </view>
         <!-- 有订单 -->
-        <view wx:if="{{dataList==true?false:true}}">
-                <view class="order-content" wx:for="{{orderList}}" wx:key="{{this}}" id="{{item.id}}">
+        <view wx:if="{{dataList.length!=0}}">
+             <view class="order-content" wx:for="{{orderList}}" wx:key="{{this}}" id="{{item.id}}" bindtap="handleToOrderStatus">
                <view class="order-num">
                     <view>
                         <view>订单编号：</view>

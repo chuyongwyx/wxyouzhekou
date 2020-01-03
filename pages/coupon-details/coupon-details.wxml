@@ -12,7 +12,7 @@
           <view class="coupon-img">
                 <view class="coupon-price">
                       <view>
-                          <view>100</view>
+                          <view>{{detailInfo.price}}</view>
                           <view>元</view>
                       </view>
                       <view>代金劵</view>
@@ -21,8 +21,8 @@
                         <image src="../../images/youzhekouBG2.png" style="height:186rpx;width:26rpx"></image>
                 </view>
                 <view class="coupon-desc">
-                      <view>心狠手辣</view>
-                      <view>有效期至 2019-03-21</view>
+                      <view>{{detailInfo.storename}}</view>
+                      <view>有效期至 {{detailInfo.writetime}}</view>
                 </view>
           </view>
 
@@ -40,7 +40,7 @@
     <!-- 注意事项 -->
      <!-- 注意事项 -->
         <view class="alert">
-            <view class="alert-h">注意事项</view> 
+            <!-- <view class="alert-h">注意事项</view> 
             <view class="alert-type">* 凭支付二维码（不可使用截图），即可到[ 心狠嘴辣·串串料理（北京路店）]进行核销，兑换兼职48元抵100元代金券。</view>
             <view class="alert-info">
                   <view>*核销方式：用户初始二维码，工作人员用微信二维码核销（打开微信”扫一扫“即可）</view>
@@ -51,25 +51,27 @@
             <view class="alert-active">
                   <view>*套餐活动仅限堂食，不可外卖/打包，不兑现，不找零，不提供报销凭证，不与店内其他优惠同享；</view>
                   <view>*特惠活动仅限活动期间使用，超过活动抢购时间未使用可申请退款，需原路退回（微信零钱、信用卡、银行卡）将扣除10%运营手续费。</view>
-            </view> 
+            </view>  -->
+            <rich-text nodes="{{detailInfo.note}}"></rich-text>
         </view>
         
-        <!-- 商家信息 -->
+        
+         <!-- 商家信息 -->
         <view class="business">
             <view class="business-h">商家信息</view>
-            <view class="business-name">心狠嘴辣·串串料理（北京路店）</view>
-            <view class="business-time"><text>营业时间：</text><text>11:00-14:30；17:00-22:30</text></view>
+            <view class="business-name">{{detailInfo.store_name}}</view>
+            <view class="business-time" style="display:flex;line-height:48rpx;"><view style="min-width:150rpx;height:48rpx;">营业时间：</view><view style="">{{detailInfo.opentime}}</view></view>
             <view class="business-tel">
-                <view><text>商家电话：</text><text></text></view>
-                <view><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
+                <view><text>商家电话：</text><text>{{detailInfo.tel}}</text></view>
+                <view bindtap="handleToCall" id="{{detailInfo.tel}}"><image src="../../images/youhuixiangqing_shangjiadianhua.png"></image> </view>
              </view>
              <view class="business-adress">
-                  <view>广州市越秀区惠福东路447号</view>
-                  <view><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
+                  <view style="width:500rpx;line-height:48rpx;">{{detailInfo.address}}</view>
+                  <view bindtap="handleToOpenMap"><image src="../../images/youhuixiangqing_shangjiadingwei.png"></image> </view>
              </view>
              <view class="business-card">
                    <view>营业资质许可</view>
-                   <view><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
+                   <view bindtap="handleToImageShow"><image src="../../images/youhuixiangqing_shangjiazizhi.png"></image> </view>
              </view>
         </view>
 </view>

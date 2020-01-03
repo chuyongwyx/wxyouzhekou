@@ -1,4 +1,5 @@
-// pages/searchResult/searchResult.js
+// pages/searchResult/searchResult.js；
+import api from '../../apis/search.js'
 const app = getApp();
 Page({
 
@@ -7,15 +8,22 @@ Page({
    */
   data: {
     "statusBarHeight": app.globalData.statusBarHeight,
-    "searchTop": app.globalData.statusBarHeight * 2 + 220,
     "inputVal": "",
+    "kindsData":[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that =this;
+      console.log(options);
+    api.handelGetfindCoupon(options.searchVal).then((res)=>{
+        console.log(res);
+        that.setData({
+          "kindsData":res.data
+        })
+    })  
   },
 
   /**
@@ -65,5 +73,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleToSearch(){
+    wx.navigateTo({
+      url: '../search/search',
+    })
+  },
+  handleToDetails(res){
+    wx.navigateTo({
+      url: '../details/details?id=' + res.currentTarget.id,
+    })
+  },
+  handleToBack(){
+    wx.navigateBack({
+      url:'../search/search'
+    })
   }
 })

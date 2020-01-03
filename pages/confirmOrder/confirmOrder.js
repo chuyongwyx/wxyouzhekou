@@ -20,13 +20,14 @@ Page({
     //判断是否为全面屏
     "isFullSucreen": false,
     //商品id
-    "shopId":'' 
+    "shopId":'', 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
     this.checkFullSucreen();
     var count = parseFloat(this.data.activePrice) * parseInt(this.data.num) - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
     count = count + '.00';

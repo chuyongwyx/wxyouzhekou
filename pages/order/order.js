@@ -21,16 +21,11 @@ Page({
         key: 'token',
         success: function(res) {
           api.handleOrderList(res.data).then((resData)=>{
-              if(resData.data.length==0){
-                  that.setData({
-                    "dataList":true
-                  })
-              }else{
+                console.log(resData);
                   that.setData({
                     "orderList": resData.data,
-                    "datalist":false,
                   })
-              }
+              
           })
         },
       })
@@ -88,5 +83,10 @@ Page({
   handleToBack(){
     wx.navigateBack({})
   },
-
+  //前往订单详情页
+  handleToOrderStatus(resId){
+      wx.navigateTo({
+        url: '../orderStatus/orderStatus?id='+ resId.currentTarget.id,
+      })
+  }
 })

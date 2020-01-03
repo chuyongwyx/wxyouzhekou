@@ -172,7 +172,8 @@
 /* 商家信息 */
 .business{
     margin: 0 30rpx;
-    padding-bottom: 146rpx;
+    padding-bottom: 38rpx;
+    border-bottom: 2rpx solid #D8D8D8;
 }
 .business-h{
     margin: 38rpx 0;

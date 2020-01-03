@@ -36,68 +36,37 @@
   margin-left: 224rpx;
   line-height: 88rpx;
 }
-
-/* 筛选 */
-.screen{
-    display:flex;
-    margin:0 30rpx;
-    margin-top: 30rpx;
-}
-.screen>view:nth-of-type(2){
-  margin:0 40rpx;
-}
-.screen>view>view:nth-of-type(1){
-  margin-right: 10rpx;
-}
-.active{
-  font-size:30rpx;
-  font-family:PingFangSC-Medium,PingFang SC;
-  font-weight:500;
-  color:rgba(255,116,20,1);
-}
-.deactive{
-  font-size:30rpx;
-  font-family:PingFangSC-Medium,PingFang SC;
-  font-weight:500;
-  color:rgba(150,150,150,1);
-
-}
-/* banner部分 */
-.banner{
+.header{
   margin:0 30rpx;
-  padding-bottom: 40rpx;
-  border-bottom: 2rpx solid #ececec;
-  margin-bottom: 8rpx;
-
+  display: flex;
+  padding-bottom:12rpx;
+  line-height: 80rpx;
+  justify-content: space-between;
 }
-.banner-h{
-  padding: 20rpx 0;
+.search{
+  display: flex;
+   width:600rpx;
+    height:80rpx;
+    background:rgba(242,242,242,1);
+    border-radius:42rpx;
+    align-items: center;
+    font-size: 30rpx;
+}
+.search-ico{
+    box-sizing: border-box;
+   color: #A7A7A7;
+   margin-left: 30rpx;
+   padding-top:35rpx; 
+   
+}
+.inputValue{
+  color:#A7A7A7;
+}
+.search-r{
   font-size:30rpx;
   font-family:PingFangSC-Medium,PingFang SC;
   font-weight:500;
   color:rgba(51,51,51,1);
-  line-height: 1;
-
-}
-.banner-swiper{
-  width:690rpx;
-  height:260rpx;
-  border-radius:12rpx;
-  box-shadow:0px 6rpx 24rpx -2rpx rgba(0,0,0,0.20);
-  overflow: hidden;
-  transform: translateY(0);
-}
-.banner-img{
-  width:690rpx;
-  height:260rpx;
-  background:rgba(255,255,255,1);
-  border-radius:12rpx;
-  transform: translateY(0);
-}
-.banner-img image{
-  width:690rpx;
-  height:260rpx;
-  border-radius:12rpx;
 }
 /* 商品列表 */
 .content-list{
@@ -172,15 +141,6 @@
   left:2rpx;
   background:rgba(151,151,151,1);
 }
-/* .shopList-fix-price>view:nth-of-type(1)>text:nth-of-type(2){
-  font-size:26rpx;
-  font-family:'DIN Alternate';
-  font-weight:bold;
-  color:rgba(150,150,150,1);
-  margin-left:-14rpx;
-  line-height: 38rpx;
-
-} */
 .shopList-cell{
   display: flex;
   font-size:26rpx;

@@ -42,7 +42,7 @@
     font-size:30rpx;
     font-family:PingFangSC-Medium,PingFang SC;
     font-weight:500;
-    line-height: 1;
+    line-height: 35rpx;
     margin-top: 45rpx;
     margin-bottom: 30rpx;
 }

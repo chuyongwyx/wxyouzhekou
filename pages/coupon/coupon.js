@@ -1,4 +1,5 @@
-// pages/coupon/coupon.js
+// pages/coupon/coupon.js;
+import api from '../../apis/coupon.js'
 const app = getApp();
 Page({
 
@@ -8,33 +9,16 @@ Page({
   data: {
     "statusBarHeight": app.globalData.statusBarHeight ,
     "scrollTop": app.globalData.statusBarHeight * 2 + 190,
-    "allCoupon":true,
+    "allCoupon":false,
     "couponUseBefore":false,
     "couponUsed":false,
     "couponTimed":false,
-    //这是模拟后端返回的数据
-    "couponList":[
-        {
-            "couponPrice":"100",
-            "shopName":"心狠手辣"
-        },
-        {
-          "couponPrice": "100",
-          "shopName": "心狠手辣"
-        },
-        {
-          "couponPrice": "100",
-          "shopName": "心狠手辣"
-        }, 
-        {
-          "couponPrice": "100",
-          "shopName": "心狠手辣"
-        }, 
-        {
-          "couponPrice": "100",
-          "shopName": "心狠手辣"
-        }
-    ],
+    "allCount":"",
+    "waitCount":"",
+    "useCount":"",
+    "overdueCount":"",
+    //后端返回的数据
+    "couponList":[],
     //详情信息的显引开关
     "detailsList":[]
   },
@@ -44,13 +28,85 @@ Page({
    */
   onLoad: function (options) {
       //遍历循环从后端请求回来的数据
-      var detailsListTwo =[];
-      for (var i = 0, len=this.data.couponList.length;i<len;i++){
-        detailsListTwo.push('false');
-      }
-     this.setData({
-       "detailsList": detailsListTwo
-     })
+    if (options.id == 1) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": true,
+        "couponUsed": false,
+        "couponTimed": false,
+      })
+    }else if (options.id == 2) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": false,
+        "couponUsed": true,
+        "couponTimed": false,
+      })
+    }else if (options.id == 3) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": false,
+        "couponUsed": false,
+        "couponTimed": true,
+      })
+    }else{
+      this.setData({
+        "allCoupon": true,
+        "couponUseBefore": false,
+        "couponUsed": false,
+        "couponTimed": false,
+      })
+    }
+
+
+      var that = this;
+      console.log(options);
+        api.handleCoupon('', options.id).then((resData)=>{
+          console.log(resData);
+          var detailsListTwo = [];
+          //过滤字段
+          var couponListTwo=[];
+            couponListTwo=resData.data
+          for (var i = 0, len = resData.data.length; i < len; i++) {
+            detailsListTwo.push('false');
+            couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0,11);
+          }
+          that.setData({
+            "couponList": couponListTwo,
+            "detailsList": detailsListTwo,
+            "allCount": resData.allCount,
+            "waitCount": resData.waitCount,
+            "useCount": resData.useCount,
+            "overdueCount": resData.overdueCount,
+          })
+        });
+        // wx.getStorage({
+        //   key: 'token',
+        //   success: function(res) {
+        //     api.handleCoupon(res.data,options.id).then((resData)=>{
+                // var detailsListTwo = [];
+                    //过滤字段
+                    //var couponListTwo = [];
+                  // couponListTwo = resData.data
+                // for (var i = 0, len = resData.data.length; i < len; i++) {
+                //   detailsListTwo.push('false');
+                // }
+                // that.setData({
+                //   "detailsList": detailsListTwo,
+                //   "couponList": resData.data,
+                    // "allCount": resData.allCount,
+                    // "waitCount": resData.waitCount,
+                    // "useCount": resData.useCount,
+                    // "overdueCount": resData.overdueCount,
+                // })
+                
+        //     })
+        //   },
+        // })
+
+
+
+     
   },
 
   /**
@@ -101,6 +157,77 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //点击跳往各个分类
+  handleTocouponList(res){ 
+    if (res.currentTarget.id == 1) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": true,
+        "couponUsed": false,
+        "couponTimed": false,
+      })
+    } else if (res.currentTarget.id == 2) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": false,
+        "couponUsed": true,
+        "couponTimed": false,
+      })
+    } else if (res.currentTarget.id == 3) {
+      this.setData({
+        "allCoupon": false,
+        "couponUseBefore": false,
+        "couponUsed": false,
+        "couponTimed": true,
+      })
+    } else {
+      this.setData({
+        "allCoupon": true,
+        "couponUseBefore": false,
+        "couponUsed": false,
+        "couponTimed": false,
+      })
+    }
+
+    var that = this;
+    api.handleCoupon('', res.currentTarget.id).then((resData) => {
+      console.log(resData);
+      //过滤字段
+      var detailsListTwo = [];
+      var couponListTwo = [];
+      couponListTwo = resData.data
+      for (var i = 0, len = resData.data.length; i < len; i++) {
+        detailsListTwo.push('false');
+        couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0, 11);
+      }
+      that.setData({
+        "couponList": couponListTwo,
+        "detailsList": detailsListTwo,
+      })
+    });
+      // wx.getStorage({
+        //   key: 'token',
+        //   success: function(res) {
+        //     api.handleCoupon(res.data,res.currentTarget.id).then((resData)=>{
+                // var detailsListTwo = [];
+                // for (var i = 0, len = resData.data.length; i < len; i++) {
+                //   detailsListTwo.push('false');
+                // }
+                // that.setData({
+                //   "detailsList": detailsListTwo,
+                //   "couponList": resData.data,
+                    // "allCount": resData.allCount,
+                    // "waitCount": resData.waitCount,
+                    // "useCount": resData.useCount,
+                    // "overdueCount": resData.overdueCount,
+                // })
+
+        //     })
+        //   },
+        // })
+
+
+  },
  //详情的显示和隐藏
   handleToShowOrHide(e){
     console.log(e);
@@ -123,14 +250,18 @@ Page({
       })
     }
   },
+  //请求优惠券列表
+  handleToCoupons(){
+      
+  },
   //返回
   handleToBack(){
     wx.navigateBack({})
   },
   //跳到立即使用
-  handleToUse(){
+  handleToUse(res){
     wx.navigateTo({
-      url: '../coupon-details/coupon-details',
+      url: '../coupon-details/coupon-details?id='+res.currentTarget.id,
     })
   }
 })

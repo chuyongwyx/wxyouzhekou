@@ -17,25 +17,27 @@ Page({
    */
   onLoad: function (options) {
     var that =this;
-    api.handleCouponToUse(options.id, '').then((resData)=>{
-      console.log(resData);
-      var data =resData.data;
-      console.log(data);
-      data.writetime = data.writetime.substring(0,11);
-        that.setData({
-          "detailInfo":data
-        })
-    })
-    // wx.getStorage({
-    //   key: 'token',
-    //   success: function(res) {
-    //     api.handleCouponToUse(options.id, res.data).then((resData) => {
-    //       that.setData({
-    //         "detailInfo": resData.data
-    //       })
+    // api.handleCouponToUse(options.id, '').then((resData)=>{
+    //   console.log(resData);
+    //   var data =resData.data;
+    //   console.log(data);
+    //   data.writetime = data.writetime.substring(0,11);
+    //     that.setData({
+    //       "detailInfo":data
     //     })
-    //   },
     // })
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+        api.handleCouponToUse(options.id, res.data).then((resData) => {
+            var data =resData.data;
+              data.writetime = data.writetime.substring(0,11);
+                that.setData({
+                  "detailInfo":data
+                })
+        })
+      },
+    })
 
 
   },

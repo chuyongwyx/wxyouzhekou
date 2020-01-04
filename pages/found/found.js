@@ -30,7 +30,7 @@ Page({
     //纬度
     "latitude":'23.131970',
     //经度
-    "longitude": '113.322670',
+    "longitude":'113.322670',
     //获取的分类的相应数据数据
      "kindsData":[], 
     //获取轮播图
@@ -63,7 +63,6 @@ Page({
     qqmapsdk = new QQMapWX({
       key:'K6ABZ-32PR6-LXWSL-EZWDW-XC3NH-CYFC4'
     })
-  
     //获取分类信息
     api.handleGetCategory().then((res) => {
       console.log(res.data);
@@ -185,7 +184,7 @@ Page({
 
   },
   getUserLocation: function () {
-    let vm = this
+    let that = this
     wx.getSetting({
       success: (res) => {
         // res.authSetting['scope.userLocation'] == undefined  表示 初始化进入该页面
@@ -203,6 +202,7 @@ Page({
                   title: '拒绝授权',
                   icon: 'none'
                 })
+                that.getLocation()
                 setTimeout(() => {
                   wx.navigateBack()
                 }, 1500)
@@ -212,7 +212,7 @@ Page({
                     // console.log('dataAu:success', dataAu)
                     if (dataAu.authSetting["scope.userLocation"] == true) {
                       //再次授权，调用wx.getLocation的API
-                      vm.getLocation(dataAu)
+                      that.getLocation(dataAu)
                     } else {
                       wx.showToast({
                         title: '授权失败',
@@ -232,13 +232,13 @@ Page({
         else if (res.authSetting['scope.userLocation'] == undefined) {
           // console.log('authSetting:status:初始化进入，未授权', res.authSetting['scope.userLocation'])
           //调用wx.getLocation的API
-          vm.getLocation(res)
+          that.getLocation(res)
         }
         // 已授权
         else if (res.authSetting['scope.userLocation']) {
           // console.log('authSetting:status:已授权', res.authSetting['scope.userLocation'])
           //调用wx.getLocation的API
-          vm.getLocation(res)
+          that.getLocation(res)
         }
       }
     })
@@ -257,70 +257,15 @@ Page({
           "longitude": longitude
         })
         that.getLocat(that.data.latitude, that.data.longitude);
-      
       },
       fail: function (res) {
-        // console.log('getLocation:fail', res)
-        if (res.errMsg === 'getLocation:fail:auth denied') {
-          wx.showToast({
-            title: '拒绝授权',
-            icon: 'none'
-          })
-          setTimeout(() => {
-            wx.navigateBack()
-          }, 1500)
-          that.getLocat(that.data.latitude, that.data.longitude);
-          return
-        }
-        if (!userLocation || !userLocation.authSetting['scope.userLocation']) {
-          vm.getUserLocation()
-        } else if (userLocation.authSetting['scope.userLocation']) {
-          wx.showModal({
-            title: '',
-            content: '请在系统设置中打开定位服务',
-            showCancel: false,
-            success: result => {
-              if (result.confirm) {
-                wx.navigateBack()
-              }
-            }
-          })
-          that.getLocat(that.data.latitude, that.data.longitude);
-        } else {
-          wx.showToast({
-            title: '授权失败',
-            icon: 'none'
-          })
-          that.getLocat(that.data.latitude, that.data.longitude);
-          setTimeout(() => {
-            wx.navigateBack()
-          }, 1500)
-        }
+        that.getLocat(that.data.latitude, that.data.longitude);
       }
     })
   },
   //将经纬度转化为地理位置
-  getLocat: function (lat, long) {
+  getLocat: function (lat,long) {
     var that = this;
-    qqmapsdk.reverseGeocoder({
-      location: {
-        latitude: lat,
-        longitude: long
-      },
-      success: function (res) {
-        console.log(res);
-        var cityStr = res.result.address_component.city.substring(0, res.result.address_component.city.substring.length)
-
-        that.setData({
-          city: cityStr,
-        })
-
-      },
-      fail: function (res) {
-
-      }
-    })
-
     //判断是从哪个地方到found页面中来的
     //好吃的
     if (app.globalData.goodsFood) {
@@ -369,6 +314,26 @@ Page({
         })
       })
     }
+    qqmapsdk.reverseGeocoder({
+      location: {
+        latitude: lat,
+        longitude: long
+      },
+      success: function (res) {
+        console.log(res);
+        var cityStr = res.result.address_component.city.substring(0, res.result.address_component.city.substring.length)
+
+        that.setData({
+          city: cityStr,
+        })
+
+      },
+      fail: function (res) {
+
+      }
+    })
+
+   
 
   },
   //是否重新定位

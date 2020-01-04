@@ -1,5 +1,6 @@
 // pages/confirmOrder/confirmOrder.js
-import api from "../../apis/confirmOrder.js"
+import api from "../../apis/confirmOrder.js";
+import apis from '../../apis/orderList.js';
 const app = getApp();
 Page({
 
@@ -12,28 +13,38 @@ Page({
      "integrate":true,
      //数量
      "num":'1',
-     "shopPrice":"100.00",
-     "activePrice":"48.00",
-     "vipPrice":'3.00',
-     "intergratePrice":'1.00',
+     "shopPriceAll":"",
      "count":"",
     //判断是否为全面屏
     "isFullSucreen": false,
     //商品id
     "shopId":'', 
+    "shopInfo":{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-    this.checkFullSucreen();
-    var count = parseFloat(this.data.activePrice) * parseInt(this.data.num) - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
-    count = count + '.00';
+    var that =this;
     this.setData({
-      "count":count
+       "shopId":options.id
     })
+    apis.handleGetCoupDetlToAddOrder(options.id).then((res)=>{
+        that.setData({
+          "shopInfo":res.data,
+          "shopPriceAll": res.data.sellprice
+        })
+      var count = parseFloat(res.data.sellprice) * parseInt(this.data.num) - parseFloat(res.data.deductPrice);
+      count = count + '.00';
+      this.setData({
+        "count": count
+      })
+    })
+
+
+    this.checkFullSucreen();
+  
   },
 
   /**
@@ -91,18 +102,20 @@ Page({
          num = num-1;
       }
     if (this.data.integrate) {
-      var count = parseFloat(this.data.activePrice) * num - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * num - parseFloat(this.data.shopInfo.deductPrice);
       count= count+'.00'
       this.setData({
         "num": num,
-        "count": count
+        "count": count,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * num+'.00'
       })
     }else{
-      var count = parseFloat(this.data.activePrice) * num - parseFloat(this.data.vipPrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * num 
       count = count + '.00'
       this.setData({
         "num": num,
-        "count": count
+        "count": count,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * num+'.00'
       })
     }
   },
@@ -111,18 +124,20 @@ Page({
     var num = parseInt(this.data.num);
      num=num+1;
     if (this.data.integrate){
-      var count = parseFloat(this.data.activePrice) * num - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * num - parseFloat(this.data.shopInfo.deductPrice);
       count = count + '.00'
       this.setData({
         "num": num,
-        "count": count
+        "count": count,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * num+'.00'
       })
     }else{
-      var count = parseFloat(this.data.activePrice) * num - parseFloat(this.data.vipPrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * num 
       count = count + '.00'
       this.setData({
         "num": num,
-        "count": count
+        "count": count,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * num+'.00'
       })
     }
   },
@@ -130,18 +145,20 @@ Page({
   handleToImage(){
     var integrate = this.data.integrate;
     if (integrate===true){
-      var count = parseFloat(this.data.activePrice) * parseInt(this.data.num ) - parseFloat(this.data.vipPrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * parseInt(this.data.num);
       count = count + '.00'
       this.setData({
         "count": count,
-        "integrate": false
+        "integrate": false,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * parseInt(this.data.num)
       })
     }else{
-      var count = parseFloat(this.data.activePrice) * parseInt(this.data.num) - parseFloat(this.data.vipPrice) - parseFloat(this.data.intergratePrice);
+      var count = parseFloat(this.data.shopInfo.sellprice) * parseInt(this.data.num) - parseFloat(this.data.shopInfo.deductPrice);
       count = count + '.00'
       this.setData({
         "integrate": true,
-        "count": count
+        "count": count,
+        "shopPriceAll": parseFloat(this.data.shopInfo.sellprice) * parseInt(this.data.num)
       })
     }
 
@@ -172,9 +189,14 @@ Page({
       key: 'token',
       success: function(resToken) {
         api.handleToAddOrder(that.data.shopId, that.data.num, that.data.integrate, resToken.data).then((res)=>{
+            console.log(res);
             wx.showToast({
               title: '购买成功',
             })
+            setTimeout(()=>{
+                wx.navigateBack({})
+            },1000)
+            
         })
       },
     })

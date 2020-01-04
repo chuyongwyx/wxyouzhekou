@@ -1,5 +1,6 @@
 // pages/my/my.js
-import api  from "../../apis/login.js"
+import api  from "../../apis/login.js";
+import apis from '../../apis/my.js';
 const app = getApp()
 Page({
 
@@ -18,7 +19,9 @@ Page({
     //距离顶部安全距离
     "statusBarHeight": app.globalData.statusBarHeight,
     //判断是否为全面屏
-    "isFullSucreen": false
+    "isFullSucreen": false,
+    //个人中心
+    "dataList":{}
   },
 
   /**
@@ -98,20 +101,67 @@ Page({
 
     //判断是否为全面屏
     this.checkFullSucreen();
+   
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+ 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    wx.getStorage(
+      {
+        key: 'userImage',
+        success: function (res) {
+          if (res.data != "") {
+            that.setData({
+              //未登录
+              "userBeforeLogin": false,
+              //已登录
+              "userLogined": true,
+              //用户头像
+              "userImage": res.data,
 
+            })
+          }
+
+        }
+      })
+    wx.getStorage({
+      key: 'userName',
+      success: function (res) {
+        if (res.data != "") {
+          that.setData({
+            //未登录
+            "userBeforeLogin": false,
+            //已登录
+            "userLogined": true,
+            //用户头像
+            "userName": res.data
+
+          })
+        }
+      },
+    })
+    //获取个人中心资料
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        apis.handleToMyCenter(res.data).then((res) => {
+          that.setData({
+            "dataList": res.data
+          })
+        })
+      },
+    })
   },
 
   /**
@@ -300,20 +350,56 @@ handleToMyOrder(){
   },
   //跳往提现的页面
   handleToRightCash(){
-      wx.navigateTo({
-        url: '../cash/cash',
-      })
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        wx.navigateTo({
+          url: '../cash/cash',
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          image: '../../images/fail.png',
+          title: '你还未登录',
+        })
+      }
+    })
+
+     
   },
   //明细页面
   handleToIncome(){
-    wx.navigateTo({
-      url: '../incomeDetails/incomeDetail',
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+        wx.navigateTo({
+          url: '../incomeDetails/incomeDetail',
+        })
+      },
+      fail:function(){
+        wx.showToast({
+          image: '../../images/fail.png',
+          title: '你还未登录',
+        })
+      }
     })
+    
   },
   //排行榜
   handleToSort(){
-    wx.navigateTo({
-      url: '../ranking/ranking',
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        wx.navigateTo({
+          url: '../ranking/ranking',
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          image: '../../images/fail.png',
+          title: '你还未登录',
+        })
+      }
     })
   }
 

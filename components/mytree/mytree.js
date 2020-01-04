@@ -7,7 +7,7 @@ Component({
     open: false,
     isBranch: false,
   },
-
+ 
   methods: {
     toggle: function (e) {
       if (this.data.isBranch) {

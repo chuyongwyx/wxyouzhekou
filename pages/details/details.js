@@ -15,7 +15,8 @@ Page({
     "share":false,
     "imagePath":"", 
     "detailInfo":{},
-    "template":{}
+    "template":{},
+    "id":""
   },
  
   /**
@@ -23,6 +24,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    this.setData({
+      "id":options.id
+    })
     //判断是否为全面屏
     this.checkFullSucreen();
     //获取详情信息
@@ -170,7 +174,6 @@ Page({
   //前往确认订单页
   handleToBuy(resId){
     if (this.data.detailInfo.unBuyReason){
-          console.log('出了鬼')
           //判断用户不能购买原因
           if (this.data.detailInfo.unBuyReason == '没有登陆！') {
             wx.showModal({
@@ -202,7 +205,7 @@ Page({
             console.log(resId);
             console.log('有权限')
             wx.navigateTo({
-              url: '../confirmOrder/confirmOrder?id=' + resId.currentTarget.id,
+              url: '../confirmOrder/confirmOrder?id='+resId.currentTarget.id,
             })
         }else{
            //无权限
@@ -272,6 +275,28 @@ Page({
       key: "userName",
       data: res.detail.userInfo.nickName
     })
+    wx.setStorage({
+      key: 'token',
+      data: '%2BF6W%2BU91qzIEYiytcH0Nmw==',
+    })
+    api.handleGetDetial(this.data.id,'%2BF6W%2BU91qzIEYiytcH0Nmw==').then((res) => {
+          console.log(res)
+          that.setData({
+            "detailInfo": res.data
+          })
+        })
+    // wx.getStorage({
+    //   key: 'token',
+    //   success: function (res) {
+    //     api.handleGetDetial(options.id, res.data).then((res) => {
+    //       console.log(res)
+    //       that.setData({
+    //         "detailInfo": res.data
+    //       })
+    //     })
+
+    //   },
+    //  })
     var haibao = {
       width: '650rpx',
       height: '938rpx',

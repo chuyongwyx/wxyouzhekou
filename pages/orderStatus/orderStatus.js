@@ -17,25 +17,25 @@ Page({
   onLoad: function (options) {
     console.log(options);
     var that = this;
-    api.handleConfirmOrder(options.id).then((resData) => {
-      // console.log(resData)
-      console.log(resData);
-      that.setData({
-        "dataInfo": resData.data
-      })
-    })
-    // wx.getStorage({
-    //   key: 'token',
-    //   success: function (res) {
-    //     api.handleConfirmOrder(options.id, res.data).then((resData) => {
-    //       // console.log(resData)
-    //       that.setData({
-    //           "dataInfo":resData.data
-    //       })
-    //     })
-
-    //   },
+    // api.handleConfirmOrder(options.id).then((resData) => {
+    //   // console.log(resData)
+    //   console.log(resData);
+    //   that.setData({
+    //     "dataInfo": resData.data
+    //   })
     // })
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        api.handleConfirmOrder(options.id, res.data).then((resData) => {
+          // console.log(resData)
+          that.setData({
+              "dataInfo":resData.data
+          })
+        })
+
+      },
+    })
 
   },
 

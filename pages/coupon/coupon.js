@@ -61,48 +61,48 @@ Page({
 
       var that = this;
       console.log(options);
-        api.handleCoupon('', options.id).then((resData)=>{
-          console.log(resData);
-          var detailsListTwo = [];
-          //过滤字段
-          var couponListTwo=[];
-            couponListTwo=resData.data
-          for (var i = 0, len = resData.data.length; i < len; i++) {
-            detailsListTwo.push('false');
-            couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0,11);
-          }
-          that.setData({
-            "couponList": couponListTwo,
-            "detailsList": detailsListTwo,
-            "allCount": resData.allCount,
-            "waitCount": resData.waitCount,
-            "useCount": resData.useCount,
-            "overdueCount": resData.overdueCount,
-          })
-        });
-        // wx.getStorage({
-        //   key: 'token',
-        //   success: function(res) {
-        //     api.handleCoupon(res.data,options.id).then((resData)=>{
-                // var detailsListTwo = [];
-                    //过滤字段
-                    //var couponListTwo = [];
-                  // couponListTwo = resData.data
-                // for (var i = 0, len = resData.data.length; i < len; i++) {
-                //   detailsListTwo.push('false');
-                // }
-                // that.setData({
-                //   "detailsList": detailsListTwo,
-                //   "couponList": resData.data,
-                    // "allCount": resData.allCount,
-                    // "waitCount": resData.waitCount,
-                    // "useCount": resData.useCount,
-                    // "overdueCount": resData.overdueCount,
-                // })
+        // api.handleCoupon('', options.id).then((resData)=>{
+        //   console.log(resData);
+        //   var detailsListTwo = [];
+        //   //过滤字段
+        //   var couponListTwo=[];
+        //     couponListTwo=resData.data
+        //   for (var i = 0, len = resData.data.length; i < len; i++) {
+        //     detailsListTwo.push('false');
+        //     couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0,11);
+        //   }
+        //   that.setData({
+        //     "couponList": couponListTwo,
+        //     "detailsList": detailsListTwo,
+        //     "allCount": resData.allCount,
+        //     "waitCount": resData.waitCount,
+        //     "useCount": resData.useCount,
+        //     "overdueCount": resData.overdueCount,
+        //   })
+        // });
+        wx.getStorage({
+          key: 'token',
+          success: function(res) {
+            api.handleCoupon(res.data,options.id).then((resData)=>{
+                var detailsListTwo = [];
+                    // 过滤字段
+                    var couponListTwo = [];
+                  couponListTwo = resData.data
+                for (var i = 0, len = resData.data.length; i < len; i++) {
+                  detailsListTwo.push('false');
+                }
+                that.setData({
+                  "detailsList": detailsListTwo,
+                  "couponList": resData.data,
+                    "allCount": resData.allCount,
+                    "waitCount": resData.waitCount,
+                    "useCount": resData.useCount,
+                    "overdueCount": resData.overdueCount,
+                })
                 
-        //     })
-        //   },
-        // })
+            })
+          },
+        })
 
 
 
@@ -190,41 +190,41 @@ Page({
     }
 
     var that = this;
-    api.handleCoupon('', res.currentTarget.id).then((resData) => {
-      console.log(resData);
-      //过滤字段
-      var detailsListTwo = [];
-      var couponListTwo = [];
-      couponListTwo = resData.data
-      for (var i = 0, len = resData.data.length; i < len; i++) {
-        detailsListTwo.push('false');
-        couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0, 11);
-      }
-      that.setData({
-        "couponList": couponListTwo,
-        "detailsList": detailsListTwo,
-      })
-    });
-      // wx.getStorage({
-        //   key: 'token',
-        //   success: function(res) {
-        //     api.handleCoupon(res.data,res.currentTarget.id).then((resData)=>{
-                // var detailsListTwo = [];
-                // for (var i = 0, len = resData.data.length; i < len; i++) {
-                //   detailsListTwo.push('false');
-                // }
-                // that.setData({
-                //   "detailsList": detailsListTwo,
-                //   "couponList": resData.data,
-                    // "allCount": resData.allCount,
-                    // "waitCount": resData.waitCount,
-                    // "useCount": resData.useCount,
-                    // "overdueCount": resData.overdueCount,
-                // })
+    // api.handleCoupon('', res.currentTarget.id).then((resData) => {
+    //   console.log(resData);
+    //   //过滤字段
+    //   var detailsListTwo = [];
+    //   var couponListTwo = [];
+    //   couponListTwo = resData.data
+    //   for (var i = 0, len = resData.data.length; i < len; i++) {
+    //     detailsListTwo.push('false');
+    //     couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0, 11);
+    //   }
+    //   that.setData({
+    //     "couponList": couponListTwo,
+    //     "detailsList": detailsListTwo,
+    //   })
+    // });
+      wx.getStorage({
+          key: 'token',
+          success: function(resToken) {
+            api.handleCoupon(resToken.data,res.currentTarget.id).then((resData)=>{
+                 //   //过滤字段
+                    var detailsListTwo = [];
+                    var couponListTwo = [];
+                    couponListTwo = resData.data
+                    for (var i = 0, len = resData.data.length; i < len; i++) {
+                      detailsListTwo.push('false');
+                      couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0, 11);
+                    }
+                    that.setData({
+                      "couponList": couponListTwo,
+                      "detailsList": detailsListTwo,
+                    })
 
-        //     })
-        //   },
-        // })
+            })
+          },
+        })
 
 
   },

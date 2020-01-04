@@ -8,46 +8,39 @@
       <!-- 累计收入 -->
       <view class="count">
             <view>累计收入</view>
-            <view>15.000.000</view>
+            <view>{{total_commission?total_commission:'0'}}</view>
       </view>
       <!-- 提现 -->
       <view class="able-cash">
             <view>
                   <view>可提现</view>
-                  <view>15.000.000</view>
+                  <view>{{commission?commission:'0'}}</view>
             </view>
             <view>
                   <view>待到账</view>
-                  <view>15.000.000</view>
+                  <view>{{total_arrival?total_arrival:'0'}}</view>
             </view>
       </view> 
       <!-- 收支记录 -->
       <view class="collect">
              <view>收支记录</view>
              <view>
-                  <view class="active">全部</view>
-                  <view class="deactive">收入</view>
-                  <view class="deactive">待到账</view>
-                  <view class="deactive">提现</view>
+                  <view class="{{all?'active':'deactive'}}" bindtap="handletotype" id="0">全部</view>
+                  <view class="{{get?'active':'deactive'}}" bindtap="handletotype" id="1">收入</view>
+                  <view class="{{await?'active':'deactive'}}" bindtap="handletotype" id="2">待到账</view>
+                  <view class="{{comtrue?'active':'deactive'}}"bindtap="handletotype" id="3">提现</view>
              </view>
       </view>
       <!-- 记录列表 -->
       <view class="list">
-          <view class="list-content">
+          <view class="list-content" wx:for="{{dataList}}" wx:key="{{this}}">
                   <view>
-                        <view>好友XXX下单</view>
-                        <view>2019-11-13</view>
+                        <view>{{item.title}}</view>
+                        <view>{{item.create_time}}</view>
                   </view>
-                  <view>20</view>
+                  <view>{{item.price}}</view>
           </view> 
-           <view class="list-content">
-                  <view>
-                        <view>好友XXX下单</view>
-                        <view>2019-11-13</view>
-                  </view>
-                  <view>20</view>
-          </view> 
-      
+          
       </view> 
       </view>
 </view>

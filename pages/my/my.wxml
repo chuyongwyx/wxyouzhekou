@@ -10,11 +10,11 @@
               <view class="user-logined" wx:if="{{userLogined}}">
                   <view><image src="{{userImage}}"></image> </view>
                   <view>
-                        <view class="name">{{userName}}</view>
+                        <view class="name">{{dataList.name}}</view>
                         <view class="telNum">
                               <view>手机号：</view>
                              <view wx:if="{{true}}"><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="telButton">未绑定</button></view>
-                             <view wx:if="{{false}}">13245654654</view>
+                             <view wx:if="{{false}}">{{dataList.mobile}}</view>
                         </view>
                   </view> 
               </view>
@@ -24,14 +24,14 @@
                     <view class="moneyInfo">
                           <view class="moneyInfo_left">
                                 <view class="cash">可提现</view>
-                                <view class="cash_money">49230.00</view>
+                                <view class="cash_money">{{dataList.commission?dataList.commission:'0'}}</view>
                                 <view class="count_money">
                                       <view>累计收入</view>
-                                      <view>3947192</view>
+                                      <view>{{dataList.total_commission?dataList.total_commission:'0'}}</view>
                                 </view>
                                 <view class="await_money">
                                       <view>待到账</view>
-                                      <view>3947192</view>
+                                      <view>{{dataList.total_arrival?dataList.total_arrival:'0'}}</view>
                                 </view>
                           </view>
                           <view class="moneyInfo_right">

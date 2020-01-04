@@ -331,8 +331,10 @@ Page({
         // console.log('getLocation:success', res)
         var latitude = res.latitude;
         var longitude = res.longitude;
-        that.data.latitude = latitude;
-        that.data.longitude = longitude;
+        that.setData({
+          "latitude": latitude,
+          "longitude": longitude
+        })
         that.getLocat(latitude, longitude);
       },
       fail: function (res) {

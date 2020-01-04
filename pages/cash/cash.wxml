@@ -9,18 +9,18 @@
           <!-- 圆形进度图 -->
           <view class="circle" wx:if="{{input}}">
                 <view class="circle-content">
-                      <view>15.000.000</view>
+                      <view>{{commission?commission:'0'}}</view>
                       <view>可提现(元)</view>
                       <view>
                           <view>累计收入</view>
-                          <view>30.000.000</view>
+                          <view>{{total_commission?total_commission:'0'}}</view>
 
                       </view>
 
 
                 </view>
-                <view>
-                    <circle draw='circwewle1' per = '50' r = '239'/> 
+                <view  id="{{per}}">
+                    <circle draw='circwewle1' per='{{per}}' r = '239'/> 
                 </view>
           </view>
           <!-- 提现金额  -->
@@ -28,17 +28,17 @@
                 <view class="cash-tit" style="padding-top:{{input?28:40}}rpx">提现金额</view>
                 <view  class="cash-opeat">
                       <view class="cash-logo"><image src="../../images/money.png"></image> </view>
-                      <view class="cash-input"><input type="number" placeholder="请输入提现金额" placeholder-style="font-size:30rpx;font-weight:normal;" bindfocus="handleToFocus" bindconfirm="handleToShow"  bindblur="handleToShow"></input> </view>
+                      <view class="cash-input"><input type="number" placeholder="请输入提现金额" placeholder-style="font-size:30rpx;font-weight:normal;" bindfocus="handleToFocus" bindconfirm="handleToValue"  bindblur="handleToValue" bindinput="handleToValue" value="{{inputVal}}"></input> </view>
                 </view>
                 <view class="cash-type">
                     <view>请输入200的倍数，如</view>
                     <view>
-                          <view>400元</view>
-                          <view>600元</view>
-                          <view>800元</view>
-                          <view>1000元</view>
+                          <view bindtap="handleToTelValue" data-value="400">400元</view>
+                          <view bindtap="handleToTelValue" data-value="600">600元</view>
+                          <view bindtap="handleToTelValue" data-value="800">800元</view>
+                          <view bindtap="handleToTelValue" data-value="1000">1000元</view>
                     </view>
-                    <view>确认提现</view>
+                    <view bindtap="handleToCertComeTrue">确认提现</view>
                 </view>
           
           </view>

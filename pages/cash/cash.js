@@ -1,5 +1,6 @@
 // pages/cash/cash.js
 import api from '../../apis/my.js';
+import apis from '../../apis/login.js'
 const app = getApp();
 Page({
 
@@ -23,6 +24,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 判断登录是否过期
+    wx.checkSession({
+      //未过期
+      success: function () {
+
+      },
+      //过期了
+      fail: function () {
+        wx.getStorage({
+          key: 'userImage',
+          success: function (res) {
+            wx.login({
+              success: function (resCode) {
+                apis.handleToLogin(resCode.code).then((resLogin) => {
+                  console.log(resLogin)
+                  if (resLogin.code === 1) {
+                    wx.setStorage({
+                      key: 'token',
+                      data: resLogin.data.token,
+                    })
+                  }
+                })
+              },
+              fail: function () {
+
+              }
+            })
+          },
+        })
+      }
+    })
     var that = this;
     wx.getStorage({
       key: 'token',
@@ -97,9 +129,7 @@ Page({
     })
   },
   handleToValue(e){
-    this.setData({
-      "input": true
-    })
+  
     this.setData({
       "inputVal":e.detail.value
     })
@@ -129,7 +159,11 @@ Page({
    }
   
   },
-
+  handleToShow(){
+    this.setData({
+      "input": true
+    })
+  },
   handleToTelValue(e){
     console.log(e);
     this.setData({

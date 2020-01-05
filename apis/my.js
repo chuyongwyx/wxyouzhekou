@@ -22,7 +22,7 @@ export default{
   },
   //申请提现
   handleforWithdrawa(token,price){
-    var url ='/api/User/forWithdrawa?token='+token+'&price='+price;
+    var url ='/api/User/forWithdrawal?token='+token+'&price='+price;
     // var url = '/api/User/forWithdrawa?token=%2BF6W%2BU91qzIEYiytcH0Nmw=='+'&price=' + price;
     return _https.request(url)    
   }

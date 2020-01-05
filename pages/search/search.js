@@ -137,6 +137,26 @@ Page({
       };
     })
   },
+  handleToSearchRes(e){
+      console.log(e)
+    api.handelGetfindCoupon(e.target.dataset.hot).then((res) => {
+      if (res.data.length != 0) {
+        wx.navigateTo({
+          url: '../searchResult/searchResult?searchVal=' + e.target.dataset.hot,
+        })
+      } else {
+        wx.showToast({
+          image: '../../images/fail.png',
+          title: '没有该种类型优惠劵',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1000)
+      };
+      
+    })
+
+  },
   //得到input框中数据
   handleInputText(e){
     this.setData({

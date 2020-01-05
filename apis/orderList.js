@@ -12,8 +12,8 @@ export default{
     return _https.request(url);
   },
   //订单的详情
-  handleConfirmOrder(id, token) {
-    var url = "/api/Order/orderList?id=" + id + '&token=' + token;
+  handleConfirmOrder(id,token) {
+    var url = "/api/Order/orderDetail?id="+id+'&token='+token;
     // var url = "/api/Order/orderDetail?id=" + id +'&token=%2BF6W%2BU91qzIEYiytcH0Nmw==';
     return _https.request(url)
   },

@@ -52,37 +52,37 @@ Page({
       }
     })
     //登录是否过期
-    //判断登录是否过期
-    // wx.checkSession({
-    //   //未过期
-    //   success: function () {
+    // 判断登录是否过期
+    wx.checkSession({
+      //未过期
+      success: function () {
 
-    //   },
-    //   //过期了
-    //   fail: function () {
-    //     wx.getStorage({
-    //       key: 'userImage',
-    //       success: function (res) {
-    //         wx.login({
-    //           success: function (resCode) {
-    //             api.handleToLogin(resCode.code).then((resLogin) => {
-    //               console.log(resLogin)
-    //               if (resLogin.code === 1) {
-    //                 wx.setStorage({
-    //                   key: 'token',
-    //                   data: resLogin.data.token,
-    //                 })
-    //               }
-    //             })
-    //           },
-    //           fail: function () {
+      },
+      //过期了
+      fail: function () {
+        wx.getStorage({
+          key: 'userImage',
+          success: function (res) {
+            wx.login({
+              success: function (resCode) {
+                apis.handleToLogin(resCode.code).then((resLogin) => {
+                  console.log(resLogin)
+                  if (resLogin.code === 1) {
+                    wx.setStorage({
+                      key: 'token',
+                      data: resLogin.data.token,
+                    })
+                  }
+                })
+              },
+              fail: function () {
 
-    //           }
-    //         })
-    //       },
-    //     })
-    //   }
-    // })
+              }
+            })
+          },
+        })
+      }
+    })
     
     //生成海报
 
@@ -267,240 +267,134 @@ Page({
   //分享界面点击生成图片
   handleToShareHaibao(res){
     var that = this;
-    wx.setStorage({
-      key: "userImage",
-      data: res.detail.userInfo.avatarUrl
-    })
-    wx.setStorage({
-      key: "userName",
-      data: res.detail.userInfo.nickName
-    })
-    wx.setStorage({
-      key: 'token',
-      data: '%2BF6W%2BU91qzIEYiytcH0Nmw==',
-    })
-    api.handleGetDetial(this.data.id,'%2BF6W%2BU91qzIEYiytcH0Nmw==').then((res) => {
-          console.log(res)
-          that.setData({
-            "detailInfo": res.data
-          })
-        })
-    // wx.getStorage({
-    //   key: 'token',
-    //   success: function (res) {
-    //     api.handleGetDetial(options.id, res.data).then((res) => {
-    //       console.log(res)
-    //       that.setData({
-    //         "detailInfo": res.data
-    //       })
-    //     })
-
-    //   },
-    //  })
-    var haibao = {
-      width: '650rpx',
-      height: '938rpx',
-      background: '#fff',
-      borderRadius: '12rpx',
-      views: [
-        {
-          type: 'image',
-          url: that.data.detailInfo.shareImg,
-          css: {
-            top: '40rpx',
-            left: '42rpx',
-            right: '42rpx',
-            width: '566rpx',
-            height: '690rpx',
-
-          }
-        },
-        {
-          type: 'image',
-          url: res.detail.userInfo.avatarUrl,
-          css: {
-            width: '108rpx',
-            height: '108rpx',
-            borderRaius: '54rpx',
-            top: '760rpx',
-            left: '42rpx',
-          }
-        },
-        {
-          type: "text",
-          text: res.detail.userInfo.nickName,
-          css: {
-            height: '42rpx',
-            fontSize: '30rpx',
-            fontFamily: 'PingFangSC-Medium, PingFang SC',
-            fontWeight: 500,
-            color: 'rgba(51, 51, 51, 1)',
-            lineHeight: '42rpx',
-            top: '770rpx',
-            left: '170rpx'
-          }
-        },
-        {
-          type: 'text',
-          text: '推荐语推荐语',
-          css: {
-            fontSize: '30rpx',
-            color: 'rgba(255, 116, 20, 1)',
-            lineHeight: '42rpx',
-            top: '812rpx',
-            left: '170rpx'
-          }
-        },
-        {
-          type: "text",
-          text: '长按立即购买',
-          css: {
-            fontSize: '22rpx',
-            fontFamily: 'PingFangSC-Medium, PingFang SC',
-            fontWeight: '500',
-            color: 'rgba(150, 150, 150, 1)',
-            lineHeight: '32rpx',
-            top: '864rpx',
-            left: '170rpx'
-          }
-        },
-        {
-          type: 'qrcode',
-          content: '',
-          css: {
-            top: '760rpx',
-            right: '42rpx',
-            borderWidth: '2rpx',
-            width: '126rpx',
-            height: '126rpx',
-            borderColor: 'rgba(216, 216, 216, 1)',
-            padding: '14rpx'
-          },
-        },
-      ]
-    }
-    that.setData({
-      "share": true,
-      "template": haibao
-    });
-    // wx.login({
-    //   success: function (resCode) {
-    //     apis.handleToLogin(resCode.code).then((resLogin) => {
-    //       if (resLogin.code === 1) {
+    wx.login({
+      success: function (resCode) {
+        apis.handleToLogin(resCode.code).then((resLogin) => {
+  
+          if (resLogin.code == 1) {
           
-    //         wx.setStorage({
-    //           key: "userImage",
-    //           data: res.detail.userInfo.avatarUrl
-    //         })
-    //         wx.setStorage({
-    //           key: "userName",
-    //           data: res.detail.userInfo.nickName
-    //         })
-    //         wx.setStorage({
-    //           key: 'token',
-    //           data: resLogin.data.token,
-    //         })
-    //         var haibao = {
-    //           width: '650rpx',
-    //           height: '938rpx',
-    //           background: '#fff',
-    //           borderRadius: '12rpx',
-    //           views: [
-    //             {
-    //               type: 'image',
-    //               url: that.data.detailInfo.shareImg,
-    //               css: {
-    //                 top: '40rpx',
-    //                 left: '42rpx',
-    //                 right: '42rpx',
-    //                 width: '566rpx',
-    //                 height: '690rpx',
+            wx.setStorage({
+              key: "userImage",
+              data: res.detail.userInfo.avatarUrl
+            })
+            wx.setStorage({
+              key: "userName",
+              data: res.detail.userInfo.nickName
+            })
+            wx.setStorage({
+              key: 'token',
+              data: resLogin.data.token,
+            })
+        api.handleGetDetial(that.data.id,resLogin.data.token).then((resData) => {
+            console.log(res)
+            that.setData({
+              "detailInfo": resData.data
+            })
+          })
+            var haibao = {
+              width: '650rpx',
+              height: '938rpx',
+              background: '#fff',
+              borderRadius: '12rpx',
+              views: [
+                {
+                  type: 'image',
+                  url: that.data.detailInfo.shareImg,
+                  css: {
+                    top: '40rpx',
+                    left: '42rpx',
+                    right: '42rpx',
+                    width: '566rpx',
+                    height: '690rpx',
 
-    //               }
-    //             },
-    //             {
-    //               type: 'image',
-    //               url: res.detail.userInfo.avatarUrl,
-    //               css: {
-    //                 width: '108rpx',
-    //                 height: '108rpx',
-    //                 borderRaius: '54rpx',
-    //                 top: '760rpx',
-    //                 left: '42rpx',
-    //               }
-    //             },
-    //             {
-    //               type: "text",
-    //               text: res.detail.userInfo.nickName,
-    //               css: {
-    //                 height: '42rpx',
-    //                 fontSize: '30rpx',
-    //                 fontFamily: 'PingFangSC-Medium, PingFang SC',
-    //                 fontWeight: 500,
-    //                 color: 'rgba(51, 51, 51, 1)',
-    //                 lineHeight: '42rpx',
-    //                 top: '770rpx',
-    //                 left: '170rpx'
-    //               }
-    //             },
-    //             {
-    //               type: 'text',
-    //               text: '推荐语推荐语',
-    //               css: {
-    //                 fontSize: '30rpx',
-    //                 color: 'rgba(255, 116, 20, 1)',
-    //                 lineHeight: '42rpx',
-    //                 top: '812rpx',
-    //                 left: '170rpx'
-    //               }
-    //             },
-    //             {
-    //               type: "text",
-    //               text: '长按立即购买',
-    //               css: {
-    //                 fontSize: '22rpx',
-    //                 fontFamily: 'PingFangSC-Medium, PingFang SC',
-    //                 fontWeight: '500',
-    //                 color: 'rgba(150, 150, 150, 1)',
-    //                 lineHeight: '32rpx',
-    //                 top: '864rpx',
-    //                 left: '170rpx'
-    //               }
-    //             },
-    //             {
-    //               type: 'qrcode',
-    //               content: '',
-    //               css: {
-    //                 top: '760rpx',
-    //                 right: '42rpx',
-    //                 borderWidth: '2rpx',
-    //                 width: '126rpx',
-    //                 height: '126rpx',
-    //                 borderColor: 'rgba(216, 216, 216, 1)',
-    //                 padding: '14rpx'
-    //               },
-    //             },
-    //           ]
-    //         }
-    //         that.setData({
-    //           "share": true,
-    //           "template": haibao
-    //         });
+                  }
+                },
+                {
+                  type: 'image',
+                  url: res.detail.userInfo.avatarUrl,
+                  css: {
+                    width: '108rpx',
+                    height: '108rpx',
+                    borderRaius: '54rpx',
+                    top: '760rpx',
+                    left: '42rpx',
+                  }
+                },
+                {
+                  type: "text",
+                  text: res.detail.userInfo.nickName,
+                  css: {
+                    height: '42rpx',
+                    fontSize: '30rpx',
+                    fontFamily: 'PingFangSC-Medium, PingFang SC',
+                    fontWeight: 500,
+                    color: 'rgba(51, 51, 51, 1)',
+                    lineHeight: '42rpx',
+                    top: '770rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: 'text',
+                  text: '推荐语推荐语',
+                  css: {
+                    fontSize: '30rpx',
+                    color: 'rgba(255, 116, 20, 1)',
+                    lineHeight: '42rpx',
+                    top: '812rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: "text",
+                  text: '长按立即购买',
+                  css: {
+                    fontSize: '22rpx',
+                    fontFamily: 'PingFangSC-Medium, PingFang SC',
+                    fontWeight: '500',
+                    color: 'rgba(150, 150, 150, 1)',
+                    lineHeight: '32rpx',
+                    top: '864rpx',
+                    left: '170rpx'
+                  }
+                },
+                {
+                  type: 'qrcode',
+                  content: '',
+                  css: {
+                    top: '760rpx',
+                    right: '42rpx',
+                    borderWidth: '2rpx',
+                    width: '126rpx',
+                    height: '126rpx',
+                    borderColor: 'rgba(216, 216, 216, 1)',
+                    padding: '14rpx'
+                  },
+                },
+              ]
+            }
+            that.setData({
+              "share": true,
+              "template": haibao
+            });
+            //上传信息
+            apis.handleSaveUserInfo(resLogin.data.token, JSON.stringify(res.detail)).then((res) => {
+            })
 
-    //       } else {
-    //         wx.showToast({
-    //           title: '登录异常，授权失败',
-    //           icon: 'none',
-    //           duration: 3000
-    //         })
-    //       }
+          } else {
+            wx.showToast({
+              title: '登录异常，授权失败',
+              icon: 'none',
+              duration: 3000
+            })
+          }
 
-    //     })
-    //   },
-    //   fail: function () {
+        })
+      },
+      fail: function () {
 
-    //   }
-    // })
+      }
+    })
 
     wx.showToast({
       title: '生成中...',

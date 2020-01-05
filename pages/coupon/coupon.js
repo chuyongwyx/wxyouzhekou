@@ -1,5 +1,6 @@
 // pages/coupon/coupon.js;
-import api from '../../apis/coupon.js'
+import api from '../../apis/coupon.js';
+import apis from '../../apis/login.js';
 const app = getApp();
 Page({
 
@@ -27,6 +28,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 判断登录是否过期
+    wx.checkSession({
+      //未过期
+      success: function () {
+
+      },
+      //过期了
+      fail: function () {
+        wx.getStorage({
+          key: 'userImage',
+          success: function (res) {
+            wx.login({
+              success: function (resCode) {
+                apis.handleToLogin(resCode.code).then((resLogin) => {
+                  console.log(resLogin)
+                  if (resLogin.code === 1) {
+                    wx.setStorage({
+                      key: 'token',
+                      data: resLogin.data.token,
+                    })
+                  }
+                })
+              },
+              fail: function () {
+
+              }
+            })
+          },
+        })
+      }
+    })
       //遍历循环从后端请求回来的数据
     if (options.id == 1) {
       this.setData({
@@ -61,25 +93,7 @@ Page({
 
       var that = this;
       console.log(options);
-        // api.handleCoupon('', options.id).then((resData)=>{
-        //   console.log(resData);
-        //   var detailsListTwo = [];
-        //   //过滤字段
-        //   var couponListTwo=[];
-        //     couponListTwo=resData.data
-        //   for (var i = 0, len = resData.data.length; i < len; i++) {
-        //     detailsListTwo.push('false');
-        //     couponListTwo[i].writetime = couponListTwo[i].writetime.substr(0,11);
-        //   }
-        //   that.setData({
-        //     "couponList": couponListTwo,
-        //     "detailsList": detailsListTwo,
-        //     "allCount": resData.allCount,
-        //     "waitCount": resData.waitCount,
-        //     "useCount": resData.useCount,
-        //     "overdueCount": resData.overdueCount,
-        //   })
-        // });
+     
         wx.getStorage({
           key: 'token',
           success: function(res) {

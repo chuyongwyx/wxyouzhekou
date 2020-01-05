@@ -53,7 +53,7 @@
                   <view>订单编号</view>
                   <view>
                         <view>{{dataInfo.order_id}}</view>
-                        <view>复制</view>
+                        <view bindtap="handleToCopy">复制</view>
                   </view>
             </view> 
             <view class="order-time">

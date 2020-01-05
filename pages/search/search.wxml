@@ -23,7 +23,7 @@
                 <view class="search-hot">
                       <view class="hot-h">大家都在搜</view>
                       <view class="hot-conent">
-                            <view wx:for="{{hotSearch}}" wx:key="{{this}}">{{item.key}}</view>
+                            <view wx:for="{{hotSearch}}" wx:key="{{this}}" data-hot="{{item.key}}" bindtap="handleToSearchRes">{{item.key}}</view>
                       </view> 
                 </view>
             <!-- 我搜过的 -->
@@ -33,7 +33,7 @@
                           <view bindtap="handleToDelete"><image src="../../images/icon_shanchu.png"></image> </view>    
                       </view>
                       <view class="his-conent">
-                            <view wx:for="{{searchHist}}" wx:key="{{this}}">{{item}}</view>
+                            <view wx:for="{{searchHist}}" wx:key="{{this}}" data-hot="{{item}}" bindtap="handleToSearchRes">{{item}}</view>
                       </view>
                 </view>
           </view>

@@ -28,7 +28,7 @@
                 <view class="cash-tit" style="padding-top:{{input?28:40}}rpx">提现金额</view>
                 <view  class="cash-opeat">
                       <view class="cash-logo"><image src="../../images/money.png"></image> </view>
-                      <view class="cash-input"><input type="number" placeholder="请输入提现金额" placeholder-style="font-size:30rpx;font-weight:normal;" bindfocus="handleToFocus" bindconfirm="handleToValue"  bindblur="handleToValue" bindinput="handleToValue" value="{{inputVal}}"></input> </view>
+                      <view class="cash-input"><input type="number" placeholder="请输入提现金额" placeholder-style="font-size:30rpx;font-weight:normal;" bindfocus="handleToFocus" bindconfirm="handleToValue"  bindblur="handleToShow" bindinput="handleToValue" value="{{inputVal}}"></input> </view>
                 </view>
                 <view class="cash-type">
                     <view>请输入200的倍数，如</view>

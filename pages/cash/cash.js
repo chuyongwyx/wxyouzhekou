@@ -24,36 +24,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 判断登录是否过期
-    wx.checkSession({
-      //未过期
-      success: function () {
-
-      },
-      //过期了
-      fail: function () {
+    //判断登录时间是否过期
+    wx.getStorage({
+      key: 'userImage',
+      success: function (res) {
         wx.getStorage({
-          key: 'userImage',
-          success: function (res) {
-            wx.login({
-              success: function (resCode) {
-                apis.handleToLogin(resCode.code).then((resLogin) => {
-                  console.log(resLogin)
-                  if (resLogin.code === 1) {
-                    wx.setStorage({
-                      key: 'token',
-                      data: resLogin.data.token,
-                    })
-                  }
-                })
-              },
-              fail: function () {
+          key: 'createTokenTime',
+          success: function (resTime) {
+            var dateTime = new Date().getTime();
+            var tokenTime = new Date(resTime.data).getTime();
 
-              }
-            })
+            if (dateTime - tokenTime > 14400000) {
+              wx.login({
+                success: function (resCode) {
+                  apis.handleToLogin(resCode.code).then((resLogin) => {
+                    if (resLogin.code == 1) {
+                      wx.setStorage({
+                        key: 'token',
+                        data: resLogin.data.token,
+                      })
+                      wx.setStorage({
+                        key: 'createTokenTime',
+                        data: resLogin.data.createTokenTime,
+                      })
+                    }
+                  })
+                },
+                fail: function () {
+
+                }
+              })
+            }
+
+
           },
         })
-      }
+
+
+      },
     })
     var that = this;
     wx.getStorage({
@@ -64,7 +72,8 @@ Page({
           that.setData({
             "total_commission": resData.total_commission,
             "commission": resData.commission,
-            "per":per+''
+            "per":per+'',
+            
           })
         })
       },
@@ -143,6 +152,16 @@ Page({
        success: function (res) {
          api.handleforWithdrawa(res.data, that.data.inputVal).then((resData) => {
            if(resData.code==1){
+             api.handleGetBudgetRecord(res.data, '').then((resSecond) => {
+               var per = Math.ceil(parseFloat(resSecond.commission) * 100 / parseFloat(resSecond.total_commission));
+               that.setData({
+                 "total_commission": resSecond.total_commission,
+                 "commission": resSecond.commission,
+                 "per": per + '',
+                 "inputVal": '',
+                 "input": true
+               })
+             })
              wx.showToast({
                title: '提现成功',
              })

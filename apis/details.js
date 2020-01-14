@@ -10,5 +10,13 @@ export default{
     }
  
    return _https.request(url);
-  }
+  },
+  //分享小程序码
+  handleGetShareCode(token,scene){
+    var url ='/api/index/getShareCode?token='+token+'&scene='+scene;
+    console.log(url)
+    return _https.request(url);  
+    
+    }
+
 }

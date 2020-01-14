@@ -4,6 +4,9 @@
             <view class="details-back" bindtap="handleBack"><image src="../../images/icon_fanhui.png"></image> </view>
             <view class="details-h1">优惠详情</view>
       </view>
+        <view>{{jia}}</view>
+
+
           <!-- 商品详情 -->
       <view class="banner" style="margin-top:{{statusBarHeight*2+90}}rpx;">
             <view class="banner-img">
@@ -110,11 +113,11 @@
             </view>
             <button class="share" open-type="getUserInfo" bindgetuserinfo="handleToShareHaibao">
                   <view>分享海报</view>
-                  <view><text>赚</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view>
+                  <!-- <view><text>赚</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view> -->
             </button>
             <view class="immediately" bindtap="handleToBuy" id="{{detailInfo.id}}"> 
                    <view>立即抢购</view>
-                   <view><text>省</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view>
+                   <!-- <view><text>省</text><text>￥</text><text>{{detailInfo.commission}}.00</text></view> -->
             </view>
         </view>
       

@@ -18,35 +18,44 @@ Page({
    */
   onLoad: function (options) {
     // 判断登录是否过期
-    wx.checkSession({
-      //未过期
-      success: function () {
-
-      },
-      //过期了
-      fail: function () {
+    //判断登录时间是否过期
+    wx.getStorage({
+      key: 'userImage',
+      success: function (res) {
         wx.getStorage({
-          key: 'userImage',
-          success: function (res) {
-            wx.login({
-              success: function (resCode) {
-                apis.handleToLogin(resCode.code).then((resLogin) => {
-                  console.log(resLogin)
-                  if (resLogin.code === 1) {
-                    wx.setStorage({
-                      key: 'token',
-                      data: resLogin.data.token,
-                    })
-                  }
-                })
-              },
-              fail: function () {
+          key: 'createTokenTime',
+          success: function (resTime) {
+            var dateTime = new Date().getTime();
+            var tokenTime = new Date(resTime.data).getTime();
 
-              }
-            })
+            if (dateTime - tokenTime > 14400000) {
+              wx.login({
+                success: function (resCode) {
+                  apis.handleToLogin(resCode.code).then((resLogin) => {
+                    if (resLogin.code == 1) {
+                      wx.setStorage({
+                        key: 'token',
+                        data: resLogin.data.token,
+                      })
+                      wx.setStorage({
+                        key: 'createTokenTime',
+                        data: resLogin.data.createTokenTime,
+                      })
+                    }
+                  })
+                },
+                fail: function () {
+
+                }
+              })
+            }
+
+
           },
         })
-      }
+
+
+      },
     })
     var that =this;
     // api.handleCouponToUse(options.id, '').then((resData)=>{

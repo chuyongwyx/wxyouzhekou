@@ -1,6 +1,7 @@
 // pages/details/details.js
 import api  from '../../apis/details.js';
-import apis from "../../apis/login.js"
+import apis from "../../apis/login.js";
+import base64 from "../../utils/base64.js";
 const app = getApp();
 Page({
 
@@ -16,7 +17,8 @@ Page({
     "imagePath":"", 
     "detailInfo":{},
     "template":{},
-    "id":""
+    "id":"",
+    "codeMa":"",
   },
  
   /**
@@ -24,17 +26,60 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    this.setData({
-      "id":options.id
-    })
+    console.log(options)
+    if (options.id) {
+      this.setData({
+        "id": options.id
+      })
+    }else{
+      if (options.scene) {
+        var strBase64 = base64.base64_decode(decodeURIComponent(options.scene))
+       var strBase64Two = JSON.parse(strBase64);
+        console.log(strBase64)
+        wx.setStorage({
+          key: 'strBase64',
+          data: options.scene,
+        })
+        wx.setStorage({
+          key: 'user_id',
+          data: strBase64Two.u,
+        })
+        wx.setStorage({
+          key: 'coupon_id',
+          data: strBase64Two.c,
+        })
+        this.setData({
+          "id": strBase64Two.c
+        })
+      }
+
+      if (options.user_id) {
+        wx.setStorage({
+          key: 'user_id',
+          data: options.user_id
+        })
+        wx.setStorage({
+          key: 'coupon_id',
+          data: options.coupon_id
+        })
+        this.setData({
+          "id": options.coupon_id
+        })
+      }
+     
+
+    }
+    
+     
+
+   
     //判断是否为全面屏
     this.checkFullSucreen();
     //获取详情信息
-    console.log(options)
     wx.getStorage({
       key: 'token',
       success: function(res) {
-          api.handleGetDetial(options.id,res.data).then((res)=>{
+          api.handleGetDetial(that.data.id,res.data).then((res)=>{
             console.log(res)
                 that.setData({
                      "detailInfo": res.data
@@ -43,7 +88,7 @@ Page({
 
       },
       fail:function(){
-        api.handleGetDetial(options.id,'').then((res) => {
+        api.handleGetDetial(that.data.id,'').then((res) => {
           console.log(res.data);
           that.setData({
             "detailInfo": res.data
@@ -52,36 +97,44 @@ Page({
       }
     })
     //登录是否过期
-    // 判断登录是否过期
-    wx.checkSession({
-      //未过期
-      success: function () {
-
-      },
-      //过期了
-      fail: function () {
+    //判断登录时间是否过期
+    wx.getStorage({
+      key: 'userImage',
+      success: function (res) {
         wx.getStorage({
-          key: 'userImage',
-          success: function (res) {
-            wx.login({
-              success: function (resCode) {
-                apis.handleToLogin(resCode.code).then((resLogin) => {
-                  console.log(resLogin)
-                  if (resLogin.code === 1) {
-                    wx.setStorage({
-                      key: 'token',
-                      data: resLogin.data.token,
-                    })
-                  }
-                })
-              },
-              fail: function () {
+          key: 'createTokenTime',
+          success: function (resTime) {
+            var dateTime = new Date().getTime();
+            var tokenTime = new Date(resTime.data).getTime();
 
-              }
-            })
+            if (dateTime - tokenTime > 14400000) {
+              wx.login({
+                success: function (resCode) {
+                  apis.handleToLogin(resCode.code).then((resLogin) => {
+                    if (resLogin.code == 1) {
+                      wx.setStorage({
+                        key: 'token',
+                        data: resLogin.data.token,
+                      })
+                      wx.setStorage({
+                        key: 'createTokenTime',
+                        data: resLogin.data.createTokenTime,
+                      })
+                    }
+                  })
+                },
+                fail: function () {
+
+                }
+              })
+            }
+
+
           },
         })
-      }
+
+
+      },
     })
     
     //生成海报
@@ -101,7 +154,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   }, 
 
   /**
@@ -136,23 +189,30 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (ops) {
-    if (ops.from === 'button') {
-      var that = this
-      return {
-        title: '分享给好友',
-        imageUrl: that.data.imagePath,
-        success: function (res) {
-          var shareTickets = res.shareTickets;
-          that.setData({
-            "share":false
-          })
-        },
-        fail: function (res) {
-          // 转发失败
-          console.log("转发失败:" + JSON.stringify(res));
+    var that = this
+    wx.getStorage({
+      key: 'user_id',
+      success: function(resUserId) {
+        if (ops.from === 'button') {
+          
+          return {
+            title: '分享给好友',
+            path: "/pages/details/details?user_id="+resUserId.data +'&coupon_id='+that.data.id,
+            imageUrl: that.data.imagePath,
+            success: function (res) {
+              that.setData({
+                "share": false
+              })
+            },
+            fail: function (res) {
+              // 转发失败
+              console.log("转发失败:" + JSON.stringify(res));
+            }
+          }
         }
-      }
-    }
+      },
+    })
+   
     
   },
   // 返回
@@ -285,101 +345,132 @@ Page({
               key: 'token',
               data: resLogin.data.token,
             })
+            wx.setStorage({
+              key: 'createTokenTime',
+              data: resLogin.data.createTokenTime,
+            })
+            wx.setStorage({
+              key: 'user_id',
+              data: resLogin.data.user_id,
+            })
         api.handleGetDetial(that.data.id,resLogin.data.token).then((resData) => {
-            console.log(res)
             that.setData({
               "detailInfo": resData.data
             })
           })
-            var haibao = {
-              width: '650rpx',
-              height: '938rpx',
-              background: '#fff',
-              borderRadius: '12rpx',
-              views: [
-                {
-                  type: 'image',
-                  url: that.data.detailInfo.shareImg,
-                  css: {
-                    top: '40rpx',
-                    left: '42rpx',
-                    right: '42rpx',
-                    width: '566rpx',
-                    height: '690rpx',
-
-                  }
-                },
-                {
-                  type: 'image',
-                  url: res.detail.userInfo.avatarUrl,
-                  css: {
-                    width: '108rpx',
-                    height: '108rpx',
-                    borderRaius: '54rpx',
-                    top: '760rpx',
-                    left: '42rpx',
-                  }
-                },
-                {
-                  type: "text",
-                  text: res.detail.userInfo.nickName,
-                  css: {
-                    height: '42rpx',
-                    fontSize: '30rpx',
-                    fontFamily: 'PingFangSC-Medium, PingFang SC',
-                    fontWeight: 500,
-                    color: 'rgba(51, 51, 51, 1)',
-                    lineHeight: '42rpx',
-                    top: '770rpx',
-                    left: '170rpx'
-                  }
-                },
-                {
-                  type: 'text',
-                  text: '推荐语推荐语',
-                  css: {
-                    fontSize: '30rpx',
-                    color: 'rgba(255, 116, 20, 1)',
-                    lineHeight: '42rpx',
-                    top: '812rpx',
-                    left: '170rpx'
-                  }
-                },
-                {
-                  type: "text",
-                  text: '长按立即购买',
-                  css: {
-                    fontSize: '22rpx',
-                    fontFamily: 'PingFangSC-Medium, PingFang SC',
-                    fontWeight: '500',
-                    color: 'rgba(150, 150, 150, 1)',
-                    lineHeight: '32rpx',
-                    top: '864rpx',
-                    left: '170rpx'
-                  }
-                },
-                {
-                  type: 'qrcode',
-                  content: '',
-                  css: {
-                    top: '760rpx',
-                    right: '42rpx',
-                    borderWidth: '2rpx',
-                    width: '126rpx',
-                    height: '126rpx',
-                    borderColor: 'rgba(216, 216, 216, 1)',
-                    padding: '14rpx'
-                  },
-                },
-              ]
-            }
-            that.setData({
-              "share": true,
-              "template": haibao
-            });
-            //上传信息
-            apis.handleSaveUserInfo(resLogin.data.token, JSON.stringify(res.detail)).then((res) => {
+       var haibao;
+        wx.getStorage({
+          key: 'user_id',
+          success: function(resUserId) {
+            var str = JSON.stringify({
+              "u": resUserId.data ,
+              "c": that.data.id
             })
+            var strBase64 = base64.base64_encode(str);
+            api.handleGetShareCode(resLogin.data.token,strBase64).then((resCodeMa) => {
+              console.log(resCodeMa)
+              console.log(that.data.detailInfo.shareImg)
+              haibao = {
+                width: '650rpx',
+                height: '938rpx',
+                background: '#fff',
+                borderRadius: '12rpx',
+                views: [
+                  {
+                    type: 'image',
+                    url: that.data.detailInfo.shareImg,
+                    css: {
+                      top: '40rpx',
+                      left: '42rpx',
+                      right: '42rpx',
+                      width: '566rpx',
+                      height: '690rpx',
+
+                    }
+                  },
+                  {
+                    type: 'image',
+                    url: res.detail.userInfo.avatarUrl,
+                    css: {
+                      width: '108rpx',
+                      height: '108rpx',
+                      borderRadius: '54rpx',
+                      top: '760rpx',
+                      left: '42rpx',
+                    }
+                  },
+                  {
+                    type: "text",
+                    text: res.detail.userInfo.nickName,
+                    css: {
+                      height: '42rpx',
+                      fontSize: '30rpx',
+                      fontFamily: 'PingFangSC-Medium, PingFang SC',
+                      fontWeight: 500,
+                      color: 'rgba(51, 51, 51, 1)',
+                      lineHeight: '42rpx',
+                      top: '770rpx',
+                      left: '170rpx'
+                    }
+                  },
+                  {
+                    type: 'text',
+                    text: '"有折打,精选优惠"',
+                    css: {
+                      fontSize: '30rpx',
+                      color: 'rgba(255, 116, 20, 1)',
+                      lineHeight: '42rpx',
+                      top: '812rpx',
+                      left: '166rpx'
+                    }
+                  },
+                  {
+                    type: "text",
+                    text: '长按立即购买',
+                    css: {
+                      fontSize: '22rpx',
+                      fontFamily: 'PingFangSC-Medium, PingFang SC',
+                      fontWeight: '500',
+                      color: 'rgba(150, 150, 150, 1)',
+                      lineHeight: '32rpx',
+                      top: '864rpx',
+                      left: '170rpx'
+                    }
+                  },
+                  {
+                    type: 'rect',
+                    css: {
+                      top: '760rpx',
+                      right: '42rpx',
+                      borderWidth: '2rpx',
+                      width: '116rpx',
+                      height: '126rpx',
+                      borderColor: 'rgba(216, 216, 216, 1)',
+                      color: '#fff'
+                    }
+                  },
+                  {
+                    type: 'image',
+                    url: resCodeMa.data,
+                    css: {
+                      top: '768rpx',
+                      right: '45rpx',
+                      width: '112rpx',
+                      height: '112rpx',
+                    },
+                  },
+                ]
+              }
+
+              that.setData({
+                "share": true,
+                "template": haibao
+              });
+            })
+          },
+        })
+          //上传信息
+        apis.handleSaveUserInfo(resLogin.data.token, res.detail.rawData).then((res) => {})
 
           } else {
             wx.showToast({

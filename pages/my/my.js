@@ -63,41 +63,7 @@ Page({
           }
         },
       })
-      //判断登录是否过期
-      wx.checkSession({
-          //未过期
-          success:function(){
-
-          },
-          //过期了
-          fail:function(){
-            wx.getStorage({
-              key: 'userImage',
-              success: function(res) {
-                wx.login({
-                  success: function (resCode) {
-                    api.handleToLogin(resCode.code).then((resLogin) => {
-                      console.log(resLogin)
-                      if (resLogin.code === 1) {
-                        wx.setStorage({
-                          key: 'token',
-                          data: resLogin.data.token,
-                        })
-                        wx.setStorage({
-                          key: 'code',
-                          data: resCode.code,
-                        })
-                      }
-                    })
-                  },
-                  fail: function () {
-
-                  }
-                })
-              },
-            })
-          }
-      })
+ 
 
     //判断是否为全面屏
     this.checkFullSucreen();
@@ -117,40 +83,47 @@ Page({
    */
   onShow: function () {
     var that = this;
-    wx.checkSession({
-      //未过期
-      success: function () {
-
-      },
-      //过期了
-      fail: function () {
+   
+    //判断登录时间是否过期
+    wx.getStorage({
+      key: 'userImage',
+      success: function (res) {
         wx.getStorage({
-          key: 'userImage',
-          success: function(res) {
-            wx.login({
-              success: function (resCode) {
-                api.handleToLogin(resCode.code).then((resLogin) => {
-                  console.log(resLogin)
-                  if (resLogin.code === 1) {
-                    wx.setStorage({
-                      key: 'token',
-                      data: resLogin.data.token,
-                    })
-                    wx.setStorage({
-                      key: 'code',
-                      data: resCode.code,
-                    })
-                  }
-                })
-              },
-              fail: function () {
+          key: 'createTokenTime',
+          success: function (resTime) {
+            var dateTime = new Date().getTime();
+            var tokenTime = new Date(resTime.data).getTime();
+            if (dateTime - tokenTime > 14400000) {
+              wx.login({
+                success: function (resCode) {
+                  api.handleToLogin(resCode.code).then((resLogin) => {
+                    if (resLogin.code == 1) {
+                      wx.setStorage({
+                        key: 'token',
+                        data: resLogin.data.token,
+                      })
+                      wx.setStorage({
+                        key: 'createTokenTime',
+                        data: resLogin.data.createTokenTime,
+                      })
+                    }
+                  })
+                },
+                fail: function () {
 
-              }
-            })
+                }
+              })
+            }
+
+
           },
         })
-      }
+
+      
+      },
     })
+
+   
     wx.getStorage(
       {
         key: 'userImage',
@@ -247,8 +220,7 @@ Page({
     })
      wx.login({
         success:function(resCode){
-
-
+          console.log(resCode)
           api.handleToLogin(resCode.code).then((resLogin)=>{
             console.log(resLogin);
              if(resLogin.code==1){
@@ -268,8 +240,12 @@ Page({
                     data: res.detail.userInfo.nickName
                   })
                   wx.setStorage({
-                    key: 'code',
-                    data: resCode.code,
+                    key: 'createTokenTime',
+                    data: resLogin.data.createTokenTime,
+                  })
+                  wx.setStorage({
+                    key: 'user_id',
+                    data: resLogin.data.user_id,
                   })
                   wx.setStorage({
                     key: 'token',
@@ -280,9 +256,9 @@ Page({
                    "dataList": resData.data
                  })
                })
-
+               console.log(res);
                //上传信息
-               api.handleSaveUserInfo(resLogin.data.token,JSON.stringify(res.detail)).then((res) => {
+               api.handleSaveUserInfo(resLogin.data.token, res.detail.rawData).then((res) => {
                })
 
              }else{

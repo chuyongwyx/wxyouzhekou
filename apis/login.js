@@ -13,6 +13,8 @@ export default {
   },
   //上传用户信息
   handleSaveUserInfo(token,wxdata){
+    console.log(token);
+    console.log(wxdata);
     var url = '/api/User/saveUserInfo?token=' + token + '&wxdata='+ wxdata
     return _https.request(url);
   }

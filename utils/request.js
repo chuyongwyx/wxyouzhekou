@@ -1,7 +1,7 @@
 /**
  * 统一调用接口
  */
-const apiHost ="https://yzdtest.189goo.cn";
+const apiHost ="https://yzd.189goo.cn";
 function request(url,token,method,data) {
   return new Promise((resolve, reject) => {
     wx.showLoading({ title: '加载中...', duration: 6000 })

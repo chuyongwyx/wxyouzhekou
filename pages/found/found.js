@@ -15,11 +15,13 @@ Page({
     "found": "../../images/dibulan_faxian1.png",
     "my": "../../images/dibulan_gerenzhongxin2.png",
     "statusBarHeight": app.globalData.statusBarHeight,
-    "bannerTop": app.globalData.statusBarHeight*2+270,
+    "bannerTop": app.globalData.statusBarHeight*2+240,
     // 筛选栏活跃状态
     "allFood":false,
     "near":false,
     "mind":false,
+    //遮罩
+    "mark":false,
     //滚动状态
     "scrollBefore":true,
     "scrollIng":false,
@@ -44,7 +46,9 @@ Page({
     //附近几公里
       "nears":"",
     //搜索分类id
-      "cateid":""
+      "cateid":"",
+    //全部美食
+      "allfoodKinds":[1,1,1,1,1,1,1,1,1,1,1,1]
   },
 
   /**
@@ -359,11 +363,13 @@ Page({
       this.setData({
         "allFood":true,
         "near":false,
-        "mind":false
+        "mind":false,
+        "mark":true
       })
     }else{
       this.setData({
-        "allFood": false
+        "allFood": false,
+        "mark":false
       })
     }
   },
@@ -373,11 +379,13 @@ Page({
      this.setData({
        "allFood": false,
        "near": true,
-       "mind": false
+       "mind": false,
+       "mark":true
      })
    }else{
      this.setData({
-       "near": false
+       "near": false,
+       "mark":false
      })
    }
  },
@@ -387,12 +395,23 @@ Page({
      this.setData({
        "allFood": false,
        "near": false,
-       "mind": true
+       "mind": true,
+       "mark":true
      })
    } else {
      this.setData({
-       "mind": false
+       "mind": false,
+       "mark":false
      })
    }
- }
+ },
+ //点击遮罩区域隐藏
+  handleToMarkHide(){
+    this.setData({
+      "allFood": false,
+      "near": false,
+      "mind": false,
+      "mark": false
+    })
+  }
 })

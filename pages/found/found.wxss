@@ -8,7 +8,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 10;
     background: #fff; 
     width: 100%;
 }
@@ -99,8 +99,11 @@
 /* 筛选 */
 .screen{
     display:flex;
-    margin:0 30rpx;
+    /* margin:0 30rpx; */
     margin-top: 30rpx;
+}
+.screen>view:nth-of-type(1){
+  margin-left: 30rpx;
 }
 .screen>view:nth-of-type(2){
   margin:0 40rpx;
@@ -264,3 +267,115 @@
   
 }
 
+/* 筛选框 */
+/* 全部美食 */
+.foods-all{
+  width: 750rpx;
+  height: 630rpx;
+  display: flex;
+  flex-direction:column; 
+  flex-wrap: wrap;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+.foods-all-kinds{
+  width: 50%;
+  height: 90rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid;
+  border-right: 1rpx solid;
+  border-color: #d8d8d8;
+  
+}
+.foods-all-kinds:last-of-type{
+  border-bottom: 1rpx solid #d8d8d8;
+}
+.foods-kinds-left{
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+.foods-kinds-left-active{
+  color: #FF7414;
+}
+.foods-kinds-active{
+  margin-top: 14rpx;
+  height: 60rpx;
+  width: 8rpx;
+  background: #FF7414;
+  margin-bottom: 16rpx;
+  margin-right: 28rpx;
+  
+}
+.foods-kinds-deactive{
+  margin-top: 14rpx;
+  height: 60rpx;
+  width: 8rpx;
+  background: #fff;
+  margin-bottom: 16rpx;
+  margin-right: 28rpx;
+}
+.foods-kinds-right{
+  margin-right: 28rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(150,150,150,1);
+}
+/* 附近 */
+.nearKinds{
+  display: flex;
+  width: 100%;
+  height: 540rpx;
+  border-top: 1rpx solid #d8d8d8;
+  font-size: 30rpx;
+}
+.nearKinds-left{
+  width: 50%;
+  box-sizing: border-box;
+ 
+}
+.nearKinds-left>view{
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+.nearKinds-right{
+  width: 50%;
+  box-sizing: border-box;
+  border-left: 1rpx solid #d8d8d8;
+}
+.nearKinds-right>view{
+  height: 78rpx;
+  line-height: 78rpx;
+  margin-left: 30rpx;
+}
+.nearKinds-type{
+  display: flex;
+  justify-content: space-between;
+  height: 90rpx;
+  align-items: center;
+  margin-left: 30rpx;
+}
+.nearKinds-type>view:nth-of-type(1){
+  color: #969696;
+}
+.nearKinds-type>view:nth-of-type(2){
+  display: flex;
+  color: #FF7414;
+}
+/* 智能排序 */
+.sortKindSelect{
+  border-top:  1rpx solid #d8d8d8;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+ 
+}
+.sortKindSelect >view{
+  height: 78rpx;
+  line-height: 78rpx;
+  font-size: 30rpx;
+}

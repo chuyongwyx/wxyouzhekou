@@ -10,7 +10,7 @@
               <view class="user-logined" wx:if="{{userLogined}}">
                   <view><image src="{{userImage}}"></image> </view>
                   <view>
-                        <view class="name">{{dataList.name}}</view>
+                        <view class="name">{{userName}}</view>
                         <view class="telNum">
                               <view>手机号：</view>
                              <view wx:if="{{true}}"><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="telButton">未绑定</button></view>
@@ -19,7 +19,7 @@
                   </view> 
               </view>
               <!-- 收入 -->
-                <view class="money">
+                <view class="money" wx:if="{{false}}">
                     <view class="my_bg"><image src="../../images/my_bg.png"></image> </view>
                     <view class="moneyInfo">
                           <view class="moneyInfo_left">

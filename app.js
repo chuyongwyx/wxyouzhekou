@@ -1,8 +1,14 @@
 //app.js
-
+import  base64 from './utils/base64.js'
 App({
   onLaunch: function (res) {
     console.log(res);
+  },
+  onShow(options){
+      wx.setStorage({
+        key: 'sceen',
+        data: options.scene,
+      })
   },
   globalData: {
     statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],

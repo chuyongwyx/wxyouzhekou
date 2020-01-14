@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/found/found",
     "pages/searchResult/searchResult",
     "pages/orderStatus/orderStatus",
     "pages/order/order",
@@ -9,7 +10,6 @@
     "pages/cash/cash",
     "pages/my/my",
     "pages/confirmOrder/confirmOrder",
-    "pages/found/found",
     "pages/details/details",
     "pages/coupon-details/coupon-details",
     "pages/search/search",

@@ -33,7 +33,7 @@
   font-weight:500;
   color:rgba(51,51,51,1);
  align-items: center;
-  margin-left: 224rpx;
+  margin-left: 254rpx;
   line-height: 88rpx;
 }
 .header{

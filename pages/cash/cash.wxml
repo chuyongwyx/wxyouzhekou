@@ -5,7 +5,7 @@
             <button class="cash-h1">提现</button>
       </cover-view>
         <cover-view class="border" style="position:fixed;top:{{statusBarHeight*2+90}}rpx;left:0;width:100%;height:2rpx;background: #D6D6D6"></cover-view>
-      <view style="margin-top:{{statusBarHeight*2+92}}rpx;">
+      <view style="padding-top:{{statusBarHeight*2+92}}rpx;">
           <!-- 圆形进度图 -->
           <view class="circle" wx:if="{{input}}">
                 <view class="circle-content">
